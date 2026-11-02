@@ -28,7 +28,7 @@
   --tpl-text-main: #333333;
   --tpl-text-muted: #777777;
   --tpl-font: Arial, Helvetica, "Segoe UI", sans-serif;
-  --sim-width: 440px;
+  --sim-width: 500px;
 }
 
 * {
@@ -54,7 +54,7 @@ html, body {
   top: 0;
   left: 0;
   right: 0;
-  height: 40px;
+  height: 42px;
   background: linear-gradient(180deg, #3d4c54 0%, #303c42 100%);
   border-bottom: 2px solid #232d32;
   display: flex;
@@ -63,7 +63,7 @@ html, body {
   padding: 0 14px;
   z-index: 100;
   color: #e2e8f0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
 .brand-section {
@@ -75,8 +75,8 @@ html, body {
 .brand-logo {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 14px;
+  gap: 8px;
+  font-size: 15px;
   font-weight: bold;
   letter-spacing: 0.5px;
   color: #ffffff;
@@ -110,8 +110,8 @@ html, body {
   align-items: center;
   gap: 10px;
   background: #232c31;
-  padding: 3px 10px;
-  border-radius: 12px;
+  padding: 4px 12px;
+  border-radius: 14px;
   border: 1px solid #425057;
   font-size: 11px;
 }
@@ -119,7 +119,7 @@ html, body {
 .led-item {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   color: #cbd5e1;
 }
 
@@ -146,15 +146,6 @@ html, body {
   box-shadow: 0 0 6px #f43f5e;
 }
 
-.led-dot.blink {
-  animation: ledBlink 1s infinite;
-}
-
-@keyframes ledBlink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.2; }
-}
-
 .nav-controls {
   display: flex;
   align-items: center;
@@ -177,12 +168,12 @@ html, body {
   color: #e2e8f0;
   border: 1px solid #45555e;
   border-radius: 3px;
-  padding: 4px 10px;
+  padding: 5px 12px;
   font-size: 12px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   transition: all 0.15s;
 }
 
@@ -214,11 +205,11 @@ html, body {
 }
 
 /* ==========================================================================
-   Main Layout: Iframe & Simulator Panel
+   Main Layout
    ========================================================================== */
 #app-container {
   position: fixed;
-  top: 40px;
+  top: 42px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -243,14 +234,14 @@ html, body {
 }
 
 /* ==========================================================================
-   Simulator Docked / Floating Panel
+   Simulator Panel
    ========================================================================== */
 #sim-container {
   width: var(--sim-width);
   height: 100%;
   background: #ffffff;
   border-left: 1px solid var(--tpl-border);
-  box-shadow: -2px 0 8px rgba(0,0,0,0.08);
+  box-shadow: -3px 0 12px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   z-index: 50;
@@ -261,31 +252,18 @@ html, body {
   transform: translateX(100%);
 }
 
-#sim-container.floating {
-  position: fixed;
-  right: 15px;
-  bottom: 15px;
-  height: auto;
-  max-height: 85vh;
-  border-radius: 6px;
-  border: 1px solid var(--tpl-border);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-  width: 460px;
-}
-
-/* Floating pill button when collapsed */
 #sim-toggle-pill {
   position: fixed;
-  right: 16px;
-  bottom: 16px;
+  right: 18px;
+  bottom: 18px;
   background: linear-gradient(135deg, #0072ce 0%, #0055a5 100%);
   color: #ffffff;
-  padding: 8px 16px;
-  border-radius: 20px;
+  padding: 9px 18px;
+  border-radius: 24px;
   font-size: 13px;
   font-weight: bold;
   border: 1px solid rgba(255,255,255,0.3);
-  box-shadow: 0 4px 14px rgba(0, 114, 206, 0.4);
+  box-shadow: 0 4px 16px rgba(0, 114, 206, 0.45);
   cursor: pointer;
   display: none;
   align-items: center;
@@ -296,22 +274,21 @@ html, body {
 
 #sim-toggle-pill:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 114, 206, 0.55);
+  box-shadow: 0 6px 20px rgba(0, 114, 206, 0.6);
 }
 
 #sim-toggle-pill.visible {
   display: flex;
 }
 
-/* Simulator Header */
 .sim-header {
-  height: 42px;
+  height: 44px;
   background: var(--tpl-dark);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 12px;
+  padding: 0 14px;
   border-bottom: 2px solid var(--tpl-primary);
   flex-shrink: 0;
 }
@@ -334,8 +311,8 @@ html, body {
   background: transparent;
   border: 1px solid transparent;
   color: #cbd5e1;
-  font-size: 13px;
-  padding: 2px 6px;
+  font-size: 14px;
+  padding: 3px 8px;
   border-radius: 3px;
   cursor: pointer;
   transition: all 0.15s;
@@ -346,7 +323,7 @@ html, body {
   color: #ffffff;
 }
 
-/* Simulator Nav Tabs */
+/* Tabs */
 .sim-tabs {
   display: flex;
   background: #f1f4f8;
@@ -368,7 +345,7 @@ html, body {
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   transition: all 0.15s;
 }
 
@@ -385,7 +362,7 @@ html, body {
   margin-bottom: -1px;
 }
 
-/* Simulator Body */
+/* Body */
 .sim-body {
   flex: 1;
   overflow-y: auto;
@@ -396,7 +373,6 @@ html, body {
   gap: 12px;
 }
 
-/* Cards */
 .sim-card {
   background: #ffffff;
   border: 1px solid var(--tpl-border);
@@ -419,77 +395,145 @@ html, body {
   padding-bottom: 6px;
 }
 
-/* Device Selector Pills */
-.dev-selector {
-  display: flex;
-  gap: 6px;
-  overflow-x: auto;
-  padding-bottom: 6px;
-  margin-bottom: 8px;
+/* ==========================================================================
+   PACKET TRACER TOPOLOGY CANVAS
+   ========================================================================== */
+.pt-canvas-container {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid var(--tpl-border);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
 }
 
-.dev-pill {
+.pt-canvas-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
   background: #f1f5f9;
-  border: 1px solid var(--tpl-border);
-  border-radius: 16px;
-  padding: 4px 10px;
+  border-bottom: 1px solid var(--tpl-border);
+  font-size: 12px;
+  font-weight: bold;
+  color: #334155;
+}
+
+#pt-svg-canvas {
+  width: 100%;
+  height: 260px;
+  background: radial-gradient(#cbd5e1 1px, transparent 1px);
+  background-size: 18px 18px;
+  background-color: #f8fafc;
+  display: block;
+  cursor: default;
+}
+
+.pt-node {
+  cursor: grab;
+  transition: filter 0.15s;
+}
+
+.pt-node:active {
+  cursor: grabbing;
+}
+
+.pt-node:hover {
+  filter: drop-shadow(0 0 4px rgba(0, 114, 206, 0.6));
+}
+
+.pt-node.selected circle.node-bg {
+  stroke: var(--tpl-primary);
+  stroke-width: 3px;
+}
+
+.pt-link {
+  stroke-dasharray: 4, 4;
+  animation: ptPacketFlow 1.5s linear infinite;
+}
+
+@keyframes ptPacketFlow {
+  to {
+    stroke-dashoffset: -16;
+  }
+}
+
+/* ==========================================================================
+   VIRTUAL DEVICE (PHONE / LAPTOP INTERACTIVE SHELL)
+   ========================================================================== */
+.virtual-device-frame {
+  background: #ffffff;
+  border: 2px solid #94a3b8;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.device-top-bar {
+  background: #1e293b;
+  color: #ffffff;
+  padding: 6px 12px;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.device-top-bar .device-name-badge {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.device-nav-apps {
+  display: flex;
+  background: #f1f5f9;
+  border-bottom: 1px solid var(--tpl-border);
+  padding: 3px 6px;
+  gap: 4px;
+}
+
+.device-app-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 4px 8px;
   font-size: 11px;
   font-weight: 600;
   color: #475569;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 5px;
-  white-space: nowrap;
-  transition: all 0.15s;
+  gap: 4px;
 }
 
-.dev-pill:hover {
+.device-app-btn:hover {
   background: #e2e8f0;
-  color: #1e293b;
 }
 
-.dev-pill.active {
-  background: var(--tpl-primary);
-  border-color: var(--tpl-primary);
-  color: #ffffff;
-}
-
-.dev-pill.connected::after {
-  content: "";
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #39e36b;
-  margin-left: 2px;
-}
-
-/* Virtual Device Screen */
-.virtual-phone {
+.device-app-btn.active {
   background: #ffffff;
-  border: 2px solid #cbd5e1;
-  border-radius: 12px;
-  padding: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  color: var(--tpl-primary);
+  border-color: #cbd5e1;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
-.phone-status-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 11px;
-  color: #64748b;
-  border-bottom: 1px solid #e2e8f0;
-  padding-bottom: 6px;
-  margin-bottom: 10px;
+.device-screen-content {
+  padding: 10px;
+  min-height: 220px;
+  background: #ffffff;
 }
 
+/* Wi-Fi App Screen */
 .wifi-list {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  max-height: 180px;
+  max-height: 190px;
   overflow-y: auto;
   border: 1px solid #e2e8f0;
   border-radius: 6px;
@@ -513,11 +557,6 @@ html, body {
 .wifi-item:hover {
   border-color: var(--tpl-primary);
   background: #eff6ff;
-}
-
-.wifi-item.selected {
-  border-color: var(--tpl-primary);
-  background: #ebf5ff;
 }
 
 .wifi-item.connected {
@@ -550,69 +589,101 @@ html, body {
   color: var(--tpl-primary);
 }
 
-/* Connection Details Card */
-.conn-card {
-  margin-top: 10px;
-  padding: 10px;
+/* Device Terminal / CLI */
+.device-terminal {
+  background: #0f172a;
+  color: #38bdf8;
+  font-family: Consolas, monospace;
+  font-size: 11px;
+  line-height: 1.4;
   border-radius: 6px;
-  border: 1px solid #e2e8f0;
-  font-size: 12px;
+  padding: 10px;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-.conn-card.status-ok {
-  background: #f0fdf4;
-  border-color: #86efac;
-  color: #166534;
+.terminal-history {
+  flex: 1;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
 }
 
-.conn-card.status-warn {
-  background: #fefce8;
-  border-color: #fde047;
-  color: #854d0e;
-}
-
-.conn-card.status-fail {
-  background: #fef2f2;
-  border-color: #fca5a5;
-  color: #991b1b;
-}
-
-.conn-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+.terminal-input-row {
+  display: flex;
+  align-items: center;
   gap: 6px;
-  margin-top: 8px;
+  margin-top: 6px;
+  border-top: 1px solid #1e293b;
+  padding-top: 4px;
+}
+
+.terminal-prompt {
+  color: #4ade80;
+  font-weight: bold;
+}
+
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: Consolas, monospace;
   font-size: 11px;
 }
 
-.conn-stat-item {
-  background: rgba(255,255,255,0.7);
-  padding: 4px 6px;
-  border-radius: 3px;
-  display: flex;
-  justify-content: space-between;
+/* Device Mini Browser */
+.device-browser {
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #ffffff;
 }
 
-/* Diagnostic Tools (Ping, Speedtest) */
-.diag-actions {
+.browser-bar {
+  background: #f1f5f9;
+  padding: 6px 8px;
   display: flex;
+  align-items: center;
   gap: 6px;
-  margin-top: 10px;
+  border-bottom: 1px solid #cbd5e1;
 }
 
+.browser-url-input {
+  flex: 1;
+  padding: 4px 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 11px;
+  outline: none;
+}
+
+.browser-viewport {
+  height: 180px;
+  padding: 12px;
+  overflow-y: auto;
+  font-size: 12px;
+  color: #334155;
+  background: #ffffff;
+}
+
+/* Diagnostic & Controls */
 .sim-btn {
   background: #f1f5f9;
   color: #334155;
   border: 1px solid #cbd5e1;
   border-radius: 4px;
-  padding: 6px 12px;
+  padding: 5px 12px;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 5px;
   transition: all 0.15s;
 }
 
@@ -651,7 +722,6 @@ html, body {
   background: var(--tpl-red-hover);
 }
 
-/* Form Controls */
 .sim-row {
   display: flex;
   align-items: center;
@@ -678,23 +748,12 @@ html, body {
   border-color: var(--tpl-primary);
 }
 
-/* Slider */
 .sim-range {
-  width: 130px;
+  width: 140px;
   accent-color: var(--tpl-primary);
   cursor: pointer;
 }
 
-/* Topology Diagram */
-.topology-wrap {
-  width: 100%;
-  background: #ffffff;
-  border: 1px solid var(--tpl-border);
-  border-radius: 4px;
-  padding: 8px;
-}
-
-/* Console Logs */
 .sim-log-wrap {
   background: #1e293b;
   color: #f1f5f9;
@@ -703,7 +762,7 @@ html, body {
   font-family: Consolas, monospace;
   font-size: 11px;
   line-height: 1.5;
-  max-height: 120px;
+  max-height: 140px;
   overflow-y: auto;
 }
 
@@ -724,9 +783,7 @@ html, body {
   color: #f87171;
 }
 
-/* ==========================================================================
-   Modals & Notifications (TP-Link Look)
-   ========================================================================== */
+/* Modals */
 .tpl-modal-overlay {
   position: fixed;
   inset: 0;
@@ -811,7 +868,6 @@ html, body {
   border-color: #0072ce;
 }
 
-/* Reboot Progress Modal */
 .reboot-progress-wrap {
   text-align: center;
   padding: 20px 10px;
@@ -834,7 +890,6 @@ html, body {
   transition: width 0.3s;
 }
 
-/* Login Modal */
 #auth-overlay {
   position: fixed;
   inset: 0;
@@ -906,7 +961,7 @@ html, body {
 }
 
 </style>
-  <meta name="description" content="Simulador interactivo completo de Punto de Acceso TP-Link EAP con laboratorio de red virtual, clientes Wi-Fi, topología y diagnóstico.">
+  <meta name="description" content="Simulador interactivo de TP-Link EAP con laboratorio de red virtual multi-dispositivo tipo Packet Tracer, herramientas de diagnóstico, escáner Wi-Fi y consola CLI.">
 </head>
 <body>
 
@@ -944,15 +999,12 @@ html, body {
     <!-- Right Actions -->
     <div class="brand-section">
       <button id="btn-toggle-sim" class="top-btn primary" title="Alternar panel del Laboratorio Virtual">
-        <span>📡</span> <span>Lab Virtual</span>
+        <span>📡</span> <span>Lab Packet Tracer</span>
       </button>
       <button id="btn-top-reboot" class="top-btn" title="Reiniciar Punto de Acceso">
         <span>🔄</span> <span>Reboot</span>
       </button>
-      <button id="btn-scenarios" class="top-btn" title="Cargar Escenarios Predefinidos">
-        <span>🎯</span> <span>Escenarios</span>
-      </button>
-      <button id="btn-logout" class="top-btn danger" style="margin-left:8px;" title="Cerrar sesión de administración">
+      <button id="btn-logout" class="top-btn danger" style="margin-left:6px;" title="Cerrar sesión de administración">
         <span>Salir</span>
       </button>
     </div>
@@ -967,13 +1019,13 @@ html, body {
       <iframe id="eap-frame" title="TP-Link EAP Management Console" sandbox="allow-scripts allow-same-origin allow-forms allow-modals"></iframe>
     </section>
 
-    <!-- Virtual Wireless Lab & Simulator Side Panel -->
+    <!-- Virtual Wireless Lab & Multi-Device Simulator Side Panel -->
     <aside id="sim-container">
       <!-- Simulator Header -->
       <div class="sim-header">
         <div class="sim-title">
           <span>📡</span>
-          <span>Laboratorio Virtual de Red</span>
+          <span>Laboratorio Virtual (Packet Tracer)</span>
         </div>
         <div class="sim-header-actions">
           <button id="sim-btn-collapse" class="sim-icon-btn" title="Ocultar panel">✖</button>
@@ -982,9 +1034,9 @@ html, body {
 
       <!-- Simulator Tabs -->
       <nav class="sim-tabs">
-        <button class="sim-tab-btn active" data-tab="clients">📱 Dispositivos</button>
-        <button class="sim-tab-btn" data-tab="topology">🖧 Topología &amp; Router</button>
-        <button class="sim-tab-btn" data-tab="scenarios">🎯 Escenarios</button>
+        <button class="sim-tab-btn active" data-tab="topology">🖧 Topología (Canvas)</button>
+        <button class="sim-tab-btn" data-tab="device">📱 Dispositivo Activo</button>
+        <button class="sim-tab-btn" data-tab="router">🌐 Router &amp; WAN</button>
         <button class="sim-tab-btn" data-tab="logs">📋 Registro</button>
       </nav>
 
@@ -992,87 +1044,214 @@ html, body {
       <div class="sim-body">
         
         <!-- ===================================================================
-             TAB 1: CLIENTS & VIRTUAL DEVICES
+             TAB 1: PACKET TRACER TOPOLOGY CANVAS (MULTI-DEVICE)
              =================================================================== -->
-        <div id="tab-clients" class="tab-pane active">
-          <!-- Device Pills Selector -->
-          <div class="sim-card">
-            <div class="sim-card-header">
-              <span>Dispositivo de Prueba</span>
-              <span id="badge-active-clients" style="color:var(--tpl-primary);font-size:11px;">0 Conectados</span>
+        <div id="tab-topology" class="tab-pane active">
+          <div class="pt-canvas-container">
+            <div class="pt-canvas-header">
+              <span>Lienzo de Red Wi-Fi (Arrastra dispositivos para moverlos)</span>
+              <button id="btn-add-device-canvas" class="sim-btn green" style="padding:2px 8px;font-size:11px;">
+                ➕ Añadir Dispositivo
+              </button>
             </div>
-            <div class="dev-selector" id="dev-pills-container">
-              <!-- Rendered dynamically -->
-            </div>
+            
+            <!-- SVG Packet Tracer Canvas -->
+            <svg id="pt-svg-canvas" viewBox="0 0 400 260">
+              <defs>
+                <radialGradient id="coverageGrad" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#0072ce" stop-opacity="0.15"/>
+                  <stop offset="70%" stop-color="#0072ce" stop-opacity="0.05"/>
+                  <stop offset="100%" stop-color="#0072ce" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
 
-            <!-- Distance Slider for selected device -->
-            <div class="sim-row" style="margin-top:6px;border-top:1px solid #f1f5f9;padding-top:8px;">
-              <span>Distancia a la EAP:</span>
-              <div style="display:flex;align-items:center;gap:8px;">
-                <input type="range" id="dev-distance-slider" min="1" max="40" value="3" class="sim-range">
-                <span id="dev-distance-val" style="font-weight:bold;width:40px;">3 m</span>
-              </div>
-            </div>
-            <div class="sim-row">
-              <span>Señal Estimada (RSSI):</span>
-              <span id="dev-rssi-val" style="font-weight:bold;color:var(--tpl-primary);">-42 dBm (100%)</span>
-            </div>
+              <!-- Coverage Circles from AP (200, 130) -->
+              <circle cx="200" cy="130" r="190" fill="url(#coverageGrad)" stroke="#cbd5e1" stroke-dasharray="3,3"/>
+              <circle cx="200" cy="130" r="130" fill="none" stroke="#e2e8f0" stroke-dasharray="2,2"/>
+              <circle cx="200" cy="130" r="70" fill="none" stroke="#e2e8f0" stroke-dasharray="2,2"/>
+              <text x="200" y="254" fill="#94a3b8" font-size="9" text-anchor="middle">Límite de cobertura 2.4 GHz (~35m)</text>
+
+              <!-- Link Lines Container (rendered dynamically) -->
+              <g id="svg-links-group"></g>
+
+              <!-- Router Node -->
+              <g id="svg-router-node" transform="translate(45, 130)">
+                <rect x="-24" y="-18" width="48" height="36" rx="4" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+                <text x="0" y="2" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="middle">Router</text>
+                <circle cx="-14" cy="-8" r="2.5" fill="#39e36b" id="svg-rt-led-wan"/>
+                <circle cx="-6" cy="-8" r="2.5" fill="#39e36b"/>
+                <circle cx="2" cy="-8" r="2.5" fill="#39e36b"/>
+                <text x="0" y="28" fill="#64748b" font-size="9" text-anchor="middle">192.168.0.1</text>
+              </g>
+
+              <!-- Ethernet Cable Router to AP -->
+              <line x1="70" y1="130" x2="175" y2="130" stroke="#0072ce" stroke-width="3"/>
+              <text x="122" y="124" fill="#0072ce" font-size="8" text-anchor="middle">PoE LAN</text>
+
+              <!-- Central AP Node (TP-Link EAP) -->
+              <g id="svg-ap-node" transform="translate(200, 130)">
+                <circle cx="0" cy="0" r="24" fill="#232f35" stroke="#0072ce" stroke-width="3" id="svg-ap-circle"/>
+                <text x="0" y="6" fill="#38bdf8" font-size="20" text-anchor="middle">📡</text>
+                <text x="0" y="36" fill="#1e293b" font-size="10" font-weight="bold" text-anchor="middle">TP-Link EAP</text>
+                <text x="0" y="47" fill="#64748b" font-size="9" text-anchor="middle" id="svg-ap-ip-text">192.168.0.254</text>
+              </g>
+
+              <!-- Dynamic Draggable Client Nodes Group -->
+              <g id="svg-clients-group"></g>
+            </svg>
           </div>
 
-          <!-- Virtual Phone / Client Screen -->
-          <div class="virtual-phone" style="margin-top:12px;">
-            <div class="phone-status-bar">
-              <span id="vphone-name">Pixel 8 Pro</span>
-              <span id="vphone-mac" style="font-family:monospace;">A4:5E:60:1B:7C:D2</span>
-              <span id="vphone-wifi-icon">📶</span>
+          <!-- Quick Devices Summary Table -->
+          <div class="sim-card" style="margin-top:10px;">
+            <div class="sim-card-header">
+              <span>Dispositivos en el Laboratorio</span>
+              <span id="pt-connected-badge" style="color:var(--tpl-green);font-size:11px;">0 conectados</span>
             </div>
-
-            <div style="font-size:12px;font-weight:bold;margin-bottom:6px;color:#334155;">
-              Redes Wi-Fi Disponibles (2.4 GHz)
-            </div>
-
-            <!-- WiFi Networks List -->
-            <div class="wifi-list" id="wifi-networks-list">
-              <!-- Populated dynamically -->
-            </div>
-
-            <!-- Selected Network Connection Card -->
-            <div id="conn-details-card" class="conn-card status-warn" style="display:none;margin-top:10px;">
-              <!-- Populated dynamically -->
-            </div>
-
-            <!-- Diagnostic Utilities: Ping & Speed Test -->
-            <div id="dev-diag-box" style="margin-top:12px;display:none;">
-              <div class="sim-card-header">
-                <span>Herramientas de Diagnóstico</span>
-              </div>
-              <div class="diag-actions">
-                <button id="btn-ping-gw" class="sim-btn" title="Ping al Gateway 192.168.0.1">Ping Router</button>
-                <button id="btn-ping-ap" class="sim-btn" title="Ping a la EAP 192.168.0.254">Ping EAP</button>
-                <button id="btn-ping-inet" class="sim-btn" title="Ping a Internet 8.8.8.8">Ping 8.8.8.8</button>
-                <button id="btn-speedtest" class="sim-btn green" title="Test de velocidad">Speedtest</button>
-              </div>
-              <div id="diag-output-box" class="sim-log-wrap" style="margin-top:8px;display:none;"></div>
+            <div id="pt-devices-list-cards" style="display:flex;flex-direction:column;gap:6px;">
+              <!-- Rendered dynamically -->
             </div>
           </div>
         </div>
 
         <!-- ===================================================================
-             TAB 2: TOPOLOGY & ROUTER GATEWAY
+             TAB 2: ACTIVE VIRTUAL DEVICE (PHONE / LAPTOP INTERACTIVE SHELL)
              =================================================================== -->
-        <div id="tab-topology" class="tab-pane" style="display:none;">
-          <div class="sim-card">
-            <div class="sim-card-header">
-              <span>Topología del Laboratorio</span>
-            </div>
-            <div class="topology-wrap" id="topology-diagram">
-              <!-- SVG Topology Diagram will be rendered dynamically -->
-            </div>
+        <div id="tab-device" class="tab-pane" style="display:none;">
+          <!-- Device Switcher Header -->
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <div style="font-size:12px;color:#475569;">Dispositivo seleccionado:</div>
+            <select id="sel-active-device-dropdown" class="top-select" style="background:#fff;color:#1e293b;border-color:#cbd5e1;"></select>
           </div>
 
-          <div class="sim-card" style="margin-top:12px;">
+          <!-- Virtual Device Shell Frame -->
+          <div class="virtual-device-frame">
+            <!-- OS Top Status Bar -->
+            <div class="device-top-bar">
+              <span class="device-name-badge">
+                <span id="dev-shell-icon">📱</span>
+                <span id="dev-shell-name">Pixel 8 Pro</span>
+              </span>
+              <span style="font-family:monospace;font-size:10px;" id="dev-shell-mac">A4:5E:60:1B:7C:D2</span>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <span id="dev-shell-signal-icon">📶</span>
+                <span>100%</span>
+              </div>
+            </div>
+
+            <!-- Device Apps Navigation Bar -->
+            <div class="device-nav-apps">
+              <button class="device-app-btn active" data-app="wifi">📶 Wi-Fi</button>
+              <button class="device-app-btn" data-app="cli">💻 Terminal (CMD)</button>
+              <button class="device-app-btn" data-app="browser">🌐 Navegador</button>
+              <button class="device-app-btn" data-app="speed">⚡ Speedtest</button>
+            </div>
+
+            <!-- Screen: App 1 - Wi-Fi Manager -->
+            <div id="app-screen-wifi" class="device-screen-content">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                <span style="font-size:12px;font-weight:bold;color:#334155;">Adaptador Wi-Fi</span>
+                <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:12px;">
+                  <input type="checkbox" id="dev-wifi-power-chk" checked> <b>Activado</b>
+                </label>
+              </div>
+
+              <!-- Connection Status Banner -->
+              <div id="dev-wifi-conn-status-banner" style="margin-bottom:8px;padding:8px 10px;border-radius:4px;font-size:11px;">
+                <!-- Populated dynamically -->
+              </div>
+
+              <!-- Distance & RSSI controls -->
+              <div class="sim-row" style="background:#f8fafc;padding:6px 8px;border-radius:4px;border:1px solid #e2e8f0;margin-bottom:8px;">
+                <span>Distancia a la EAP:</span>
+                <div style="display:flex;align-items:center;gap:6px;">
+                  <input type="range" id="dev-slider-dist" min="1" max="40" value="3" class="sim-range" style="width:110px;">
+                  <b id="dev-slider-dist-val" style="width:36px;font-size:11px;">3 m</b>
+                </div>
+              </div>
+
+              <div style="font-size:11px;font-weight:bold;color:#475569;margin-bottom:4px;">
+                Redes Wi-Fi Detectadas (Escaneo en Tiempo Real)
+              </div>
+              
+              <!-- Scan List -->
+              <div class="wifi-list" id="dev-wifi-scan-list">
+                <!-- Rendered dynamically -->
+              </div>
+
+              <!-- Hidden SSID Connect -->
+              <div style="margin-top:8px;text-align:right;">
+                <button id="btn-connect-hidden-ssid" class="sim-btn" style="font-size:11px;padding:3px 8px;">
+                  + Conectar a red oculta
+                </button>
+              </div>
+            </div>
+
+            <!-- Screen: App 2 - Terminal / Command Prompt -->
+            <div id="app-screen-cli" class="device-screen-content" style="display:none;padding:6px;">
+              <div class="device-terminal">
+                <div class="terminal-history" id="dev-cli-history">Microsoft Windows [Versión 10.0.22631]
+(c) Microsoft Corporation. Todos los derechos reservados.
+
+Escriba 'help' para ver la lista de comandos disponibles (ipconfig, ping, tracert, netsh, curl).
+</div>
+                <div class="terminal-input-row">
+                  <span class="terminal-prompt" id="dev-cli-prompt">C:\Users\Device&gt;</span>
+                  <input type="text" id="dev-cli-input" class="terminal-input" autocomplete="off" spellcheck="false" placeholder="Escribe un comando...">
+                </div>
+              </div>
+            </div>
+
+            <!-- Screen: App 3 - Mini Web Browser -->
+            <div id="app-screen-browser" class="device-screen-content" style="display:none;">
+              <div class="device-browser">
+                <div class="browser-bar">
+                  <span style="font-size:12px;">🔒</span>
+                  <input type="text" id="dev-browser-url" class="browser-url-input" value="http://192.168.0.254">
+                  <button id="btn-browser-go" class="sim-btn primary" style="padding:2px 8px;font-size:11px;">Ir</button>
+                </div>
+                <div class="browser-viewport" id="dev-browser-view">
+                  <div style="text-align:center;padding:30px 10px;color:#64748b;">
+                    Ingrese una URL y presione <b>Ir</b>.<br>
+                    Ejemplos: <code>http://192.168.0.254</code> (EAP), <code>http://192.168.0.1</code> (Router), <code>http://google.com</code>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Screen: App 4 - Speedtest -->
+            <div id="app-screen-speed" class="device-screen-content" style="display:none;text-align:center;">
+              <div style="padding:16px 10px;">
+                <div style="font-size:14px;font-weight:bold;color:#1e293b;margin-bottom:6px;">Test de Velocidad de Enlace Wi-Fi</div>
+                <div style="font-size:12px;color:#64748b;margin-bottom:14px;">Mide el ancho de banda real según la atenuación RF y la distancia a la EAP.</div>
+                
+                <div style="display:flex;justify-content:center;gap:20px;margin-bottom:16px;">
+                  <div style="background:#f1f5f9;border:1px solid #cbd5e1;border-radius:6px;padding:10px 16px;min-width:110px;">
+                    <div style="font-size:10px;color:#64748b;text-transform:uppercase;">Descarga</div>
+                    <div style="font-size:22px;font-weight:bold;color:var(--tpl-primary);" id="sp-down-val">--</div>
+                    <div style="font-size:10px;color:#94a3b8;">Mbps</div>
+                  </div>
+                  <div style="background:#f1f5f9;border:1px solid #cbd5e1;border-radius:6px;padding:10px 16px;min-width:110px;">
+                    <div style="font-size:10px;color:#64748b;text-transform:uppercase;">Subida</div>
+                    <div style="font-size:22px;font-weight:bold;color:var(--tpl-green);" id="sp-up-val">--</div>
+                    <div style="font-size:10px;color:#94a3b8;">Mbps</div>
+                  </div>
+                </div>
+
+                <div id="sp-status-text" style="font-size:12px;color:#64748b;min-height:18px;margin-bottom:10px;">Listo para iniciar</div>
+                <button id="btn-start-speedtest" class="sim-btn green" style="padding:6px 20px;font-size:13px;">Iniciar Test</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ===================================================================
+             TAB 3: ROUTER GATEWAY & WAN CONTROLS
+             =================================================================== -->
+        <div id="tab-router" class="tab-pane" style="display:none;">
+          <div class="sim-card">
             <div class="sim-card-header">
-              <span>Configuración del Router (Gateway)</span>
+              <span>Configuración del Router (Gateway 192.168.0.1)</span>
             </div>
             <div class="sim-row">
               <span>IP del Router (Gateway):</span>
@@ -1085,40 +1264,33 @@ html, body {
               </label>
             </div>
             <div class="sim-row">
-              <span>Servidor DHCP:</span>
+              <span>Servidor DHCP del Router:</span>
               <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
                 <input type="checkbox" id="rt-dhcp-toggle" checked> <b id="rt-dhcp-status" style="color:var(--tpl-green);">Habilitado</b>
               </label>
             </div>
             <div class="sim-row">
-              <span>VLANs en Enlace Troncal:</span>
+              <span>VLANs Permitidas (Troncal):</span>
               <input type="text" id="rt-vlan-input" class="sim-input" style="width:130px;" value="0, 1, 10, 20">
             </div>
             <div style="margin-top:10px;text-align:right;">
-              <button id="btn-save-router" class="sim-btn primary">Guardar Parámetros</button>
+              <button id="btn-save-router" class="sim-btn primary">Guardar en Router</button>
             </div>
           </div>
-        </div>
 
-        <!-- ===================================================================
-             TAB 3: PRESET SCENARIOS
-             =================================================================== -->
-        <div id="tab-scenarios" class="tab-pane" style="display:none;">
-          <div class="sim-card">
+          <!-- Preset Scenarios -->
+          <div class="sim-card" style="margin-top:10px;">
             <div class="sim-card-header">
-              <span>Escenarios Prácticos de Laboratorio</span>
+              <span>Escenarios Rápidos de Laboratorio</span>
             </div>
-            <p style="font-size:12px;color:#64748b;margin:0 0 10px;">
-              Seleccione un escenario para aplicar instantáneamente topologías reales de aprendizaje o diagnóstico:
-            </p>
-            <div id="scenarios-list" style="display:flex;flex-direction:column;gap:8px;">
+            <div id="scenarios-list" style="display:flex;flex-direction:column;gap:6px;">
               <!-- Populated dynamically -->
             </div>
           </div>
         </div>
 
         <!-- ===================================================================
-             TAB 4: SYSLOG & EVENT STREAM
+             TAB 4: SYSLOG EVENT FEED
              =================================================================== -->
         <div id="tab-logs" class="tab-pane" style="display:none;">
           <div class="sim-card">
@@ -1126,7 +1298,7 @@ html, body {
               <span>Registro de Eventos en Tiempo Real</span>
               <button id="btn-clear-sim-logs" class="sim-btn" style="padding:2px 8px;font-size:10px;">Limpiar</button>
             </div>
-            <div class="sim-log-wrap" id="sim-live-log-box" style="max-height:340px;">
+            <div class="sim-log-wrap" id="sim-live-log-box" style="max-height:360px;">
               <!-- Populated dynamically -->
             </div>
           </div>
@@ -1139,12 +1311,12 @@ html, body {
   <!-- Floating Pill button to reopen simulator when collapsed -->
   <button id="sim-toggle-pill">
     <span>📡</span>
-    <span>Abrir Lab Virtual</span>
+    <span>Abrir Lab Packet Tracer</span>
     <span id="pill-client-count" style="background:#fff;color:var(--tpl-primary);border-radius:10px;padding:1px 6px;font-size:11px;">0</span>
   </button>
 
   <!-- =========================================================================
-       Rebooting Progress Modal (TP-Link Look)
+       Reboot Progress Modal (TP-Link Look)
        ========================================================================= -->
   <div id="reboot-modal-overlay" class="tpl-modal-overlay" style="display:none;">
     <div class="tpl-modal" style="width:440px;">
@@ -1152,12 +1324,47 @@ html, body {
         <span>Reiniciando el Punto de Acceso...</span>
       </div>
       <div class="tpl-modal-body reboot-progress-wrap">
-        <p style="margin:0 0 8px;font-weight:600;color:#333;">Espere mientras el dispositivo se reinicia.</p>
-        <p style="margin:0;font-size:12px;color:#666;">No apague el equipo durante este proceso.</p>
+        <p style="margin:0 0 8px;font-weight:600;color:#333;">Espere mientras la EAP reinicia sus servicios inalámbricos.</p>
         <div class="reboot-bar-container">
           <div class="reboot-bar-val" id="reboot-progress-bar"></div>
         </div>
         <div id="reboot-percent-text" style="font-weight:bold;color:var(--tpl-primary);font-size:13px;">0%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Add Device Modal (Packet Tracer)
+       ========================================================================= -->
+  <div id="modal-add-device" class="tpl-modal-overlay" style="display:none;">
+    <div class="tpl-modal" style="width:400px;">
+      <div class="tpl-modal-header">
+        <span>Añadir Nuevo Dispositivo Wi-Fi</span>
+        <button type="button" class="tpl-modal-close" id="btn-close-add-dev">&times;</button>
+      </div>
+      <div class="tpl-modal-body">
+        <div class="tpl-form-group">
+          <label>Nombre del Dispositivo:</label>
+          <input type="text" id="new-dev-name" class="tpl-form-control" value="iPhone 15">
+        </div>
+        <div class="tpl-form-group">
+          <label>Tipo de Dispositivo:</label>
+          <select id="new-dev-type" class="tpl-form-control">
+            <option value="phone">📱 Smartphone</option>
+            <option value="laptop">💻 Portátil / Laptop</option>
+            <option value="tablet">📲 Tablet</option>
+            <option value="iot">📹 Cámara / Dispositivo IoT</option>
+            <option value="pc">🖥️ PC de Escritorio</option>
+          </select>
+        </div>
+        <div class="tpl-form-group">
+          <label>Dirección MAC (Opcional):</label>
+          <input type="text" id="new-dev-mac" class="tpl-form-control" placeholder="Dejar en blanco para generar auto">
+        </div>
+      </div>
+      <div class="tpl-modal-footer">
+        <button type="button" class="sim-btn" id="btn-cancel-add-dev">Cancelar</button>
+        <button type="button" class="sim-btn primary" id="btn-confirm-add-dev">Añadir al Lienzo</button>
       </div>
     </div>
   </div>
@@ -1171,7 +1378,7 @@ html, body {
         <span style="font-size:20px;">🛡️</span>
         <div>
           <div style="font-weight:bold;font-size:15px;">TP-Link EAP Management</div>
-          <div style="font-size:11px;color:#94a3b8;">Inicio de sesión seguro</div>
+          <div style="font-size:11px;color:#94a3b8;">Inicio de sesión de administración</div>
         </div>
       </div>
       <div class="auth-card-body">
@@ -1202,12 +1409,18 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
   <script>
 /**
  * TP-Link EAP Virtual Wireless Lab & Simulator - Core Engine
- * Complete standalone simulation, state manager, and iframe bridge.
- * Fully compatible with GitHub Pages and offline browser execution.
+ * Multi-device Packet Tracer architecture, virtual device shells,
+ * full form configurability across all 23 EAP web pages.
  */
 
 (function(window) {
   'use strict';
+
+  // =========================================================================
+  // Canvas Constants & Initial Layout
+  // =========================================================================
+  const AP_CANVAS_X = 200;
+  const AP_CANVAS_Y = 130;
 
   // =========================================================================
   // Default Initial State
@@ -1226,7 +1439,7 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
       gateway: '192.168.0.1',
       dns: '192.168.0.1',
       connType: 'dynamic', // 'dynamic' or 'static'
-      uptimeSec: 1540,
+      uptimeSec: 1680,
       cpu: 4,
       mem: 41,
       led: true,
@@ -1268,70 +1481,73 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
       dhcpEnd: '192.168.0.200',
       allowedVlans: '0, 1, 10, 20'
     },
+    // Multi-device Packet Tracer list
     clients: [
       {
-        id: 'phone',
+        id: 'dev-1',
         name: 'Pixel 8 Pro',
         type: 'phone',
         mac: 'A4:5E:60:1B:7C:D2',
+        x: 100,
+        y: 80,
         distance: 3,
+        wifiEnabled: true,
         connectedSSID: null,
+        ipConfig: 'dhcp',
         ip: null,
+        subnet: '255.255.255.0',
         gateway: null,
         dns: null,
         connTime: 0,
         txBytes: 0,
         rxBytes: 0,
-        status: 'disconnected', // 'connected', 'noinet', 'noip', 'disconnected', 'blocked', 'fail'
-        lastError: null
+        status: 'disconnected',
+        lastError: null,
+        cliHistory: []
       },
       {
-        id: 'laptop',
+        id: 'dev-2',
         name: 'ThinkPad X1',
         type: 'laptop',
         mac: '00:E0:4C:81:92:44',
-        distance: 6,
+        x: 290,
+        y: 80,
+        distance: 5,
+        wifiEnabled: true,
         connectedSSID: null,
+        ipConfig: 'dhcp',
         ip: null,
+        subnet: '255.255.255.0',
         gateway: null,
         dns: null,
         connTime: 0,
         txBytes: 0,
         rxBytes: 0,
         status: 'disconnected',
-        lastError: null
+        lastError: null,
+        cliHistory: []
       },
       {
-        id: 'camera',
+        id: 'dev-3',
         name: 'SmartCam 1080p',
         type: 'iot',
         mac: 'F8:1A:67:B2:3C:80',
-        distance: 9,
+        x: 120,
+        y: 190,
+        distance: 7,
+        wifiEnabled: true,
         connectedSSID: null,
+        ipConfig: 'dhcp',
         ip: null,
+        subnet: '255.255.255.0',
         gateway: null,
         dns: null,
         connTime: 0,
         txBytes: 0,
         rxBytes: 0,
         status: 'disconnected',
-        lastError: null
-      },
-      {
-        id: 'rogue',
-        name: 'Unknown Scanner',
-        type: 'rogue',
-        mac: 'DC:A6:32:9F:11:22',
-        distance: 14,
-        connectedSSID: null,
-        ip: null,
-        gateway: null,
-        dns: null,
-        connTime: 0,
-        txBytes: 0,
-        rxBytes: 0,
-        status: 'disconnected',
-        lastError: null
+        lastError: null,
+        cliHistory: []
       }
     ],
     logs: [
@@ -1350,7 +1566,7 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
   }
 
   // =========================================================================
-  // Simulator State Store (localStorage with memory fallback)
+  // State Storage with localStorage
   // =========================================================================
   let memStorage = {};
   function storageGet(k) {
@@ -1370,15 +1586,7 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
     }
   }
 
-  function storageRemove(k) {
-    try {
-      localStorage.removeItem(k);
-    } catch(e) {
-      delete memStorage[k];
-    }
-  }
-
-  const STORAGE_KEY = 'eap_lab_state_v2';
+  const STORAGE_KEY = 'eap_lab_pt_v3';
   let state = loadInitialState();
 
   function loadInitialState() {
@@ -1386,17 +1594,17 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
       const saved = storageGet(STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
-        // Deep merge with default state to ensure backward compatibility
         return Object.assign({}, DEFAULT_STATE, parsed, {
           device: Object.assign({}, DEFAULT_STATE.device, parsed.device),
           wireless: Object.assign({}, DEFAULT_STATE.wireless, parsed.wireless),
           router: Object.assign({}, DEFAULT_STATE.router, parsed.router),
           clients: (parsed.clients && parsed.clients.length) ? parsed.clients : DEFAULT_STATE.clients,
-          logs: (parsed.logs && parsed.logs.length) ? parsed.logs : DEFAULT_STATE.logs
+          logs: (parsed.logs && parsed.logs.length) ? parsed.logs : DEFAULT_STATE.logs,
+          forms: parsed.forms || {}
         });
       }
     } catch (e) {
-      console.warn('Failed to load state from localStorage:', e);
+      console.warn('Failed to load state from storage:', e);
     }
     return JSON.parse(JSON.stringify(DEFAULT_STATE));
   }
@@ -1412,13 +1620,20 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
   }
 
   // =========================================================================
-  // RF & Path Loss Calculations
+  // RF Path Loss & Physics
   // =========================================================================
+  function calcDistance(x, y) {
+    const dx = x - AP_CANVAS_X;
+    const dy = y - AP_CANVAS_Y;
+    const px = Math.hypot(dx, dy);
+    // 1 meter = ~5.5 pixels
+    return Math.max(1, Math.min(40, Math.round(px / 5.5)));
+  }
+
   function calcRSSI(distanceMeters) {
     const d = Math.max(1, Number(distanceMeters) || 1);
-    // Free Space Path Loss (FSPL) approximation at 2.4 GHz
-    // RSSI = -36 - 20*log10(d) with minor environment factor
-    const rssi = Math.round(-35 - (22 * Math.log10(d)));
+    // Free Space Path Loss at 2.4GHz
+    const rssi = Math.round(-35 - (21 * Math.log10(d)));
     return Math.max(-95, Math.min(-30, rssi));
   }
 
@@ -1456,9 +1671,6 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
     return `${d} days ${pad(h)}:${pad(m)}:${pad(s)}`;
   }
 
-  // =========================================================================
-  // System Log Generator
-  // =========================================================================
   function addSysLog(type, level, msg) {
     const entry = {
       id: state.logs.length + 1,
@@ -1474,57 +1686,65 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
   }
 
   // =========================================================================
-  // Simulation Network Engine: Connection Handshake
+  // Connection Handshake Engine
   // =========================================================================
   function attemptConnect(clientId, ssidName, password) {
     const client = state.clients.find(c => c.id === clientId);
-    if (!client) return { status: 'fail', error: 'Cliente no encontrado' };
+    if (!client) return { status: 'fail', error: 'Dispositivo no encontrado' };
+
+    if (!client.wifiEnabled) {
+      client.status = 'disconnected';
+      client.lastError = 'El adaptador Wi-Fi del dispositivo está apagado';
+      persistState();
+      triggerSync();
+      return { status: 'fail', error: client.lastError };
+    }
 
     const rssi = calcRSSI(client.distance);
 
-    // 1. Check EAP Radio
+    // 1. EAP Radio check
     if (!state.wireless.radio24) {
-      addSysLog('WIRELESS', 'WARNING', `Client ${client.name} (${client.mac}) connection failed: 2.4GHz radio is disabled`);
+      addSysLog('WIRELESS', 'WARNING', `Client ${client.name} (${client.mac}) failed to associate: 2.4GHz radio is OFF`);
       client.status = 'fail';
-      client.lastError = 'Radio 2.4GHz apagada en la EAP';
+      client.lastError = 'Radio 2.4GHz de la EAP apagada';
       client.connectedSSID = null;
       persistState();
       triggerSync();
       return { status: 'fail', error: client.lastError };
     }
 
-    // 2. Check Signal Strength (Distance)
+    // 2. Distance & Signal Threshold
     if (rssi < -85) {
-      addSysLog('WIRELESS', 'WARNING', `Client ${client.name} (${client.mac}) connection failed: Signal too weak (${rssi} dBm)`);
+      addSysLog('WIRELESS', 'WARNING', `Client ${client.name} (${client.mac}) out of range (${rssi} dBm)`);
       client.status = 'fail';
-      client.lastError = `Señal insuficiente (${rssi} dBm, >${client.distance}m)`;
+      client.lastError = `Señal demasiado débil (${rssi} dBm, distancia ${client.distance}m)`;
       client.connectedSSID = null;
       persistState();
       triggerSync();
       return { status: 'fail', error: client.lastError };
     }
 
-    // 3. Find SSID
+    // 3. SSID Check (Real EAP configuration)
     const ssid = state.wireless.ssids.find(s => s.name === ssidName);
     if (!ssid) {
-      addSysLog('AUTH', 'WARNING', `Client ${client.name} requested unknown SSID "${ssidName}"`);
+      addSysLog('AUTH', 'WARNING', `Client ${client.name} requested non-existent SSID "${ssidName}"`);
       client.status = 'fail';
-      client.lastError = `Red "${ssidName}" no encontrada`;
+      client.lastError = `Red Wi-Fi "${ssidName}" no encontrada`;
       client.connectedSSID = null;
       persistState();
       triggerSync();
       return { status: 'fail', error: client.lastError };
     }
 
-    // 4. MAC Filtering Check
+    // 4. MAC Filtering Check (Real EAP configuration)
     const mf = state.wireless.macFilter;
     if (mf.enabled) {
       const inList = mf.list.some(m => m.mac.toUpperCase() === client.mac.toUpperCase());
       const blocked = (mf.rule === 'Deny' && inList) || (mf.rule === 'Allow' && !inList);
       if (blocked) {
-        addSysLog('SECURITY', 'WARNING', `Client ${client.name} (${client.mac}) BLOCKED by MAC Filtering (${mf.rule} policy)`);
+        addSysLog('SECURITY', 'WARNING', `Client ${client.name} (${client.mac}) rejected by MAC Filter (${mf.rule})`);
         client.status = 'blocked';
-        client.lastError = `Rechazado por Filtrado MAC (Regla: ${mf.rule})`;
+        client.lastError = `Acceso denegado por Filtrado MAC de la EAP (${mf.rule})`;
         client.connectedSSID = null;
         persistState();
         triggerSync();
@@ -1532,10 +1752,10 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
       }
     }
 
-    // 5. Security & Password Check
+    // 5. WPA Security Check
     if (ssid.sec !== 'None') {
       if (!password || password !== ssid.pass) {
-        addSysLog('AUTH', 'WARNING', `Client ${client.name} (${client.mac}) failed WPA2 authentication on "${ssidName}": Wrong password`);
+        addSysLog('AUTH', 'WARNING', `Client ${client.name} failed authentication on "${ssidName}": Incorrect password`);
         client.status = 'fail';
         client.lastError = 'Contraseña inalámbrica incorrecta';
         client.connectedSSID = null;
@@ -1549,9 +1769,9 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
     if (ssid.vlan && ssid.vlan > 0) {
       const allowed = state.router.allowedVlans.split(',').map(v => v.trim());
       if (!allowed.includes(String(ssid.vlan))) {
-        addSysLog('VLAN', 'WARNING', `Client ${client.name} assigned to VLAN ${ssid.vlan}, but VLAN is not tagged on router trunk!`);
+        addSysLog('VLAN', 'WARNING', `Client ${client.name} VLAN ${ssid.vlan} not allowed on trunk router port`);
         client.status = 'noip';
-        client.lastError = `VLAN ${ssid.vlan} aislada: sin ruta ni DHCP en el router`;
+        client.lastError = `VLAN ${ssid.vlan} no enrutada en el troncal: sin IP`;
         client.connectedSSID = ssidName;
         client.ip = '169.254.' + Math.floor(Math.random() * 250 + 1) + '.' + Math.floor(Math.random() * 250 + 1);
         persistState();
@@ -1560,40 +1780,44 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
       }
     }
 
-    // 7. DHCP Lease Check
-    if (!state.router.dhcpEnabled) {
-      addSysLog('DHCP', 'WARNING', `Client ${client.name} (${client.mac}) associated with "${ssidName}" but Router DHCP is disabled: No IP address`);
-      client.status = 'noip';
-      client.lastError = 'Router sin DHCP: Sin dirección IP válida (APIPA)';
-      client.connectedSSID = ssidName;
-      client.ip = '169.254.120.45';
-      persistState();
-      triggerSync();
-      return { status: 'noip', error: client.lastError };
+    // 7. DHCP or Static IP
+    if (client.ipConfig === 'static' && client.ip) {
+      client.gateway = client.gateway || state.router.ip;
+      client.dns = client.dns || state.router.ip;
+    } else {
+      if (!state.router.dhcpEnabled) {
+        addSysLog('DHCP', 'WARNING', `Client ${client.name} associated with "${ssidName}" but Router DHCP is disabled: No IP address`);
+        client.status = 'noip';
+        client.lastError = 'Router sin DHCP: Sin dirección IP válida (APIPA 169.254.x.x)';
+        client.connectedSSID = ssidName;
+        client.ip = '169.254.88.' + Math.floor(Math.random() * 200 + 10);
+        persistState();
+        triggerSync();
+        return { status: 'noip', error: client.lastError };
+      }
+      const clientIdx = state.clients.indexOf(client);
+      client.ip = `192.168.0.${105 + (clientIdx >= 0 ? clientIdx : 1)}`;
+      client.gateway = state.router.ip;
+      client.dns = state.router.ip;
     }
 
-    // 8. Assign IP from DHCP Pool
-    const clientIdx = state.clients.indexOf(client);
-    client.ip = `192.168.0.${105 + clientIdx}`;
-    client.gateway = state.router.ip;
-    client.dns = state.router.ip;
     client.connectedSSID = ssidName;
     client.connTime = 0;
-    client.txBytes = 145000 + Math.floor(Math.random() * 50000);
-    client.rxBytes = 890000 + Math.floor(Math.random() * 150000);
+    client.txBytes = 150000 + Math.floor(Math.random() * 60000);
+    client.rxBytes = 850000 + Math.floor(Math.random() * 180000);
 
-    // 9. Internet WAN Check
+    // 8. WAN Internet Access Check
     if (!state.router.wanOnline) {
-      addSysLog('AUTH', 'INFO', `Client ${client.name} (${client.mac}) associated, DHCP lease: ${client.ip}. WAN is DOWN.`);
+      addSysLog('AUTH', 'INFO', `Client ${client.name} associated (${client.ip}), WAN DOWN`);
       client.status = 'noinet';
-      client.lastError = 'Conectado a la LAN, pero la WAN (Internet) está caída';
+      client.lastError = 'Conectado a la LAN, pero la WAN (Internet) está inactiva';
     } else {
-      addSysLog('AUTH', 'INFO', `Client ${client.name} (${client.mac}) associated to "${ssidName}" with IP ${client.ip} [OK - Online]`);
+      addSysLog('AUTH', 'INFO', `Client ${client.name} associated to "${ssidName}" [IP: ${client.ip}, RSSI: ${rssi} dBm]`);
       client.status = 'connected';
       client.lastError = null;
     }
 
-    // Increment SSID client counters & traffic
+    // Add traffic to SSID
     ssid.rxBytes = (ssid.rxBytes || 0) + client.txBytes;
     ssid.txBytes = (ssid.txBytes || 0) + client.rxBytes;
 
@@ -1606,7 +1830,7 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
     const client = state.clients.find(c => c.id === clientId);
     if (!client) return;
     if (client.connectedSSID) {
-      addSysLog('AUTH', 'INFO', `Client ${client.name} (${client.mac}) disassociated from "${client.connectedSSID}"`);
+      addSysLog('AUTH', 'INFO', `Client ${client.name} (${client.mac}) disconnected from "${client.connectedSSID}"`);
     }
     client.status = 'disconnected';
     client.connectedSSID = null;
@@ -1630,213 +1854,262 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
   }
 
   // =========================================================================
-  // Diagnostic Tools: Ping & Speed Test
+  // Multi-Device Management (Packet Tracer Style)
   // =========================================================================
-  function runPing(clientId, target) {
-    const client = state.clients.find(c => c.id === clientId);
-    if (!client || client.status === 'disconnected') {
-      return { ok: false, error: 'Dispositivo desconectado de la red' };
-    }
+  function addDevice(name, type, mac) {
+    const id = 'dev-' + Date.now();
+    const finalMac = mac || ('52:54:00:' + Array.from({length:3}, () => Math.floor(Math.random()*256).toString(16).padStart(2,'0').toUpperCase()).join(':'));
+    
+    // Position around AP randomly in 30-180px radius
+    const angle = Math.random() * Math.PI * 2;
+    const radius = 60 + Math.random() * 100;
+    const x = Math.round(AP_CANVAS_X + Math.cos(angle) * radius);
+    const y = Math.round(AP_CANVAS_Y + Math.sin(angle) * radius);
 
-    // Ping Gateway / EAP
-    if (target === state.router.ip || target === state.device.ip) {
-      if (client.status === 'noip') {
-        return { ok: false, error: 'Sin IP asignada (Tiempo de espera agotado)' };
-      }
-      const lat = Math.round(1 + Math.random() * 3 + (client.distance * 0.2));
-      return {
-        ok: true,
-        target: target,
-        time: lat,
-        ttl: 64,
-        msg: `Respuesta desde ${target}: bytes=32 tiempo=${lat}ms TTL=64`
-      };
-    }
-
-    // Ping Internet (e.g. 8.8.8.8)
-    if (target === '8.8.8.8' || target === 'google.com') {
-      if (client.status === 'noip') return { ok: false, error: 'Tiempo de espera agotado (Sin IP)' };
-      if (!state.router.wanOnline) return { ok: false, error: 'Host de destino inaccesible (Enlace WAN caído)' };
-      const lat = Math.round(14 + Math.random() * 8 + (client.distance * 0.3));
-      return {
-        ok: true,
-        target: target,
-        time: lat,
-        ttl: 118,
-        msg: `Respuesta desde ${target}: bytes=32 tiempo=${lat}ms TTL=118`
-      };
-    }
-
-    return { ok: false, error: 'Host desconocido' };
-  }
-
-  function runSpeedtest(clientId) {
-    const client = state.clients.find(c => c.id === clientId);
-    if (!client || client.status === 'disconnected') {
-      return { ok: false, error: 'Dispositivo desconectado' };
-    }
-    if (!state.router.wanOnline) {
-      return { ok: false, error: 'Sin conexión a Internet (WAN inactiva)' };
-    }
-    const rssi = calcRSSI(client.distance);
-    let down = 0;
-    let up = 0;
-    if (rssi >= -55) {
-      down = Math.round(270 + Math.random() * 25);
-      up = Math.round(90 + Math.random() * 10);
-    } else if (rssi >= -68) {
-      down = Math.round(180 + Math.random() * 30);
-      up = Math.round(65 + Math.random() * 15);
-    } else if (rssi >= -78) {
-      down = Math.round(95 + Math.random() * 20);
-      up = Math.round(35 + Math.random() * 10);
-    } else {
-      down = Math.round(25 + Math.random() * 15);
-      up = Math.round(8 + Math.random() * 5);
-    }
-
-    // Add traffic
-    client.rxBytes += down * 1024 * 1024;
-    client.txBytes += up * 1024 * 512;
-    persistState();
-
-    return {
-      ok: true,
-      down: down,
-      up: up,
-      ping: Math.round(12 + Math.random() * 5)
+    const newDev = {
+      id: id,
+      name: name || ('Dispositivo-' + (state.clients.length + 1)),
+      type: type || 'phone',
+      mac: finalMac,
+      x: Math.max(30, Math.min(370, x)),
+      y: Math.max(30, Math.min(230, y)),
+      distance: calcDistance(x, y),
+      wifiEnabled: true,
+      connectedSSID: null,
+      ipConfig: 'dhcp',
+      ip: null,
+      subnet: '255.255.255.0',
+      gateway: null,
+      dns: null,
+      connTime: 0,
+      txBytes: 0,
+      rxBytes: 0,
+      status: 'disconnected',
+      lastError: null,
+      cliHistory: []
     };
+
+    state.clients.push(newDev);
+    addSysLog('SYSTEM', 'INFO', `New simulated device added: ${newDev.name} (${newDev.mac})`);
+    persistState();
+    triggerSync();
+    return newDev;
+  }
+
+  function removeDevice(clientId) {
+    const idx = state.clients.findIndex(c => c.id === clientId);
+    if (idx >= 0) {
+      const removed = state.clients.splice(idx, 1)[0];
+      addSysLog('SYSTEM', 'INFO', `Device removed: ${removed.name} (${removed.mac})`);
+      persistState();
+      triggerSync();
+    }
+  }
+
+  function updateDevicePosition(clientId, x, y) {
+    const client = state.clients.find(c => c.id === clientId);
+    if (!client) return;
+    client.x = Math.max(20, Math.min(380, x));
+    client.y = Math.max(20, Math.min(240, y));
+    client.distance = calcDistance(client.x, client.y);
+    persistState();
+    triggerSync();
+
+    // Recheck distance threshold
+    if (client.status === 'connected' && calcRSSI(client.distance) < -85) {
+      reevaluateAllClients();
+    }
   }
 
   // =========================================================================
-  // Scenarios (1-Click Lab Presets)
+  // Interactive Terminal / CLI Engine (Packet Tracer Style)
   // =========================================================================
-  const SCENARIOS = {
-    standard: {
-      name: 'Entorno Estándar SOHO',
-      desc: 'Configuración estándar con WPA2-Personal, DHCP activo y clientes en rango óptimo.',
-      apply: function() {
-        state.wireless.radio24 = true;
-        state.wireless.ssids = [{
-          id: 1,
-          name: 'TP-Link_2.4GHz_BA7FA8',
-          vlan: 0,
-          bcast: true,
-          sec: 'WPA-Personal',
-          pass: 'password123',
-          guest: false,
-          txBytes: 25000000,
-          rxBytes: 3200000
-        }];
-        state.wireless.macFilter.enabled = false;
-        state.router.wanOnline = true;
-        state.router.dhcpEnabled = true;
-        state.router.allowedVlans = '0, 1, 10, 20';
-        state.clients[0].distance = 3;
-        state.clients[1].distance = 5;
-        persistState();
-        attemptConnect('phone', 'TP-Link_2.4GHz_BA7FA8', 'password123');
-        addSysLog('SYSTEM', 'INFO', 'Escenario "Entorno Estándar SOHO" aplicado');
-      }
-    },
-    guestVlan: {
-      name: 'Red de Invitados con VLAN 20',
-      desc: 'Dos SSIDs: Corporativo (VLAN 10) e Invitados (VLAN 20). Prueba de aislamiento.',
-      apply: function() {
-        state.wireless.radio24 = true;
-        state.wireless.ssids = [
-          { id: 1, name: 'Empresa_Corp', vlan: 10, bcast: true, sec: 'WPA-Personal', pass: 'corp2026', guest: false, txBytes: 15000000, rxBytes: 2000000 },
-          { id: 2, name: 'Empresa_Invitados', vlan: 20, bcast: true, sec: 'None', pass: '', guest: true, txBytes: 5000000, rxBytes: 800000 }
-        ];
-        state.wireless.macFilter.enabled = false;
-        state.router.wanOnline = true;
-        state.router.dhcpEnabled = true;
-        state.router.allowedVlans = '0, 1, 10, 20';
-        persistState();
-        attemptConnect('laptop', 'Empresa_Corp', 'corp2026');
-        attemptConnect('phone', 'Empresa_Invitados', '');
-        addSysLog('VLAN', 'INFO', 'Escenario "Red de Invitados con VLAN 20" aplicado');
-      }
-    },
-    macSecurity: {
-      name: 'Auditoría de Seguridad MAC',
-      desc: 'Lista negra / blanca activa. Verifica cómo se bloquean dispositivos no autorizados.',
-      apply: function() {
-        state.wireless.radio24 = true;
-        state.wireless.macFilter.enabled = true;
-        state.wireless.macFilter.rule = 'Deny';
-        state.wireless.macFilter.list = [
-          { id: 1, mac: 'DC:A6:32:9F:11:22', desc: 'Dispositivo Sospechoso' }
-        ];
-        state.router.wanOnline = true;
-        state.router.dhcpEnabled = true;
-        persistState();
-        reevaluateAllClients();
-        addSysLog('SECURITY', 'WARNING', 'Escenario "Auditoría de Seguridad MAC" aplicado: Lista Deny activa');
-      }
-    },
-    wanOutage: {
-      name: 'Caída de Enlace WAN (Sin Internet)',
-      desc: 'El router pierde el enlace WAN con el ISP. La LAN WiFi sigue operativa pero sin salida.',
-      apply: function() {
-        state.router.wanOnline = false;
-        persistState();
-        reevaluateAllClients();
-        addSysLog('SYSTEM', 'WARNING', 'Escenario "Caída de Enlace WAN" aplicado: WAN caída');
-      }
-    },
-    rfLimit: {
-      name: 'Límite de Cobertura y Señal Débil',
-      desc: 'Dispositivo alejado a 35 metros con atenuación extrema (-87 dBm).',
-      apply: function() {
-        state.clients[0].distance = 35;
-        persistState();
-        reevaluateAllClients();
-        addSysLog('WIRELESS', 'WARNING', 'Escenario "Límite de Cobertura": Cliente movido a 35m');
-      }
+  function executeCliCommand(clientId, cmdLine) {
+    const client = state.clients.find(c => c.id === clientId);
+    if (!client) return 'Error: Dispositivo no encontrado.';
+
+    const raw = cmdLine.trim();
+    if (!raw) return '';
+    const parts = raw.split(/\s+/);
+    const cmd = parts[0].toLowerCase();
+    const args = parts.slice(1);
+
+    const rssi = calcRSSI(client.distance);
+
+    if (cmd === 'help') {
+      return `Comandos disponibles en la consola de ${client.name}:
+  ipconfig / ifconfig       Muestra la configuración IP y estado de red
+  ping <ip/host>            Envía paquetes ICMP a una dirección IP
+  tracert <ip/host>         Muestra la ruta de saltos hacia el destino
+  netsh wlan show           Muestra detalles de la interfaz Wi-Fi 802.11
+  curl <url>                Realiza una petición HTTP a un servidor
+  clear                     Limpia el terminal de la pantalla`;
     }
-  };
+
+    if (cmd === 'ipconfig' || cmd === 'ifconfig') {
+      if (client.status === 'disconnected') {
+        return `Adaptador de red inalámbrica Wi-Fi:
+   Estado de los medios. . . . . : Medios desconectados
+   Dirección física. . . . . . . : ${client.mac}`;
+      }
+      return `Adaptador de red inalámbrica Wi-Fi:
+   Sufijo DNS específico para la conexión. . : lan
+   Dirección IPv4. . . . . . . . . . . . . . : ${client.ip || '169.254.x.x'}
+   Máscara de subred . . . . . . . . . . . . : ${client.subnet || '255.255.255.0'}
+   Puerta de enlace predeterminada . . . . . : ${client.gateway || '0.0.0.0'}
+   Servidor DNS. . . . . . . . . . . . . . . : ${client.dns || '0.0.0.0'}
+   Dirección física (MAC). . . . . . . . . . : ${client.mac}
+   SSID Conectado. . . . . . . . . . . . . . : ${client.connectedSSID}`;
+    }
+
+    if (cmd === 'netsh') {
+      if (client.status === 'disconnected') {
+        return 'La interfaz de red inalámbrica no está asociada a ningún punto de acceso.';
+      }
+      return `Nombre de interfaz: Wi-Fi
+   Descripción            : 802.11n Wireless Network Adapter
+   GUID                   : {a1b2c3d4-e5f6-7890-1234-56789abcdef0}
+   Dirección física       : ${client.mac}
+   Estado                 : Conectado
+   SSID                   : ${client.connectedSSID}
+   BSSID                  : ${state.device.mac}
+   Tipo de red            : Infraestructura
+   Tipo de radio          : 802.11n (2.4 GHz)
+   Autenticación          : WPA2-Personal
+   Cifrado                : CCMP (AES)
+   Canal                  : ${state.wireless.channel}
+   Velocidad de recepción : ${calcRate(rssi)}
+   Velocidad de transm.   : ${calcRate(rssi)}
+   Señal                  : ${Math.max(10, Math.min(100, Math.round((rssi + 100) * 1.4)))}% (${rssi} dBm)`;
+    }
+
+    if (cmd === 'ping') {
+      const target = args[0] || state.router.ip;
+      if (client.status === 'disconnected') {
+        return `Haciendo ping a ${target} con 32 bytes de datos:
+Error general: el adaptador de red está desconectado.`;
+      }
+
+      if (target === state.device.ip || target === state.router.ip) {
+        if (client.status === 'noip') {
+          return `Haciendo ping a ${target} con 32 bytes de datos:
+Tiempo de espera agotado para esta solicitud.
+Tiempo de espera agotado para esta solicitud.
+Paquetes: enviados = 2, recibidos = 0, perdidos = 2 (100% perdidos)`;
+        }
+        const lat = Math.round(1 + Math.random() * 2 + client.distance * 0.15);
+        return `Haciendo ping a ${target} con 32 bytes de datos:
+Respuesta desde ${target}: bytes=32 tiempo=${lat}ms TTL=64
+Respuesta desde ${target}: bytes=32 tiempo=${lat+1}ms TTL=64
+Respuesta desde ${target}: bytes=32 tiempo=${lat}ms TTL=64
+Respuesta desde ${target}: bytes=32 tiempo=${lat+1}ms TTL=64
+Estadísticas de ping para ${target}:
+    Paquetes: enviados = 4, recibidos = 4, perdidos = 0 (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    Mínimo = ${lat}ms, Máximo = ${lat+1}ms, Media = ${lat}ms`;
+      }
+
+      if (target === '8.8.8.8' || target === 'google.com' || target === '1.1.1.1') {
+        if (!state.router.wanOnline) {
+          return `Haciendo ping a ${target} con 32 bytes de datos:
+Respuesta desde ${state.router.ip}: Host de destino inaccesible (Enlace WAN caído).
+Respuesta desde ${state.router.ip}: Host de destino inaccesible.
+Paquetes: enviados = 2, recibidos = 0, perdidos = 2 (100% perdidos)`;
+        }
+        const lat = Math.round(14 + Math.random() * 6 + client.distance * 0.2);
+        return `Haciendo ping a ${target} [8.8.8.8] con 32 bytes de datos:
+Respuesta desde 8.8.8.8: bytes=32 tiempo=${lat}ms TTL=117
+Respuesta desde 8.8.8.8: bytes=32 tiempo=${lat+2}ms TTL=117
+Respuesta desde 8.8.8.8: bytes=32 tiempo=${lat+1}ms TTL=117
+Respuesta desde 8.8.8.8: bytes=32 tiempo=${lat}ms TTL=117
+Estadísticas de ping para ${target}:
+    Paquetes: enviados = 4, recibidos = 4, perdidos = 0 (0% perdidos)`;
+      }
+
+      return `Haciendo ping a ${target} con 32 bytes de datos:
+Tiempo de espera agotado para esta solicitud.
+Paquetes: enviados = 1, recibidos = 0, perdidos = 1 (100% perdidos)`;
+    }
+
+    if (cmd === 'tracert' || cmd === 'traceroute') {
+      const target = args[0] || '8.8.8.8';
+      if (client.status === 'disconnected') return 'Error: Sin conexión de red.';
+      if (!state.router.wanOnline && (target === '8.8.8.8' || target.includes('.'))) {
+        return `Traza a la dirección ${target} sobre un máximo de 30 saltos:
+  1     1 ms     1 ms     1 ms  ${state.router.ip}
+  2     *        *        *     Tiempo de espera agotado (WAN caída).
+Traza completa.`;
+      }
+      return `Traza a la dirección ${target} sobre un máximo de 30 saltos:
+  1     1 ms     1 ms     1 ms  ${state.router.ip} [Gateway Local]
+  2    12 ms    11 ms    13 ms  10.0.0.1 [Router ISP Core]
+  3    15 ms    14 ms    15 ms  ${target}
+Traza completa.`;
+    }
+
+    if (cmd === 'curl') {
+      const url = args[0] || `http://${state.device.ip}`;
+      if (client.status === 'disconnected') return 'curl: (6) Could not resolve host (red desconectada)';
+      if (url.includes(state.device.ip)) {
+        return `HTTP/1.1 200 OK
+Server: TP-Link EAP Embedded Web Server / RomPager 4.51
+Content-Type: text/html
+Connection: close
+
+<!DOCTYPE html><html><head><title>TP-Link EAP Management</title></head>
+<body><h1>Bienvenido a TP-Link EAP</h1><p>Dispositivo en línea: ${state.device.name}</p></body></html>`;
+      }
+      if (url.includes(state.router.ip)) {
+        return `HTTP/1.1 200 OK
+Server: Gateway Router HTTPd
+Content-Type: text/plain
+
+Router Gateway 192.168.0.1 OK. DHCP: ${state.router.dhcpEnabled ? 'ON' : 'OFF'}, WAN: ${state.router.wanOnline ? 'UP' : 'DOWN'}`;
+      }
+      if (!state.router.wanOnline) return 'curl: (7) Failed to connect to host: Network unreachable (WAN Down)';
+      return `HTTP/1.1 200 OK
+Content-Type: text/html
+
+<!doctype html><html><head><title>Google</title></head><body><h1>Internet Accessible</h1></body></html>`;
+    }
+
+    return `'${cmd}' no se reconoce como un comando interno o externo. Escriba 'help' para ver los comandos disponibles.`;
+  }
 
   // =========================================================================
-  // Reactive Sync Listeners
+  // Reactive Sync Subscriptions & Ticking
   // =========================================================================
   const syncListeners = [];
-  function onSync(fn) {
-    syncListeners.push(fn);
-  }
+  function onSync(fn) { syncListeners.push(fn); }
   function triggerSync() {
     syncListeners.forEach(fn => {
       try { fn(state); } catch(e) { console.error('Sync listener error:', e); }
     });
   }
 
-  // Live Timer: Uptime increment & traffic flow
   setInterval(() => {
     state.device.uptimeSec++;
-    // Minor variations in CPU/Mem
     state.device.cpu = Math.max(2, Math.min(18, Math.round(state.device.cpu + (Math.random() * 2 - 1))));
 
-    // Active clients increment time and background packets
-    let hasTraffic = false;
+    let changed = false;
     state.clients.forEach(c => {
       if (c.status === 'connected') {
         c.connTime++;
-        c.txBytes += Math.floor(Math.random() * 120 + 20);
-        c.rxBytes += Math.floor(Math.random() * 450 + 60);
-        hasTraffic = true;
+        c.txBytes += Math.floor(Math.random() * 140 + 20);
+        c.rxBytes += Math.floor(Math.random() * 520 + 80);
+        changed = true;
       }
     });
 
-    if (hasTraffic && Math.random() < 0.2) {
+    if (changed && Math.random() < 0.2) {
       persistState();
     }
   }, 1000);
 
   // =========================================================================
   // IFRAME BRIDGE ENGINE
-  // This function is stringified and injected directly into each EAP page.
-  // It intercepts DOM elements, binds TP-Link styled modals, populates grids,
-  // and keeps the page perfectly in sync with the Simulator State Store.
+  // Injected into every page inside the iframe.
+  // Makes EVERY form, combobox, checkbox, input and table fully functional!
   // =========================================================================
   function getIframeEngineScript() {
     return '(' + function() {
@@ -1869,7 +2142,153 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
       }
 
       // -------------------------------------------------------------------
-      // 1. TOP MENU NAVIGATION HOOKS
+      // 1. UNIVERSAL FORM & COMBOBOX & CHECKBOX HANDLER (ALL 23 PAGES)
+      // -------------------------------------------------------------------
+      function initUniversalFormControls() {
+        // Handle all Combobox dropdown toggles
+        d.addEventListener('click', function(e) {
+          const sw = e.target.closest('.combobox-text, .combobox-switch');
+          const allWraps = $$('.combobox-list-wrap');
+
+          if (!sw) {
+            // Close any open combobox if clicking outside
+            if (!e.target.closest('.combobox-list-wrap')) {
+              allWraps.forEach(w => w.style.display = 'none');
+            }
+          } else {
+            e.preventDefault();
+            const container = sw.closest('.combobox-container');
+            const wrap = $('.combobox-list-wrap', container);
+            if (wrap) {
+              const isOpen = wrap.style.display === 'block';
+              allWraps.forEach(w => w.style.display = 'none');
+              wrap.style.display = isOpen ? 'none' : 'block';
+            }
+          }
+
+          // Handle Combobox item selection
+          const li = e.target.closest('li.combobox-list');
+          if (li) {
+            e.preventDefault();
+            const container = li.closest('.combobox-container');
+            const textEl = $('.combobox-text', container);
+            const valInput = $('input.combobox-value', container);
+            const optText = ($('.text', li) || li).textContent.trim();
+            const optVal = ($('input.combobox-checkbox', li) || {}).value || optText;
+
+            if (textEl) textEl.value = optText;
+            if (valInput) valInput.value = optVal;
+
+            $$('li.combobox-list', container).forEach(item => item.classList.remove('selected'));
+            li.classList.add('selected');
+
+            const wrap = li.closest('.combobox-list-wrap');
+            if (wrap) wrap.style.display = 'none';
+          }
+
+          // Handle Checkbox clicks
+          const chkLabel = e.target.closest('label.checkbox-label');
+          if (chkLabel && !chkLabel.dataset.handledCustom) {
+            e.preventDefault();
+            const isChecked = chkLabel.classList.toggle('checked');
+            const input = $('input[type=checkbox]', chkLabel);
+            if (input) input.checked = isChecked;
+          }
+
+          // Handle Radio clicks
+          const radioLabel = e.target.closest('label.radio-label');
+          if (radioLabel) {
+            e.preventDefault();
+            const groupName = ($('input[type=radio]', radioLabel) || {}).name;
+            if (groupName) {
+              $$(`label.radio-label input[name="${groupName}"]`).forEach(r => {
+                const parent = r.closest('label.radio-label');
+                if (parent) parent.classList.remove('checked');
+                r.checked = false;
+              });
+            }
+            radioLabel.classList.add('checked');
+            const myRadio = $('input[type=radio]', radioLabel);
+            if (myRadio) myRadio.checked = true;
+          }
+        }, true);
+
+        // Handle Save / Submit buttons across ALL pages
+        d.addEventListener('click', function(e) {
+          const btn = e.target.closest('button.button-button');
+          if (!btn) return;
+          const txt = btn.textContent.toLowerCase();
+          if (txt.includes('save') || txt.includes('apply') || txt.includes('confirm') || txt.includes('ok')) {
+            saveCurrentPageForm();
+            showTplToast('Configuration saved successfully');
+          }
+        }, true);
+      }
+
+      function saveCurrentPageForm() {
+        const s = EAP.getState();
+        s.forms = s.forms || {};
+        const formData = {};
+
+        $$('input.text-text, input[type=password], input[type=number]').forEach(inp => {
+          if (inp.id || inp.name) formData[inp.id || inp.name] = inp.value;
+        });
+        $$('label.checkbox-label').forEach((lbl, i) => {
+          formData['chk_' + (lbl.id || i)] = lbl.classList.contains('checked');
+        });
+        $$('.combobox-container').forEach((cc, i) => {
+          const t = $('.combobox-text', cc);
+          if (t) formData['combo_' + (cc.id || i)] = t.value;
+        });
+
+        s.forms[pageIdx] = formData;
+
+        // Specific parameter extractions:
+        // Wireless Settings
+        const radToggle = $('#wireless-bset-status');
+        if (radToggle) {
+          const lbl = radToggle.closest('label.checkbox-label');
+          if (lbl) s.wireless.radio24 = lbl.classList.contains('checked');
+        }
+        const chanEl = $('#wireless-bset-channel');
+        if (chanEl && chanEl.value) {
+          const ch = parseInt(chanEl.value);
+          if (!isNaN(ch)) s.wireless.channel = ch;
+        }
+
+        // MAC Filtering
+        const mfToggle = $('#mac-filtering-enable');
+        if (mfToggle) {
+          const lbl = mfToggle.closest('label.checkbox-label');
+          if (lbl) s.wireless.macFilter.enabled = lbl.classList.contains('checked');
+        }
+
+        // Network IP Settings
+        const ipInp = $('#ipAddress') || $('#fallbackIp');
+        if (ipInp && ipInp.value) s.device.ip = ipInp.value.trim();
+        const maskInp = $('#subnetMask') || $('#fallbackMask');
+        if (maskInp && maskInp.value) s.device.mask = maskInp.value.trim();
+
+        EAP.persistState();
+        EAP.reevaluateAllClients();
+      }
+
+      function restoreCurrentPageForm() {
+        const s = EAP.getState();
+        const formData = (s.forms || {})[pageIdx];
+        if (!formData) return;
+
+        Object.keys(formData).forEach(k => {
+          const val = formData[k];
+          const inp = $('#' + k) || $(`input[name="${k}"]`);
+          if (inp && (inp.type === 'text' || inp.type === 'password' || inp.type === 'number')) {
+            inp.value = val;
+          }
+        });
+      }
+
+      // -------------------------------------------------------------------
+      // 2. TOP MENU NAVIGATION HOOKS
       // -------------------------------------------------------------------
       function initNavigation() {
         const menuLinks = $$('#top-menu a');
@@ -1882,11 +2301,9 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
             const text = a.textContent.trim();
 
             if (li.classList.contains('fst')) {
-              // Top-level item: find first page matching group
               const targetIdx = topWin.EAP_PAGES.findIndex(p => p.g.toLowerCase() === text.toLowerCase());
               if (targetIdx >= 0) topWin.navigateToPage(targetIdx);
             } else {
-              // Submenu item: find page matching group + name
               const topLi = li.closest('li.fst');
               const groupName = topLi ? topLi.querySelector(':scope > a .text').textContent.trim() : '';
               const targetIdx = topWin.EAP_PAGES.findIndex(p =>
@@ -1900,7 +2317,7 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
       }
 
       // -------------------------------------------------------------------
-      // 2. PAGE 0: STATUS -> DEVICE
+      // 3. PAGE 0: STATUS -> DEVICE
       // -------------------------------------------------------------------
       function initPageDevice() {
         if (pageIdx !== 0) return;
@@ -1924,7 +2341,6 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
         const uptimeEl = $('#device_uptime');
         if (uptimeEl) {
           uptimeEl.value = EAP.formatUptime(s.device.uptimeSec);
-          // Live tick
           setInterval(() => {
             const curState = EAP.getState();
             if (uptimeEl) uptimeEl.value = EAP.formatUptime(curState.device.uptimeSec);
@@ -1942,7 +2358,7 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
       }
 
       // -------------------------------------------------------------------
-      // 3. PAGE 1: STATUS -> WIRELESS
+      // 4. PAGE 1: STATUS -> WIRELESS
       // -------------------------------------------------------------------
       function initPageWirelessStatus() {
         if (pageIdx !== 1) return;
@@ -1960,18 +2376,17 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
         const radPower = $('#radio_power');
         if (radPower) radPower.value = s.wireless.txPower + 'dBm';
 
-        // Render SSID List Grid
         const grid = $('#ssidListGrid');
         if (grid) {
           const tbody = $('.grid-content-data', grid);
           if (tbody) {
             tbody.innerHTML = s.wireless.ssids.map((z, i) => {
-              const clientsOnSSID = s.clients.filter(c => c.connectedSSID === z.name).length;
+              const clientsOnSSID = s.clients.filter(c => c.connectedSSID === z.name && (c.status === 'connected' || c.status === 'noinet')).length;
               return `
                 <tr class="grid-content-tr grid-content-tr-${i+1}" data-key="${i+1}" style="display: table-row;">
                   <td class="grid-content-td grid-content-td-0 grid-content-td-row-numberer fst"><span class="grid-row-numberer content">${i+1}</span></td>
                   <td class="grid-content-td grid-content-td-1 grid-content-td-SSID"><span class="content">${esc(z.name)}</span></td>
-                  <td class="grid-content-td grid-content-td-2 grid-content-td-clients"><span class="content">${clientsOnSSID}</span></td>
+                  <td class="grid-content-td grid-content-td-2 grid-content-td-clients"><span class="content"><b>${clientsOnSSID}</b></span></td>
                   <td class="grid-content-td grid-content-td-3 grid-content-td-Radio"><span class="content">2.4GHz</span></td>
                   <td class="grid-content-td grid-content-td-4 grid-content-td-security"><span class="content">${esc(z.sec)}</span></td>
                   <td class="grid-content-td grid-content-td-5"><span class="content">Disable</span></td>
@@ -1984,30 +2399,15 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
             }).join('');
           }
         }
-
-        // Live Traffic update
-        setInterval(() => {
-          const curState = EAP.getState();
-          let totTx = 0, totRx = 0;
-          curState.wireless.ssids.forEach(z => {
-            totTx += (z.txBytes || 0);
-            totRx += (z.rxBytes || 0);
-          });
-          const rxPackets = $('#traffic_rx_packets');
-          if (rxPackets) rxPackets.value = Math.floor(totRx / 140);
-          const rxBytes = $('#traffic_rx_bytes');
-          if (rxBytes) rxBytes.value = totRx;
-        }, 1000);
       }
 
       // -------------------------------------------------------------------
-      // 4. PAGE 2: STATUS -> CLIENT LIST
+      // 5. PAGE 2: STATUS -> CLIENT LIST (ALL SIMULATED CLIENTS)
       // -------------------------------------------------------------------
       function initPageClientStatus() {
         if (pageIdx !== 2) return;
         const grid = $('#clientUserListGrid');
         if (!grid) return;
-
         const tbody = $('.grid-content-data', grid);
         if (!tbody) return;
 
@@ -2063,15 +2463,13 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
 
         renderClients();
 
-        // Handle Disconnect & Block clicks
         grid.addEventListener('click', function(e) {
           const btnDisc = e.target.closest('.btn-disconnect');
           if (btnDisc) {
             e.preventDefault();
-            const cid = btnDisc.dataset.client;
-            EAP.disconnectClient(cid);
+            EAP.disconnectClient(btnDisc.dataset.client);
             renderClients();
-            showTplToast('Client disconnected');
+            showTplToast('Cliente desconectado');
             return;
           }
 
@@ -2083,12 +2481,12 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
             s.wireless.macFilter.enabled = true;
             s.wireless.macFilter.rule = 'Deny';
             if (!s.wireless.macFilter.list.some(m => m.mac === mac)) {
-              s.wireless.macFilter.list.push({ id: Date.now(), mac: mac, desc: 'Blocked via Client List' });
+              s.wireless.macFilter.list.push({ id: Date.now(), mac: mac, desc: 'Bloqueado vía Lista de Clientes' });
             }
             EAP.persistState();
             EAP.reevaluateAllClients();
             renderClients();
-            showTplToast('MAC Blocked & Disconnected');
+            showTplToast('MAC bloqueada y cliente expulsado');
             return;
           }
 
@@ -2096,38 +2494,35 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
           if (refreshBtn) {
             e.preventDefault();
             renderClients();
-            showTplToast('Refreshed');
+            showTplToast('Refrescado');
           }
         });
       }
 
       // -------------------------------------------------------------------
-      // 5. PAGE 3: WIRELESS -> WIRELESS SETTINGS
+      // 6. PAGE 3: WIRELESS -> WIRELESS SETTINGS
       // -------------------------------------------------------------------
       function initPageWirelessSettings() {
         if (pageIdx !== 3) return;
         const s = EAP.getState();
 
-        // 2.4GHz Radio Switch
         const radToggle = $('#wireless-bset-status');
         if (radToggle) {
           const chkLabel = radToggle.closest('label.checkbox-label');
           if (chkLabel) {
+            chkLabel.dataset.handledCustom = '1';
             chkLabel.classList.toggle('checked', s.wireless.radio24);
             chkLabel.onclick = function(e) {
               e.preventDefault();
               s.wireless.radio24 = !chkLabel.classList.contains('checked');
               chkLabel.classList.toggle('checked', s.wireless.radio24);
               EAP.persistState();
-              if (!s.wireless.radio24) {
-                EAP.reevaluateAllClients();
-              }
+              if (!s.wireless.radio24) EAP.reevaluateAllClients();
               showTplToast(s.wireless.radio24 ? 'Radio 2.4GHz Activada' : 'Radio 2.4GHz Desactivada');
             };
           }
         }
 
-        // SSID Grid
         const grid = $('#wireless-ssid-grid');
         if (!grid) return;
         const tbody = $('.grid-content-data', grid);
@@ -2153,7 +2548,6 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
 
         renderSSIDs();
 
-        // TP-Link Modal for Add/Edit SSID
         function openSSIDModal(editIdx) {
           const curState = EAP.getState();
           const isEdit = editIdx >= 0;
@@ -2203,7 +2597,7 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
                 <div class="tpl-form-group">
                   <label>Guest Network:</label>
                   <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
-                    <input type="checkbox" id="m_ssid_guest" ${current.guest ? 'checked' : ''}> Aislar invitados
+                    <input type="checkbox" id="m_ssid_guest" ${current.guest ? 'checked' : ''}> Red de Invitados
                   </label>
                 </div>
                 <div id="m_error_msg" style="color:#d9534f;font-size:12px;min-height:16px;"></div>
@@ -2234,21 +2628,12 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
             const guestVal = $('#m_ssid_guest', overlay).checked;
 
             const errEl = $('#m_error_msg', overlay);
-
             if (!nameVal) {
-              errEl.textContent = 'El nombre de SSID es obligatorio.';
-              return;
-            }
-            if (nameVal.length > 32) {
-              errEl.textContent = 'El SSID no puede superar 32 caracteres.';
+              errEl.textContent = 'El nombre del SSID es obligatorio.';
               return;
             }
             if (secVal !== 'None' && (passVal.length < 8 || passVal.length > 63)) {
-              errEl.textContent = 'La contraseña WPA debe tener entre 8 y 63 caracteres.';
-              return;
-            }
-            if (vlanVal < 0 || vlanVal > 4094) {
-              errEl.textContent = 'El VLAN ID debe estar entre 0 y 4094.';
+              errEl.textContent = 'La contraseña debe tener entre 8 y 63 caracteres.';
               return;
             }
 
@@ -2269,11 +2654,11 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
               EAP.addSysLog('WIRELESS', 'INFO', `SSID "${nameVal}" updated`);
             } else {
               if (curState.wireless.ssids.length >= 8) {
-                errEl.textContent = 'Límite alcanzado: máximo 8 SSIDs permitidos.';
+                errEl.textContent = 'Máximo 8 SSIDs permitidos.';
                 return;
               }
               curState.wireless.ssids.push(newEntry);
-              EAP.addSysLog('WIRELESS', 'INFO', `New SSID "${nameVal}" created (VLAN ${vlanVal})`);
+              EAP.addSysLog('WIRELESS', 'INFO', `New SSID "${nameVal}" created`);
             }
 
             EAP.persistState();
@@ -2284,7 +2669,6 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
           };
         }
 
-        // Hook authentic Add Button
         const addBtn = $('.operation-btn.btn-add', grid);
         if (addBtn) {
           addBtn.onclick = function(e) {
@@ -2293,7 +2677,6 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
           };
         }
 
-        // Hook Edit / Delete in table
         grid.addEventListener('click', function(e) {
           const btn = e.target.closest('[data-act]');
           if (!btn) return;
@@ -2306,12 +2689,12 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
           } else if (act === 'del') {
             const curState = EAP.getState();
             if (curState.wireless.ssids.length <= 1) {
-              alert('Debe haber al menos 1 SSID activo en la EAP.');
+              alert('Debe existir al menos 1 SSID activo.');
               return;
             }
-            if (confirm(`¿Desea eliminar la red SSID "${curState.wireless.ssids[idx].name}"?`)) {
-              const removed = curState.wireless.ssids.splice(idx, 1);
-              EAP.addSysLog('WIRELESS', 'WARNING', `SSID "${removed[0].name}" deleted`);
+            if (confirm(`¿Eliminar el SSID "${curState.wireless.ssids[idx].name}"?`)) {
+              const rem = curState.wireless.ssids.splice(idx, 1);
+              EAP.addSysLog('WIRELESS', 'WARNING', `SSID "${rem[0].name}" deleted`);
               EAP.persistState();
               EAP.reevaluateAllClients();
               renderSSIDs();
@@ -2322,21 +2705,20 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
       }
 
       // -------------------------------------------------------------------
-      // 6. PAGE 6: WIRELESS -> MAC FILTERING
+      // 7. PAGE 6: WIRELESS -> MAC FILTERING
       // -------------------------------------------------------------------
       function initPageMacFiltering() {
         if (pageIdx !== 6) return;
         const grid = $('#mac_addr_grid');
         if (!grid) return;
+        grid.style.display = 'block';
 
-        grid.style.display = 'block'; // Make grid visible
         const s = EAP.getState();
-
-        // Enable Switch
         const mfToggle = $('#mac-filtering-enable');
         if (mfToggle) {
           const chkLabel = mfToggle.closest('label.checkbox-label');
           if (chkLabel) {
+            chkLabel.dataset.handledCustom = '1';
             chkLabel.classList.toggle('checked', s.wireless.macFilter.enabled);
             chkLabel.onclick = function(e) {
               e.preventDefault();
@@ -2344,7 +2726,7 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
               chkLabel.classList.toggle('checked', s.wireless.macFilter.enabled);
               EAP.persistState();
               EAP.reevaluateAllClients();
-              showTplToast(s.wireless.macFilter.enabled ? 'MAC Filtering Enabled' : 'MAC Filtering Disabled');
+              showTplToast(s.wireless.macFilter.enabled ? 'Filtrado MAC Activado' : 'Filtrado MAC Desactivado');
             };
           }
         }
@@ -2377,7 +2759,6 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
 
         renderMacList();
 
-        // Hook Add MAC Modal
         const addBtn = $('.operation-btn.btn-add', grid);
         if (addBtn) {
           addBtn.onclick = function(e) {
@@ -2397,7 +2778,7 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
                   </div>
                   <div class="tpl-form-group">
                     <label>Description:</label>
-                    <input type="text" id="m_mac_desc" class="tpl-form-control" placeholder="Ej: Laptop Personal">
+                    <input type="text" id="m_mac_desc" class="tpl-form-control" placeholder="Ej: Portátil de prueba">
                   </div>
                   <div id="m_mac_err" style="color:#d9534f;font-size:12px;min-height:16px;"></div>
                 </div>
@@ -2424,65 +2805,34 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
 
               const curState = EAP.getState();
               if (curState.wireless.macFilter.list.some(m => m.mac === val)) {
-                errEl.textContent = 'Esta dirección MAC ya está en la lista.';
+                errEl.textContent = 'Esta MAC ya está en la lista.';
                 return;
               }
 
               curState.wireless.macFilter.list.push({ id: Date.now(), mac: val, desc: desc || 'Dispositivo' });
-              EAP.addSysLog('SECURITY', 'INFO', `MAC ${val} added to filtering list`);
+              EAP.addSysLog('SECURITY', 'INFO', `MAC ${val} added to filter`);
               EAP.persistState();
               EAP.reevaluateAllClients();
               modal.remove();
               renderMacList();
-              showTplToast('MAC added to filter');
+              showTplToast('MAC added');
             };
           };
         }
 
-        // Delete MAC
         grid.addEventListener('click', function(e) {
           const btn = e.target.closest('.btn-del-mac');
           if (!btn) return;
           e.preventDefault();
           const idx = parseInt(btn.dataset.idx);
           const curState = EAP.getState();
-          const removed = curState.wireless.macFilter.list.splice(idx, 1);
-          EAP.addSysLog('SECURITY', 'INFO', `MAC ${removed[0].mac} removed from filter`);
+          const rem = curState.wireless.macFilter.list.splice(idx, 1);
+          EAP.addSysLog('SECURITY', 'INFO', `MAC ${rem[0].mac} removed from filter`);
           EAP.persistState();
           EAP.reevaluateAllClients();
           renderMacList();
           showTplToast('MAC removed');
         });
-      }
-
-      // -------------------------------------------------------------------
-      // 7. PAGE 10: MANAGEMENT -> NETWORK (IP SETTINGS)
-      // -------------------------------------------------------------------
-      function initPageNetwork() {
-        if (pageIdx !== 10) return;
-        const s = EAP.getState();
-
-        const ipInput = $('#ipAddress') || $('#fallbackIp');
-        if (ipInput) ipInput.value = s.device.ip;
-
-        const maskInput = $('#subnetMask') || $('#fallbackMask');
-        if (maskInput) maskInput.value = s.device.mask;
-
-        const gwInput = $('#fallbackGateway') || $('#gateway');
-        if (gwInput) gwInput.value = s.device.gateway;
-
-        const saveBtn = $('#submit_ipsetting') || $('button[name="submit_ipsetting"]');
-        if (saveBtn) {
-          saveBtn.onclick = function(e) {
-            e.preventDefault();
-            if (ipInput && ipInput.value) s.device.ip = ipInput.value.trim();
-            if (maskInput && maskInput.value) s.device.mask = maskInput.value.trim();
-            if (gwInput && gwInput.value) s.device.gateway = gwInput.value.trim();
-            EAP.addSysLog('DEV_IP_C', 'WARNING', `LAN IP of AP changed to ${s.device.ip}/${s.device.mask}`);
-            EAP.persistState();
-            showTplToast('IP Settings Saved');
-          };
-        }
       }
 
       // -------------------------------------------------------------------
@@ -2525,7 +2875,6 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
       // -------------------------------------------------------------------
       function initPageReboot() {
         if (pageIdx !== 20) return;
-
         const rebootBtn = $('#reboot');
         if (rebootBtn) {
           rebootBtn.onclick = function(e) {
@@ -2533,12 +2882,11 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
             topWin.triggerRebootSequence();
           };
         }
-
         const resetBtn = $('#reset');
         if (resetBtn) {
           resetBtn.onclick = function(e) {
             e.preventDefault();
-            if (confirm('¿Restablecer la EAP a los valores predeterminados de fábrica? Todos los ajustes personalizados se borrarán.')) {
+            if (confirm('¿Restablecer la EAP a los valores predeterminados de fábrica?')) {
               EAP.resetState();
               topWin.triggerRebootSequence(true);
             }
@@ -2556,28 +2904,29 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
           backupBtn.onclick = function(e) {
             e.preventDefault();
             const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(EAP.getState(), null, 2));
-            const dlAnchor = d.createElement('a');
-            dlAnchor.setAttribute('href', dataStr);
-            dlAnchor.setAttribute('download', `EAP_Backup_Config_${Date.now()}.json`);
-            d.body.appendChild(dlAnchor);
-            dlAnchor.click();
-            dlAnchor.remove();
-            showTplToast('Backup exported');
+            const dl = d.createElement('a');
+            dl.setAttribute('href', dataStr);
+            dl.setAttribute('download', `EAP_Backup_Config_${Date.now()}.json`);
+            d.body.appendChild(dl);
+            dl.click();
+            dl.remove();
+            showTplToast('Configuración exportada en JSON');
           };
         }
       }
 
-      // Initialize all hooks
+      // Run all initializations
+      initUniversalFormControls();
       initNavigation();
       initPageDevice();
       initPageWirelessStatus();
       initPageClientStatus();
       initPageWirelessSettings();
       initPageMacFiltering();
-      initPageNetwork();
       initPageSystemLog();
       initPageReboot();
       initPageBackupRestore();
+      restoreCurrentPageForm();
 
     }.toString() + ')()';
   }
@@ -2586,9 +2935,11 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
   // Public Simulator API
   // =========================================================================
   window.EAPEngine = {
+    AP_POS: { x: AP_CANVAS_X, y: AP_CANVAS_Y },
     getState: () => state,
     persistState: persistState,
     resetState: resetState,
+    calcDistance: calcDistance,
     calcRSSI: calcRSSI,
     getSignalBars: getSignalBars,
     calcRate: calcRate,
@@ -2598,9 +2949,10 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
     attemptConnect: attemptConnect,
     disconnectClient: disconnectClient,
     reevaluateAllClients: reevaluateAllClients,
-    runPing: runPing,
-    runSpeedtest: runSpeedtest,
-    scenarios: SCENARIOS,
+    addDevice: addDevice,
+    removeDevice: removeDevice,
+    updateDevicePosition: updateDevicePosition,
+    executeCliCommand: executeCliCommand,
     onSync: onSync,
     triggerSync: triggerSync,
     getIframeEngineScript: getIframeEngineScript
@@ -2611,7 +2963,7 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
 </script>
 
   <!-- =========================================================================
-       Main Application Orchestrator Script
+       Main Application UI Orchestrator
        ========================================================================= -->
   <script>
     (function() {
@@ -2621,7 +2973,7 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
       const P = window.EAP_PAGES || [];
 
       let currentPageIndex = 0;
-      let activeClientId = 'phone';
+      let activeClientId = 'dev-1';
 
       const iframe = document.getElementById('eap-frame');
       const selGroup = document.getElementById('sel-group');
@@ -2665,7 +3017,6 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
         populatePagesDropdown(page.g);
         selPage.value = idx;
 
-        // Inject the page HTML along with our dynamic bridge script
         const rawHtml = page.h;
         const bridgeScript = `<script>window.__PAGE_INDEX = ${idx}; ${EAP.getIframeEngineScript()}<\/script>`;
 
@@ -2728,326 +3079,440 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
       });
 
       // -----------------------------------------------------------------------
-      // 3. Render Virtual Devices (Tab 1)
+      // 3. Packet Tracer Topology Canvas (Draggable Nodes & Visual Links)
       // -----------------------------------------------------------------------
-      function renderDeviceSelector() {
+      let draggedDevId = null;
+      let svgCanvas = document.getElementById('pt-svg-canvas');
+
+      function renderCanvasTopology() {
         const state = EAP.getState();
-        const container = document.getElementById('dev-pills-container');
-        container.innerHTML = '';
+        const clientsGroup = document.getElementById('svg-clients-group');
+        const linksGroup = document.getElementById('svg-links-group');
 
+        // Update Router & AP colors
+        document.getElementById('svg-rt-led-wan').setAttribute('fill', state.router.wanOnline ? '#39e36b' : '#f43f5e');
+        document.getElementById('svg-ap-circle').setAttribute('stroke', state.wireless.radio24 ? '#0072ce' : '#64748b');
+        document.getElementById('svg-ap-ip-text').textContent = state.device.ip;
+
+        // Render Links
+        let linksHtml = '';
         state.clients.forEach(c => {
-          const pill = document.createElement('button');
-          pill.className = `dev-pill ${c.id === activeClientId ? 'active' : ''} ${c.status === 'connected' ? 'connected' : ''}`;
-          const icon = c.type === 'phone' ? '📱' : c.type === 'laptop' ? '💻' : c.type === 'iot' ? '📹' : '🕵️';
-          pill.innerHTML = `<span>${icon}</span> <span>${c.name}</span>`;
-          pill.onclick = () => {
-            activeClientId = c.id;
-            renderDeviceSelector();
-            renderSelectedDeviceView();
-          };
-          container.appendChild(pill);
+          if (c.status === 'connected' || c.status === 'noinet') {
+            const linkColor = c.status === 'connected' ? '#39e36b' : '#f5b942';
+            linksHtml += `
+              <line x1="${EAP.AP_POS.x}" y1="${EAP.AP_POS.y}" x2="${c.x}" y2="${c.y}" 
+                    stroke="${linkColor}" stroke-width="2" class="pt-link"/>
+            `;
+          }
         });
+        linksGroup.innerHTML = linksHtml;
 
-        // Add client button
-        const addPill = document.createElement('button');
-        addPill.className = 'dev-pill';
-        addPill.innerHTML = `<span>➕</span> <span>Añadir</span>`;
-        addPill.onclick = () => {
-          const name = prompt('Nombre del nuevo dispositivo:', 'Dispositivo-Wifi');
-          if (!name) return;
-          const randomMac = '52:54:00:' + Array.from({length:3}, () => Math.floor(Math.random()*256).toString(16).padStart(2,'0').toUpperCase()).join(':');
-          state.clients.push({
-            id: 'dev-' + Date.now(),
-            name: name,
-            type: 'phone',
-            mac: randomMac,
-            distance: 4,
-            connectedSSID: null,
-            ip: null,
-            status: 'disconnected'
-          });
-          EAP.persistState();
-          EAP.triggerSync();
-        };
-        container.appendChild(addPill);
+        // Render Client Nodes
+        let nodesHtml = '';
+        state.clients.forEach(c => {
+          const isSelected = c.id === activeClientId;
+          const isConnected = c.status === 'connected' || c.status === 'noinet';
+          const nodeColor = isConnected ? '#39e36b' : c.status === 'blocked' ? '#f43f5e' : '#64748b';
+          const icon = c.type === 'phone' ? '📱' : c.type === 'laptop' ? '💻' : c.type === 'tablet' ? '📲' : c.type === 'iot' ? '📹' : '🖥️';
+
+          nodesHtml += `
+            <g class="pt-node ${isSelected ? 'selected' : ''}" data-id="${c.id}" transform="translate(${c.x}, ${c.y})">
+              <circle cx="0" cy="0" r="16" fill="#1e293b" stroke="${nodeColor}" stroke-width="${isSelected ? 3 : 1.5}" class="node-bg"/>
+              <text x="0" y="5" font-size="13" text-anchor="middle">${icon}</text>
+              <text x="0" y="24" fill="#334155" font-size="8.5" font-weight="bold" text-anchor="middle">${c.name}</text>
+              <text x="0" y="32" fill="#64748b" font-size="7.5" text-anchor="middle">${c.distance}m · ${EAP.calcRSSI(c.distance)}dBm</text>
+            </g>
+          `;
+        });
+        clientsGroup.innerHTML = nodesHtml;
+
+        // Render Summary Cards
+        const cardsContainer = document.getElementById('pt-devices-list-cards');
+        cardsContainer.innerHTML = state.clients.map(c => {
+          const isConnected = c.status === 'connected' || c.status === 'noinet';
+          const statusBadge = isConnected ? '<b style="color:var(--tpl-green);">● Conectado</b>' : '<span style="color:#94a3b8;">○ Desconectado</span>';
+          return `
+            <div style="background:#fff;border:1px solid ${c.id === activeClientId ? 'var(--tpl-primary)' : '#e2e8f0'};border-radius:4px;padding:6px 10px;display:flex;justify-content:space-between;align-items:center;">
+              <div style="cursor:pointer;" onclick="selectDevice('${c.id}')">
+                <b style="font-size:12px;color:#1e293b;">${c.name}</b>
+                <div style="font-size:10px;color:#64748b;">${c.mac} · ${c.distance}m · IP: ${c.ip || '--'}</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;">
+                ${statusBadge}
+                <button class="sim-btn" style="padding:2px 6px;font-size:10px;" onclick="selectDevice('${c.id}', true)">Usar</button>
+                <button class="sim-btn danger" style="padding:2px 6px;font-size:10px;" onclick="removeDevice('${c.id}')">✕</button>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        const connCount = state.clients.filter(c => c.status === 'connected' || c.status === 'noinet').length;
+        document.getElementById('pt-connected-badge').textContent = `${connCount} conectado${connCount === 1 ? '' : 's'}`;
+        document.getElementById('pill-client-count').textContent = connCount;
       }
 
-      function renderSelectedDeviceView() {
+      // Drag and Drop Logic on SVG Canvas
+      svgCanvas.addEventListener('mousedown', function(e) {
+        const node = e.target.closest('.pt-node');
+        if (node) {
+          draggedDevId = node.dataset.id;
+          activeClientId = draggedDevId;
+          renderCanvasTopology();
+          renderActiveDeviceScreen();
+        }
+      });
+
+      window.addEventListener('mousemove', function(e) {
+        if (!draggedDevId) return;
+        const rect = svgCanvas.getBoundingClientRect();
+        const scaleX = 400 / rect.width;
+        const scaleY = 260 / rect.height;
+        const x = (e.clientX - rect.left) * scaleX;
+        const y = (e.clientY - rect.top) * scaleY;
+        EAP.updateDevicePosition(draggedDevId, x, y);
+      });
+
+      window.addEventListener('mouseup', function() {
+        draggedDevId = null;
+      });
+
+      // -----------------------------------------------------------------------
+      // 4. Add & Delete Devices (Packet Tracer)
+      // -----------------------------------------------------------------------
+      const modalAddDev = document.getElementById('modal-add-device');
+      document.getElementById('btn-add-device-canvas').onclick = () => {
+        document.getElementById('new-dev-name').value = 'Dispositivo ' + (EAP.getState().clients.length + 1);
+        document.getElementById('new-dev-mac').value = '';
+        modalAddDev.style.display = 'flex';
+      };
+
+      document.getElementById('btn-close-add-dev').onclick = () => modalAddDev.style.display = 'none';
+      document.getElementById('btn-cancel-add-dev').onclick = () => modalAddDev.style.display = 'none';
+
+      document.getElementById('btn-confirm-add-dev').onclick = () => {
+        const name = document.getElementById('new-dev-name').value.trim();
+        const type = document.getElementById('new-dev-type').value;
+        const mac = document.getElementById('new-dev-mac').value.trim();
+        const newDev = EAP.addDevice(name, type, mac);
+        activeClientId = newDev.id;
+        modalAddDev.style.display = 'none';
+      };
+
+      window.selectDevice = function(id, switchToDeviceTab = false) {
+        activeClientId = id;
+        renderCanvasTopology();
+        renderActiveDeviceScreen();
+        if (switchToDeviceTab) {
+          document.querySelector('[data-tab="device"]').click();
+        }
+      };
+
+      window.removeDevice = function(id) {
+        if (confirm('¿Eliminar este dispositivo del laboratorio?')) {
+          EAP.removeDevice(id);
+          if (activeClientId === id) {
+            activeClientId = (EAP.getState().clients[0] || {}).id || null;
+          }
+        }
+      };
+
+      // -----------------------------------------------------------------------
+      // 5. Active Virtual Device Shell (Apps: Wi-Fi, CLI, Browser, Speedtest)
+      // -----------------------------------------------------------------------
+      function renderActiveDeviceScreen() {
         const state = EAP.getState();
         const client = state.clients.find(c => c.id === activeClientId) || state.clients[0];
         if (!client) return;
         activeClientId = client.id;
 
-        document.getElementById('vphone-name').textContent = client.name;
-        document.getElementById('vphone-mac').textContent = client.mac;
+        // Update dropdown
+        const devDropdown = document.getElementById('sel-active-device-dropdown');
+        devDropdown.innerHTML = state.clients.map(c => `
+          <option value="${c.id}" ${c.id === client.id ? 'selected' : ''}>${c.name} (${c.mac})</option>
+        `).join('');
 
-        // Distance & RSSI
-        const distSlider = document.getElementById('dev-distance-slider');
-        const distVal = document.getElementById('dev-distance-val');
-        const rssiVal = document.getElementById('dev-rssi-val');
+        devDropdown.onchange = () => {
+          activeClientId = devDropdown.value;
+          renderActiveDeviceScreen();
+          renderCanvasTopology();
+        };
 
-        distSlider.value = client.distance;
-        distVal.textContent = client.distance + ' m';
+        // Device Shell Header
+        document.getElementById('dev-shell-name').textContent = client.name;
+        document.getElementById('dev-shell-mac').textContent = client.mac;
+        document.getElementById('dev-shell-icon').textContent = client.type === 'phone' ? '📱' : client.type === 'laptop' ? '💻' : '🖥️';
+
         const rssi = EAP.calcRSSI(client.distance);
         const bars = EAP.getSignalBars(rssi);
-        const barIcons = [' ', '▂', '▂▄', '▂▄▆', '▂▄▆█'][bars];
-        rssiVal.textContent = `${rssi} dBm (${barIcons})`;
+        document.getElementById('dev-shell-signal-icon').textContent = [' ', '▂', '▂▄', '▂▄▆', '▂▄▆█'][bars];
 
+        // Wi-Fi Power Switch
+        const wifiPowerChk = document.getElementById('dev-wifi-power-chk');
+        wifiPowerChk.checked = client.wifiEnabled;
+        wifiPowerChk.onchange = () => {
+          client.wifiEnabled = wifiPowerChk.checked;
+          if (!client.wifiEnabled) EAP.disconnectClient(client.id);
+          EAP.persistState();
+          EAP.triggerSync();
+        };
+
+        // Distance slider
+        const distSlider = document.getElementById('dev-slider-dist');
+        const distVal = document.getElementById('dev-slider-dist-val');
+        distSlider.value = client.distance;
+        distVal.textContent = client.distance + ' m';
         distSlider.oninput = () => {
           client.distance = parseInt(distSlider.value, 10);
           distVal.textContent = client.distance + ' m';
-          const r = EAP.calcRSSI(client.distance);
-          const b = EAP.getSignalBars(r);
-          rssiVal.textContent = `${r} dBm (${[' ', '▂', '▂▄', '▂▄▆', '▂▄▆█'][b]})`;
           EAP.persistState();
-          if (client.status === 'connected' && r < -85) {
+          EAP.triggerSync();
+          if (client.status === 'connected' && EAP.calcRSSI(client.distance) < -85) {
             EAP.reevaluateAllClients();
           }
         };
 
-        // Render Wi-Fi Scan list
-        const wifiList = document.getElementById('wifi-networks-list');
-        wifiList.innerHTML = '';
-
-        // Add EAP broadcasted SSIDs
-        const broadcastedSSIDs = state.wireless.ssids.filter(s => s.bcast && state.wireless.radio24);
-        
-        broadcastedSSIDs.forEach(s => {
-          const isConnected = client.connectedSSID === s.name && (client.status === 'connected' || client.status === 'noinet');
-          const item = document.createElement('div');
-          item.className = `wifi-item ${isConnected ? 'connected' : ''}`;
-          item.innerHTML = `
-            <div class="ssid-info">
-              <span class="ssid-name">
-                ${isConnected ? '<b style="color:var(--tpl-green)">✓</b> ' : ''}${s.name}
-                ${s.sec !== 'None' ? '🔒' : ''}
-              </span>
-              <span class="ssid-extra">Canal ${state.wireless.channel} · 2.4GHz · ${s.sec} ${s.vlan ? '· VLAN ' + s.vlan : ''}</span>
-            </div>
-            <div class="wifi-signal-bars" title="Señal">${barIcons}</div>
-          `;
-          item.onclick = () => promptConnectToSSID(client, s);
-          wifiList.appendChild(item);
-        });
-
-        // Add Simulated Neighbor Networks for realism
-        const neighborNetworks = [
-          { name: 'MOVISTAR_Fibra_4F2A', sec: 'WPA2', bars: '▂▄▆', channel: 1 },
-          { name: 'Vodafone_Vecinos_5G', sec: 'WPA2', bars: '▂▄', channel: 11 }
-        ];
-        neighborNetworks.forEach(n => {
-          const item = document.createElement('div');
-          item.className = 'wifi-item';
-          item.style.opacity = '0.7';
-          item.innerHTML = `
-            <div class="ssid-info">
-              <span class="ssid-name">${n.name} 🔒</span>
-              <span class="ssid-extra">Canal ${n.channel} · Red ajena</span>
-            </div>
-            <div class="wifi-signal-bars">${n.bars}</div>
-          `;
-          item.onclick = () => alert('Esta es una red externa de prueba fuera del alcance de la EAP.');
-          wifiList.appendChild(item);
-        });
-
-        // Connection Details Card
-        const connCard = document.getElementById('conn-details-card');
-        const diagBox = document.getElementById('dev-diag-box');
-
+        // Status banner
+        const statusBanner = document.getElementById('dev-wifi-conn-status-banner');
         if (client.status === 'connected') {
-          connCard.style.display = 'block';
-          connCard.className = 'conn-card status-ok';
-          connCard.innerHTML = `
+          statusBanner.style.background = '#f0fdf4';
+          statusBanner.style.border = '1px solid #86efac';
+          statusBanner.style.color = '#166534';
+          statusBanner.innerHTML = `
             <div style="display:flex;justify-content:space-between;align-items:center;">
               <b>🟢 Conectado a "${client.connectedSSID}"</b>
-              <button class="sim-btn danger" style="padding:2px 8px;font-size:11px;" id="btn-disconnect-active">Desconectar</button>
+              <button class="sim-btn danger" style="padding:1px 6px;font-size:10px;" onclick="EAPEngine.disconnectClient('${client.id}')">Desconectar</button>
             </div>
-            <div class="conn-stats-grid">
-              <div class="conn-stat-item"><span>IP Asignada:</span> <b>${client.ip}</b></div>
-              <div class="conn-stat-item"><span>Gateway:</span> <b>${client.gateway}</b></div>
-              <div class="conn-stat-item"><span>Velocidad:</span> <b>${EAP.calcRate(rssi)}</b></div>
-              <div class="conn-stat-item"><span>Tráfico:</span> <b>${EAP.formatBytes(client.rxBytes + client.txBytes)}</b></div>
-            </div>
+            <div style="margin-top:4px;">IP: <b>${client.ip}</b> · Gateway: <b>${client.gateway}</b> · Señal: <b>${rssi} dBm</b></div>
           `;
-          diagBox.style.display = 'block';
-          document.getElementById('btn-disconnect-active').onclick = () => {
-            EAP.disconnectClient(client.id);
-          };
         } else if (client.status === 'noinet') {
-          connCard.style.display = 'block';
-          connCard.className = 'conn-card status-warn';
-          connCard.innerHTML = `
+          statusBanner.style.background = '#fefce8';
+          statusBanner.style.border = '1px solid #fde047';
+          statusBanner.style.color = '#854d0e';
+          statusBanner.innerHTML = `
             <div style="display:flex;justify-content:space-between;align-items:center;">
-              <b>🟡 Conectado sin Internet (WAN Caída)</b>
-              <button class="sim-btn danger" style="padding:2px 8px;font-size:11px;" id="btn-disconnect-active">Desconectar</button>
+              <b>🟡 Conectado sin Internet (WAN caída)</b>
+              <button class="sim-btn danger" style="padding:1px 6px;font-size:10px;" onclick="EAPEngine.disconnectClient('${client.id}')">Desconectar</button>
             </div>
-            <div style="font-size:11px;margin-top:4px;">IP: ${client.ip} · La LAN funciona pero no hay salida WAN en el router.</div>
+            <div style="margin-top:4px;">IP: ${client.ip} · La LAN funciona pero el router no tiene salida a Internet.</div>
           `;
-          diagBox.style.display = 'block';
-          document.getElementById('btn-disconnect-active').onclick = () => EAP.disconnectClient(client.id);
         } else if (client.status === 'noip' || client.status === 'blocked' || client.status === 'fail') {
-          connCard.style.display = 'block';
-          connCard.className = 'conn-card status-fail';
-          connCard.innerHTML = `
-            <b>🔴 Fallo de Conexión</b>
-            <div style="font-size:11px;margin-top:4px;">${client.lastError || 'No se pudo establecer la conexión'}</div>
-          `;
-          diagBox.style.display = 'none';
+          statusBanner.style.background = '#fef2f2';
+          statusBanner.style.border = '1px solid #fca5a5';
+          statusBanner.style.color = '#991b1b';
+          statusBanner.innerHTML = `<b>🔴 Error:</b> ${client.lastError || 'Fallo de conexión'}`;
         } else {
-          connCard.style.display = 'none';
-          diagBox.style.display = 'none';
+          statusBanner.style.background = '#f1f5f9';
+          statusBanner.style.border = '1px solid #cbd5e1';
+          statusBanner.style.color = '#475569';
+          statusBanner.innerHTML = `Desconectado. Selecciona una red Wi-Fi abajo para conectar.`;
         }
 
-        // Active clients counter badge
-        const connectedCount = state.clients.filter(c => c.status === 'connected' || c.status === 'noinet').length;
-        document.getElementById('badge-active-clients').textContent = `${connectedCount} Conectado${connectedCount === 1 ? '' : 's'}`;
-        document.getElementById('pill-client-count').textContent = connectedCount;
+        // Wi-Fi Scan List (Based on REAL EAP Configuration)
+        const scanList = document.getElementById('dev-wifi-scan-list');
+        scanList.innerHTML = '';
+
+        if (!client.wifiEnabled) {
+          scanList.innerHTML = '<div style="padding:16px;text-align:center;color:#888;">El Wi-Fi está apagado en este dispositivo.</div>';
+          return;
+        }
+
+        // Add SSIDs from REAL EAP config if radio 2.4GHz is ON
+        if (state.wireless.radio24) {
+          state.wireless.ssids.forEach(s => {
+            if (!s.bcast) return; // Hidden SSID
+            const isConn = client.connectedSSID === s.name && (client.status === 'connected' || client.status === 'noinet');
+            const item = document.createElement('div');
+            item.className = `wifi-item ${isConn ? 'connected' : ''}`;
+            item.innerHTML = `
+              <div class="ssid-info">
+                <span class="ssid-name">
+                  ${isConn ? '<b style="color:var(--tpl-green)">✓</b> ' : ''}${s.name} ${s.sec !== 'None' ? '🔒' : ''}
+                </span>
+                <span class="ssid-extra">Canal ${state.wireless.channel} · 2.4GHz · ${s.sec} ${s.vlan ? '· VLAN ' + s.vlan : ''}</span>
+              </div>
+              <div class="wifi-signal-bars">${[' ', '▂', '▂▄', '▂▄▆', '▂▄▆█'][bars]}</div>
+            `;
+            item.onclick = () => connectPrompt(client, s.name, s.sec, s.pass);
+            scanList.appendChild(item);
+          });
+        } else {
+          scanList.innerHTML = '<div style="padding:16px;text-align:center;color:#e74c3c;">La radio 2.4GHz de la EAP está desactivada en la web.</div>';
+        }
+
+        // External neighbor networks
+        const neighbor = [
+          { name: 'MOVISTAR_Fibra_4F2A', sec: 'WPA2' },
+          { name: 'Vodafone_Vecinos_5G', sec: 'WPA2' }
+        ];
+        neighbor.forEach(n => {
+          const item = document.createElement('div');
+          item.className = 'wifi-item';
+          item.style.opacity = '0.6';
+          item.innerHTML = `
+            <div class="ssid-info"><span class="ssid-name">${n.name} 🔒</span><span class="ssid-extra">Red vecina ajena</span></div>
+            <div class="wifi-signal-bars">▂▄</div>
+          `;
+          item.onclick = () => alert('Red externa fuera del alcance del laboratorio.');
+          scanList.appendChild(item);
+        });
       }
 
-      function promptConnectToSSID(client, ssid) {
-        if (client.status === 'connected' && client.connectedSSID === ssid.name) {
-          if (confirm(`El dispositivo ya está conectado a "${ssid.name}". ¿Desea desconectarlo?`)) {
+      function connectPrompt(client, ssidName, secMode, currentPass) {
+        if (client.status === 'connected' && client.connectedSSID === ssidName) {
+          if (confirm(`El dispositivo ya está conectado a "${ssidName}". ¿Desconectar?`)) {
             EAP.disconnectClient(client.id);
           }
           return;
         }
 
-        let enteredPassword = '';
-        if (ssid.sec !== 'None') {
-          enteredPassword = prompt(`Ingrese la contraseña de seguridad para "${ssid.name}":`, ssid.pass || '');
-          if (enteredPassword === null) return;
+        let pass = '';
+        if (secMode !== 'None') {
+          pass = prompt(`Introduce la contraseña inalámbrica para "${ssidName}":`, currentPass || '');
+          if (pass === null) return;
         }
 
-        const res = EAP.attemptConnect(client.id, ssid.name, enteredPassword);
+        const res = EAP.attemptConnect(client.id, ssidName, pass);
         if (res.status === 'connected') {
-          alert(`¡Conexión establecida con éxito!\nIP asignada por DHCP: ${res.ip}`);
+          alert(`¡Conectado exitosamente a "${ssidName}"!\nIP asignada: ${res.ip}`);
         } else if (res.status === 'noinet') {
-          alert(`Conectado a la red "${ssid.name}".\nAdvertencia: El enlace WAN del router está inactivo (sin acceso a Internet).`);
+          alert(`Conectado a "${ssidName}".\nAviso: La WAN del router está caída (sin Internet).`);
         } else {
-          alert(`Error al conectar con "${ssid.name}":\n${res.error}`);
+          alert(`Error al conectar con "${ssidName}":\n${res.error}`);
         }
       }
 
+      document.getElementById('btn-connect-hidden-ssid').onclick = () => {
+        const client = EAP.getState().clients.find(c => c.id === activeClientId);
+        if (!client) return;
+        const name = prompt('Nombre exacto del SSID oculto:');
+        if (!name) return;
+        const pass = prompt('Contraseña Wi-Fi (si tiene):') || '';
+        const res = EAP.attemptConnect(client.id, name, pass);
+        if (res.status === 'connected') alert(`Conectado a la red oculta "${name}" (IP: ${res.ip})`);
+        else alert(`Error al conectar: ${res.error}`);
+      };
+
+      // App Switcher in Device Shell
+      document.querySelectorAll('.device-app-btn').forEach(btn => {
+        btn.onclick = () => {
+          document.querySelectorAll('.device-app-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const app = btn.dataset.app;
+          document.querySelectorAll('.device-screen-content').forEach(s => s.style.display = 'none');
+          const targetScreen = document.getElementById('app-screen-' + app);
+          if (targetScreen) targetScreen.style.display = 'block';
+        };
+      });
+
       // -----------------------------------------------------------------------
-      // 4. Diagnostic Utilities (Ping & Speedtest)
+      // 6. Device CLI / Terminal Execution
       // -----------------------------------------------------------------------
-      const diagOutput = document.getElementById('diag-output-box');
+      const cliInput = document.getElementById('dev-cli-input');
+      const cliHistory = document.getElementById('dev-cli-history');
 
-      function printDiag(msg, type = 'ok') {
-        diagOutput.style.display = 'block';
-        const color = type === 'ok' ? '#4ade80' : type === 'warn' ? '#facc15' : '#f87171';
-        diagOutput.innerHTML += `<div style="color:${color}">${msg}</div>`;
-        diagOutput.scrollTop = diagOutput.scrollHeight;
-      }
+      cliInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          const cmd = cliInput.value.trim();
+          cliInput.value = '';
+          if (!cmd) return;
 
-      document.getElementById('btn-ping-gw').onclick = () => {
-        diagOutput.innerHTML = '';
-        const state = EAP.getState();
-        printDiag(`Haciendo ping a ${state.router.ip} con 32 bytes de datos:`, 'warn');
-        setTimeout(() => {
-          const res = EAP.runPing(activeClientId, state.router.ip);
-          printDiag(res.ok ? res.msg : `Error: ${res.error}`, res.ok ? 'ok' : 'err');
-        }, 300);
-      };
-
-      document.getElementById('btn-ping-ap').onclick = () => {
-        diagOutput.innerHTML = '';
-        const state = EAP.getState();
-        printDiag(`Haciendo ping a la EAP (${state.device.ip}):`, 'warn');
-        setTimeout(() => {
-          const res = EAP.runPing(activeClientId, state.device.ip);
-          printDiag(res.ok ? res.msg : `Error: ${res.error}`, res.ok ? 'ok' : 'err');
-        }, 200);
-      };
-
-      document.getElementById('btn-ping-inet').onclick = () => {
-        diagOutput.innerHTML = '';
-        printDiag('Haciendo ping a Internet (8.8.8.8 DNS Google):', 'warn');
-        setTimeout(() => {
-          const res = EAP.runPing(activeClientId, '8.8.8.8');
-          printDiag(res.ok ? res.msg : `Error: ${res.error}`, res.ok ? 'ok' : 'err');
-        }, 400);
-      };
-
-      document.getElementById('btn-speedtest').onclick = () => {
-        diagOutput.innerHTML = '';
-        printDiag('Iniciando Speedtest de enlace...', 'warn');
-        setTimeout(() => {
-          const res = EAP.runSpeedtest(activeClientId);
-          if (res.ok) {
-            printDiag(`Latencia: ${res.ping} ms`, 'ok');
-            printDiag(`Descarga: ${res.down} Mbps`, 'ok');
-            printDiag(`Subida: ${res.up} Mbps`, 'ok');
-          } else {
-            printDiag(`Error: ${res.error}`, 'err');
+          if (cmd.toLowerCase() === 'clear') {
+            cliHistory.textContent = '';
+            return;
           }
-        }, 600);
+
+          const promptText = `C:\\Users\\Device> ${cmd}\n`;
+          const output = EAP.executeCliCommand(activeClientId, cmd);
+          cliHistory.textContent += promptText + output + '\n\n';
+          cliHistory.scrollTop = cliHistory.scrollHeight;
+        }
+      });
+
+      // -----------------------------------------------------------------------
+      // 7. Mini Web Browser inside Virtual Device
+      // -----------------------------------------------------------------------
+      document.getElementById('btn-browser-go').onclick = () => {
+        const url = document.getElementById('dev-browser-url').value.trim();
+        const view = document.getElementById('dev-browser-view');
+        const state = EAP.getState();
+        const client = state.clients.find(c => c.id === activeClientId);
+
+        if (!client || client.status === 'disconnected') {
+          view.innerHTML = `<div style="color:#d9534f;padding:20px;"><b>No hay conexión de red</b><br>El dispositivo no está asociado a ningún punto de acceso.</div>`;
+          return;
+        }
+
+        if (url.includes(state.device.ip) || url.includes('192.168.0.254')) {
+          view.innerHTML = `
+            <div style="background:#36444b;color:#fff;padding:8px 12px;border-radius:3px;font-weight:bold;display:flex;justify-content:space-between;">
+              <span>TP-Link EAP Management</span><span>🟢 Online</span>
+            </div>
+            <div style="padding:12px;color:#333;">
+              <p><b>Acceso concedido a la consola web de la EAP</b></p>
+              <p style="font-size:11px;color:#666;">Modelo: ${state.device.model} · IP: ${state.device.ip}</p>
+              <p style="font-size:11px;color:#27ae60;">Conexión HTTP 200 OK establecida desde ${client.ip}.</p>
+            </div>
+          `;
+        } else if (url.includes(state.router.ip) || url.includes('192.168.0.1')) {
+          view.innerHTML = `
+            <div style="background:#1e293b;color:#fff;padding:8px 12px;border-radius:3px;font-weight:bold;">
+              Router Gateway 192.168.0.1
+            </div>
+            <div style="padding:12px;color:#333;">
+              <p>Portal del Router de acceso local.</p>
+              <p style="font-size:11px;">Estado WAN: <b>${state.router.wanOnline ? 'Online' : 'Offline'}</b></p>
+            </div>
+          `;
+        } else {
+          if (!state.router.wanOnline) {
+            view.innerHTML = `<div style="color:#d9534f;padding:20px;"><b>Sin conexión a Internet</b><br>El enlace WAN del router está inactivo. No se puede resolver "${url}".</div>`;
+          } else {
+            view.innerHTML = `
+              <div style="padding:20px;text-align:center;">
+                <h3 style="color:#0072ce;">Google</h3>
+                <p style="color:#27ae60;">¡Conexión a Internet exitosa!</p>
+                <p style="font-size:11px;color:#666;">Página externa cargada a través del enlace WAN.</p>
+              </div>
+            `;
+          }
+        }
       };
 
       // -----------------------------------------------------------------------
-      // 5. Topology Diagram & Router Controls (Tab 2)
+      // 8. Device Speedtest
       // -----------------------------------------------------------------------
-      function renderTopology() {
-        const state = EAP.getState();
-        const container = document.getElementById('topology-diagram');
+      document.getElementById('btn-start-speedtest').onclick = () => {
+        const client = EAP.getState().clients.find(c => c.id === activeClientId);
+        const statusText = document.getElementById('sp-status-text');
+        const downVal = document.getElementById('sp-down-val');
+        const upVal = document.getElementById('sp-up-val');
 
-        const wanColor = state.router.wanOnline ? '#39e36b' : '#f43f5e';
-        const apColor = state.wireless.radio24 ? '#0072ce' : '#64748b';
-        const connectedClients = state.clients.filter(c => c.status === 'connected' || c.status === 'noinet');
-        const clientColor = connectedClients.length > 0 ? '#39e36b' : '#94a3b8';
+        if (!client || client.status === 'disconnected') {
+          statusText.textContent = 'Error: Dispositivo desconectado de la red Wi-Fi.';
+          return;
+        }
 
-        container.innerHTML = `
-          <svg viewBox="0 0 400 120" width="100%" height="120" style="display:block;">
-            <defs>
-              <linearGradient id="wanGrad" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="${wanColor}"/>
-                <stop offset="100%" stop-color="${wanColor}"/>
-              </linearGradient>
-            </defs>
+        statusText.textContent = 'Midiendo velocidad de descarga...';
+        downVal.textContent = '...';
+        upVal.textContent = '...';
 
-            <!-- Link Lines -->
-            <line x1="50" y1="60" x2="140" y2="60" stroke="${wanColor}" stroke-width="3" stroke-dasharray="${state.router.wanOnline ? 'none' : '4,4'}"/>
-            <line x1="180" y1="60" x2="250" y2="60" stroke="#0072ce" stroke-width="3"/>
-            <line x1="290" y1="60" x2="350" y2="60" stroke="${clientColor}" stroke-width="2" stroke-dasharray="3,3"/>
+        setTimeout(() => {
+          const rssi = EAP.calcRSSI(client.distance);
+          let down = 0, up = 0;
+          if (rssi >= -55) { down = Math.round(280 + Math.random()*20); up = Math.round(92 + Math.random()*8); }
+          else if (rssi >= -68) { down = Math.round(190 + Math.random()*25); up = Math.round(65 + Math.random()*10); }
+          else if (rssi >= -78) { down = Math.round(98 + Math.random()*15); up = Math.round(35 + Math.random()*8); }
+          else { down = Math.round(28 + Math.random()*10); up = Math.round(9 + Math.random()*4); }
 
-            <!-- Cloud / Internet -->
-            <circle cx="50" cy="60" r="22" fill="#232f35" stroke="${wanColor}" stroke-width="2"/>
-            <text x="50" y="58" fill="#fff" font-size="16" text-anchor="middle">☁️</text>
-            <text x="50" y="94" fill="#64748b" font-size="10" text-anchor="middle">Internet</text>
+          downVal.textContent = down;
+          upVal.textContent = up;
+          statusText.textContent = `Test completado con éxito (Señal: ${rssi} dBm).`;
+        }, 800);
+      };
 
-            <!-- Router -->
-            <rect x="140" y="42" width="40" height="36" rx="4" fill="#232f35" stroke="#475569" stroke-width="2"/>
-            <circle cx="150" cy="52" r="2.5" fill="${wanColor}"/>
-            <circle cx="160" cy="52" r="2.5" fill="#39e36b"/>
-            <circle cx="170" cy="52" r="2.5" fill="${state.router.dhcpEnabled ? '#39e36b' : '#f5b942'}"/>
-            <text x="160" y="70" fill="#cbd5e1" font-size="9" text-anchor="middle">Router</text>
-            <text x="160" y="94" fill="#64748b" font-size="10" text-anchor="middle">${state.router.ip}</text>
-
-            <!-- EAP AP -->
-            <rect x="250" y="40" width="42" height="40" rx="20" fill="#232f35" stroke="${apColor}" stroke-width="2.5"/>
-            <text x="271" y="65" fill="#38bdf8" font-size="18" text-anchor="middle">📡</text>
-            <text x="271" y="94" fill="#64748b" font-size="10" text-anchor="middle">${state.device.ip}</text>
-
-            <!-- Connected Clients -->
-            <circle cx="350" cy="60" r="20" fill="#232f35" stroke="${clientColor}" stroke-width="2"/>
-            <text x="350" y="65" fill="#fff" font-size="14" text-anchor="middle">📱</text>
-            <text x="350" y="94" fill="#64748b" font-size="10" text-anchor="middle">${connectedClients.length} Clientes</text>
-          </svg>
-        `;
-
-        // Update Router inputs
-        document.getElementById('rt-ip-input').value = state.router.ip;
-        document.getElementById('rt-wan-toggle').checked = state.router.wanOnline;
-        document.getElementById('rt-wan-status').textContent = state.router.wanOnline ? 'Online' : 'Offline';
-        document.getElementById('rt-wan-status').style.color = state.router.wanOnline ? 'var(--tpl-green)' : 'var(--tpl-red)';
-
-        document.getElementById('rt-dhcp-toggle').checked = state.router.dhcpEnabled;
-        document.getElementById('rt-dhcp-status').textContent = state.router.dhcpEnabled ? 'Habilitado' : 'Deshabilitado';
-        document.getElementById('rt-dhcp-status').style.color = state.router.dhcpEnabled ? 'var(--tpl-green)' : 'var(--tpl-red)';
-
-        document.getElementById('rt-vlan-input').value = state.router.allowedVlans;
-      }
-
+      // -----------------------------------------------------------------------
+      // 9. Router Controls
+      // -----------------------------------------------------------------------
       document.getElementById('btn-save-router').onclick = () => {
         const state = EAP.getState();
         state.router.ip = document.getElementById('rt-ip-input').value.trim();
@@ -3056,43 +3521,11 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
         state.router.allowedVlans = document.getElementById('rt-vlan-input').value.trim();
         EAP.persistState();
         EAP.reevaluateAllClients();
-        alert('Parámetros del router guardados correctamente.');
+        alert('Configuración del Router guardada correctamente.');
       };
 
       // -----------------------------------------------------------------------
-      // 6. Preset Scenarios (Tab 3)
-      // -----------------------------------------------------------------------
-      function renderScenarios() {
-        const list = document.getElementById('scenarios-list');
-        list.innerHTML = '';
-
-        Object.keys(EAP.scenarios).forEach(key => {
-          const sc = EAP.scenarios[key];
-          const card = document.createElement('div');
-          card.style.cssText = 'background:#fff;border:1px solid #cbd5e1;border-radius:4px;padding:10px;cursor:pointer;';
-          card.innerHTML = `
-            <div style="display:flex;justify-content:space-between;align-items:center;">
-              <b style="color:var(--tpl-primary);font-size:12px;">${sc.name}</b>
-              <button class="sim-btn primary" style="padding:2px 8px;font-size:11px;">Cargar</button>
-            </div>
-            <div style="font-size:11px;color:#64748b;margin-top:4px;">${sc.desc}</div>
-          `;
-          card.onclick = () => {
-            sc.apply();
-            navigateToPage(currentPageIndex);
-            alert(`Escenario "${sc.name}" aplicado con éxito.`);
-          };
-          list.appendChild(card);
-        });
-      }
-
-      document.getElementById('btn-scenarios').onclick = () => {
-        toggleSimulator(true);
-        document.querySelector('[data-tab="scenarios"]').click();
-      };
-
-      // -----------------------------------------------------------------------
-      // 7. Syslog Console (Tab 4)
+      // 10. Syslog Console
       // -----------------------------------------------------------------------
       function renderSyslogs() {
         const state = EAP.getState();
@@ -3110,7 +3543,7 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
       };
 
       // -----------------------------------------------------------------------
-      // 8. Hardware LED & Top Bar Sync
+      // 11. Hardware LED Sync & Reboot Sequence
       // -----------------------------------------------------------------------
       function syncTopBar() {
         const state = EAP.getState();
@@ -3123,9 +3556,6 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
         ledWifi.className = state.wireless.radio24 ? 'led-dot green' : 'led-dot';
       }
 
-      // -----------------------------------------------------------------------
-      // 9. Reboot Progress Sequence
-      // -----------------------------------------------------------------------
       window.triggerRebootSequence = function(isReset = false) {
         const overlay = document.getElementById('reboot-modal-overlay');
         const bar = document.getElementById('reboot-progress-bar');
@@ -3136,7 +3566,6 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
         bar.style.width = '0%';
         text.textContent = '0%';
 
-        // Disconnect clients temporarily
         EAP.getState().clients.forEach(c => { c.status = 'disconnected'; });
         EAP.triggerSync();
 
@@ -3166,7 +3595,7 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
       };
 
       // -----------------------------------------------------------------------
-      // 10. Authentication & Session
+      // 12. Authentication Check
       // -----------------------------------------------------------------------
       const authOverlay = document.getElementById('auth-overlay');
       const authMsg = document.getElementById('auth-msg');
@@ -3207,20 +3636,17 @@ window.EAP_PAGES = [{"g": "Status", "n": "Device", "h": "<!DOCTYPE html PUBLIC \
       };
 
       // -----------------------------------------------------------------------
-      // 11. Initial Reactive Subscriptions & Launch
+      // 13. Initial Reactive Subscriptions & Launch
       // -----------------------------------------------------------------------
       EAP.onSync(() => {
-        renderDeviceSelector();
-        renderSelectedDeviceView();
-        renderTopology();
+        renderCanvasTopology();
+        renderActiveDeviceScreen();
         renderSyslogs();
         syncTopBar();
       });
 
-      renderDeviceSelector();
-      renderSelectedDeviceView();
-      renderTopology();
-      renderScenarios();
+      renderCanvasTopology();
+      renderActiveDeviceScreen();
       renderSyslogs();
       syncTopBar();
       checkSession();

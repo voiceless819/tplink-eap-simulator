@@ -1,123 +1,105 @@
-# 📡 TP-Link EAP Virtual Wireless Lab & Simulator
+# 📡 TP-Link EAP Virtual Wireless Lab & Simulator (Packet Tracer Style)
 
-> **Simulador interactivo y completo de Punto de Acceso TP-Link EAP (EAP115 / EAP225) con Laboratorio Virtual de Red, Clientes Wi-Fi, Topología interactiva y Diagnóstico en tiempo real.**
+> **Simulador interactivo y completo de Punto de Acceso TP-Link EAP (EAP115 / EAP225) con Laboratorio Multi-Dispositivo tipo Cisco Packet Tracer, Topología interactiva con arrastre, Consola CLI, Navegador Web, Escáner Wi-Fi y Diagnóstico.**
 >
-> 🚀 **100% compatible con GitHub Pages y ejecución local sin servidor.**
+> 🚀 **100% compatible con GitHub Pages y ejecución local sin servidores.**
 
 ---
 
-## 🌟 Características Principales
+## 🌟 Novedades y Características Principales
 
-### 1. 🖥️ Interfaz Web EAP Original Completa (23 Páginas)
-Se conserva íntegro el HTML, CSS y diseño corporativo original del firmware de TP-Link EAP, abarcando todas las categorías:
-- **Status**: Device Information (tiempo de actividad, CPU, memoria, IP/MAC, puertos), Wireless (SSID list, tráfico de radio y LAN en vivo), Client (tabla de clientes conectados en tiempo real).
-- **Wireless**: Wireless Settings (interruptor Radio 2.4GHz, gestión de SSIDs con modales auténticos), Portal de autenticación, VLANs, Filtrado MAC (lista blanca/negra en caliente), Scheduler, QoS, Rogue AP Detection.
-- **Management**: Network (DHCP dinámico / IP estática), System Log (Syslog con eventos en vivo), Web Server, Management Access, Control de LEDs, SSH, SNMP.
-- **System**: Cuentas de usuario y contraseñas, Controller Settings, Configuración de hora y NTP, Reboot & Factory Reset (con barra de progreso animada), Backup & Restore (exportación e importación de JSON).
+### 1. 🖧 Laboratorio Multi-Dispositivo (Estilo Cisco Packet Tracer)
+- **Lienzo Gráfico Interactivo (Canvas SVG)**:
+  - Muestra el Router Gateway, el cable PoE LAN, la EAP con sus anillos de cobertura de 2.4 GHz y todos los dispositivos conectados.
+  - **Arrastrar y Soltar (Drag & Drop)**: Puedes arrastrar libremente cualquier dispositivo por el lienzo para alejarlo o acercarlo a la EAP.
+  - **Física RF en Tiempo Real**: Al mover un dispositivo, su distancia (metros), potencia de señal estimada (RSSI en dBm) y tasa de enlace (Mbps) se recalculan automáticamente según el modelo de pérdida de trayectoria (*Free Space Path Loss*).
+  - Si alejas un dispositivo más allá del radio de cobertura (>35 metros o < -85 dBm), la señal se degrada y pierde la conexión.
+- **2 o Más Dispositivos Simultáneos**:
+  - Añade todos los dispositivos que quieras con el botón **➕ Añadir Dispositivo** (Smartphones, Portátiles/Laptops, Tablets, Cámaras IoT o PCs de escritorio).
+  - Varios dispositivos pueden estar asociados simultáneamente a la misma red o a redes distintas (ej: unos en la red corporativa y otros en la red de invitados).
+  - En la interfaz web de la EAP (**Status > Client**), **todos los clientes conectados aparecen listados en tiempo real** en la tabla oficial de TP-Link.
 
-### 2. 📱 Laboratorio Virtual de Clientes Wi-Fi
-- **Simulación Multi-Dispositivo**:
-  - 📱 **Pixel 8 Pro** (Smartphone)
-  - 💻 **ThinkPad X1** (Portátil de trabajo)
-  - 📹 **SmartCam 1080p** (Cámara de seguridad IoT)
-  - 🕵️ **Unknown Scanner** (Cliente sospechoso para pruebas de seguridad)
-  - ➕ Posibilidad de añadir clientes personalizados con nombre y dirección MAC propia.
-- **Escáner Wi-Fi en Tiempo Real**:
-  - Detecta SSIDs emitidos por la EAP y redes vecinas simuladas.
-  - Indicador de barras de señal y estado de seguridad (Abierta o WPA2-Personal).
-- **Handshake de Conexión Realista**:
-  - Comprobación de estado de radio 2.4GHz de la EAP.
-  - Validación de contraseña WPA2.
-  - Comprobación de reglas de filtrado MAC (Allow / Deny).
-  - Comprobación de VLAN en el enlace troncal del router.
-  - Asignación de IP dinámica mediante servidor DHCP virtual o APIPA.
-  - Verificación de enlace WAN a Internet.
-- **Modelo de Propagación RF y Distancia**:
-  - Control deslizante de distancia (1 a 40 metros).
-  - Cálculo de pérdida de trayectoria en espacio libre (FSPL) en dBm (-35 dBm a -92 dBm).
-  - Reducción dinámica de la tasa de enlace (de 300 Mbps a 11 Mbps) y desconexión por señal débil (< -85 dBm).
-- **Herramientas de Diagnóstico Integradas**:
-  - **Ping Utility**: Ping al Router Gateway (`192.168.0.1`), a la EAP (`192.168.0.254`) o a Internet (`8.8.8.8`) con cálculo de latencia realista (ms) y pérdidas de paquetes.
-  - **Speedtest**: Medición interactiva de ancho de banda de descarga y subida según la calidad de la señal.
+### 2. 📱 Dispositivo Virtual Totalmente Usable (Móvil / Portátil)
+Al seleccionar cualquier dispositivo del lienzo, se abre su pantalla interactiva con 4 aplicaciones de prueba:
+- 📶 **Gestor Wi-Fi**:
+  - Interruptor de encendido/apagado del adaptador Wi-Fi.
+  - Escaneo continuo de redes que detecta los SSIDs configurados en la EAP en tiempo real.
+  - Diálogo de conexión que pide la contraseña WPA2 si la red es segura.
+  - Soporte para conectar a redes con SSID oculto.
+  - Información de conexión: IP asignada, Puerta de enlace, DNS, RSSI en dBm y botón de desconexión.
+- 💻 **Consola Terminal (CMD / CLI)**:
+  - Línea de comandos interactiva donde puedes ejecutar:
+    - `ipconfig` / `ifconfig`: Muestra la IP, máscara de subred, gateway, DNS y MAC.
+    - `ping <ip>`: Envía paquetes ICMP al Router (`192.168.0.1`), a la EAP (`192.168.0.254`) o a Internet (`8.8.8.8`) mostrando tiempos de respuesta reales (ms).
+    - `tracert <ip>` / `traceroute <ip>`: Realiza la traza de saltos hasta el destino.
+    - `netsh wlan show`: Información técnica del enlace 802.11n, canal, cifrado AES, señal y velocidad.
+    - `curl <url>`: Realiza peticiones HTTP al servidor web de la EAP o a servidores externos.
+    - `help` / `clear`: Ayuda y limpieza de pantalla.
+- 🌐 **Navegador Web Integrado**:
+  - Permite navegar a `http://192.168.0.254` para comprobar la respuesta HTTP del servidor web de la EAP, a `http://192.168.0.1` para el Router o a sitios web de Internet.
+- ⚡ **Speedtest**:
+  - Mide la velocidad real de subida y bajada en función de la atenuación RF y distancia del dispositivo a la antena.
 
-### 3. 🖧 Topología de Red y Gateway Router
-- Diagrama SVG interactivo en tiempo real:  
-  `[Internet / Cloud] <===> [Router Gateway] <---(LAN PoE)---> [TP-Link EAP] <···(Wi-Fi)···> [Clientes Conectados]`
-- Controles interactivos del Router:
-  - **Enlace WAN**: Activar o desactivar para simular caídas de proveedor de Internet (ISP).
-  - **Servidor DHCP**: Activar o desactivar para probar fallos de asignación de IP.
-  - **VLANs Troncales**: Definir IDs de VLANs permitidas en el enlace (ej: `0, 1, 10, 20`).
-  - **IP del Gateway**: Personalizable.
-
-### 4. 🎯 Escenarios Prácticos de Aprendizaje (1-Click Presets)
-1. **Entorno Estándar SOHO**: Red segura con WPA2, DHCP activo y clientes en cobertura óptima.
-2. **Red de Invitados con VLAN 20**: Segmentación de tráfico corporativo e invitados con aislamiento de VLAN.
-3. **Auditoría de Seguridad MAC**: Demostración de listas negras (Deny) y listas blancas (Allow).
-4. **Caída de Enlace WAN**: La red local Wi-Fi funciona correctamente pero no hay salida a Internet.
-5. **Límite de Cobertura y Señal Débil**: Dispositivo en el límite de cobertura (35 metros) experimentando degradación y cortes.
+### 3. 🖥️ Las Configuraciones Reales se hacen dentro de la Web de la EAP
+**La página web de la EAP es la fuente de la verdad del simulador.** Todas las 23 páginas son totalmente configurables:
+- **Wireless Settings (Página 3)**:
+  - El interruptor de la Radio 2.4GHz apaga o enciende la emisión física. Si se apaga, los dispositivos pierden la señal inmediatamente.
+  - Tabla de SSIDs con modales auténticos de TP-Link: crear, editar y eliminar redes (nombre SSID, emisión visible/oculta, clave WPA2, ID de VLAN y aislamiento de invitados).
+- **Client List (Página 2)**:
+  - Muestra todos los dispositivos conectados con su Hostname, IP DHCP, MAC, RSSI y velocidad.
+  - Botón **Desconectar** y botón **Bloquear** (envía la MAC directamente a la lista negra del filtrado MAC y expulsa al cliente).
+- **Filtrado MAC (Página 6)**:
+  - Activa la regla *Deny* (lista negra) o *Allow* (lista blanca). Si un dispositivo viola la regla configurada, se le deniega el acceso al instante.
+- **Gestión IP de Red (Página 10)**:
+  - Cambia la IP de la EAP (ej. a `192.168.1.50`). El cambio se refleja en el estado, en el ping de los dispositivos y en la topología.
+- **Syslog en Vivo (Página 11)**:
+  - Registro de auditoría en tiempo real con eventos de autenticación, DHCP, expulsiones y cambios de configuración.
+- **Reboot & Reset (Página 20)**:
+  - Barra de progreso auténtica de reinicio que desconecta a los clientes y reinicia los servicios.
+- **Backup & Restore (Página 21)**:
+  - Descarga e importa copias de seguridad de la configuración en JSON.
 
 ---
 
-## 🚀 Despliegue en GitHub Pages (Paso a Paso)
-
-Este proyecto está diseñado específicamente para funcionar sin servidores ni dependencias de backend:
+## 🚀 Despliegue en GitHub Pages
 
 1. **Sube los archivos a tu repositorio de GitHub**:
    ```bash
    git add .
-   git commit -m "Initial commit: TP-Link EAP Virtual Wireless Lab"
+   git commit -m "Feat: TP-Link EAP Virtual Wireless Lab (Packet Tracer Multi-Device)"
    git push origin main
    ```
 2. **Activa GitHub Pages**:
-   - En tu repositorio de GitHub, haz clic en **Settings** (Configuración).
-   - En el menú lateral izquierdo, haz clic en **Pages**.
-   - En la sección **Build and deployment > Branch**:
-     - Selecciona la rama: `main` (o `master`).
-     - Selecciona la carpeta: `/(root)`.
-     - Haz clic en **Save** (Guardar).
-3. **¡Listo!** En unos 30 segundos, tu simulador estará disponible públicamente en:
-   `https://<tu-usuario>.github.io/<nombre-del-repo>/`
+   - Entra en tu repositorio en GitHub y haz clic en **Settings** > **Pages**.
+   - En **Branch**, selecciona `main` (o `master`) y directorio `/(root)`.
+   - Haz clic en **Save**.
+   - En unos segundos estará en línea en:  
+     `https://<tu-usuario>.github.io/<nombre-del-repo>/`
 
 ---
 
-## 💻 Uso Local (Sin Conexión a Internet)
+## 💻 Uso Local (Sin Conexión)
 
-Para abrirlo en tu computadora local:
-- Simplemente haz doble clic en `index.html` (o ábrelo con cualquier navegador: Chrome, Firefox, Edge, Safari, Brave).
-- No requiere instalar Node.js, Python ni servidores locales.
+- Abre directamente `index.html` en cualquier navegador web moderno (Chrome, Edge, Firefox, Safari).
+- No requiere instalar dependencias, servidores web ni entornos de ejecución adicionales.
 
 ---
 
 ## 📂 Estructura del Proyecto
 
 ```text
-├── index.html           # Punto de entrada principal para GitHub Pages y navegadores
-├── simulator.js         # Motor de simulación, lógica RF, estados y puente con el iframe
-├── simulator.css        # Hoja de estilos con la estética corporativa TP-Link Omada / EAP
-├── eap_pages.js         # Colección estructurada de las 23 páginas HTML originales de la EAP
-├── EAP_completo.html    # Versión standalone todo-en-uno auto-contenida
-└── README.md            # Documentación completa y guía de laboratorio
+├── index.html           # Interfaz principal optimizada para GitHub Pages
+├── simulator.js         # Motor Packet Tracer multi-dispositivo, CLI, RF y puente iframe
+├── simulator.css        # Hoja de estilos con la estética corporativa de TP-Link
+├── eap_pages.js         # Repositorio estructurado con las 23 páginas originales de la EAP
+├── EAP_completo.html    # Versión 'todo en uno' auto-contenida en un único fichero
+└── README.md            # Documentación completa
 ```
 
 ---
 
-## 🔑 Credenciales de Acceso por Defecto
+## 🔑 Credenciales por Defecto
 
 - **Usuario:** `admin`
-- **Contraseña:** `admin`
-*(Las credenciales pueden modificarse desde la sección **System > User Account** y se guardan localmente en el navegador).*
-
----
-
-## 🛠️ Tecnologías Empleadas
-
-- HTML5, CSS3 moderno (Variables CSS, Flexbox, Grid, Animaciones SVG).
-- JavaScript Vanilla ES6+ (Sin frameworks pesados, carga instantánea).
-- LocalStorage API (Persistencia de configuración, logs y clientes).
-- SVG Vectorial Dinámico para diagramas de topología y cobertura.
-
----
-
-## 📄 Licencia
-
-Desarrollado para fines educativos, formación técnica en redes (CCNA, CWNA, MTCNA), laboratorios académicos y divulgación.
+- **Contraseña:** `admin`  
+*(Se pueden modificar desde la sección **System > User Account** y persisten localmente).*

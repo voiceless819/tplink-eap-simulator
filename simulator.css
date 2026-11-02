@@ -21,7 +21,7 @@
   --tpl-text-main: #333333;
   --tpl-text-muted: #777777;
   --tpl-font: Arial, Helvetica, "Segoe UI", sans-serif;
-  --sim-width: 440px;
+  --sim-width: 500px;
 }
 
 * {
@@ -47,7 +47,7 @@ html, body {
   top: 0;
   left: 0;
   right: 0;
-  height: 40px;
+  height: 42px;
   background: linear-gradient(180deg, #3d4c54 0%, #303c42 100%);
   border-bottom: 2px solid #232d32;
   display: flex;
@@ -56,7 +56,7 @@ html, body {
   padding: 0 14px;
   z-index: 100;
   color: #e2e8f0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
 .brand-section {
@@ -68,8 +68,8 @@ html, body {
 .brand-logo {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 14px;
+  gap: 8px;
+  font-size: 15px;
   font-weight: bold;
   letter-spacing: 0.5px;
   color: #ffffff;
@@ -103,8 +103,8 @@ html, body {
   align-items: center;
   gap: 10px;
   background: #232c31;
-  padding: 3px 10px;
-  border-radius: 12px;
+  padding: 4px 12px;
+  border-radius: 14px;
   border: 1px solid #425057;
   font-size: 11px;
 }
@@ -112,7 +112,7 @@ html, body {
 .led-item {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   color: #cbd5e1;
 }
 
@@ -139,15 +139,6 @@ html, body {
   box-shadow: 0 0 6px #f43f5e;
 }
 
-.led-dot.blink {
-  animation: ledBlink 1s infinite;
-}
-
-@keyframes ledBlink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.2; }
-}
-
 .nav-controls {
   display: flex;
   align-items: center;
@@ -170,12 +161,12 @@ html, body {
   color: #e2e8f0;
   border: 1px solid #45555e;
   border-radius: 3px;
-  padding: 4px 10px;
+  padding: 5px 12px;
   font-size: 12px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   transition: all 0.15s;
 }
 
@@ -207,11 +198,11 @@ html, body {
 }
 
 /* ==========================================================================
-   Main Layout: Iframe & Simulator Panel
+   Main Layout
    ========================================================================== */
 #app-container {
   position: fixed;
-  top: 40px;
+  top: 42px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -236,14 +227,14 @@ html, body {
 }
 
 /* ==========================================================================
-   Simulator Docked / Floating Panel
+   Simulator Panel
    ========================================================================== */
 #sim-container {
   width: var(--sim-width);
   height: 100%;
   background: #ffffff;
   border-left: 1px solid var(--tpl-border);
-  box-shadow: -2px 0 8px rgba(0,0,0,0.08);
+  box-shadow: -3px 0 12px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   z-index: 50;
@@ -254,31 +245,18 @@ html, body {
   transform: translateX(100%);
 }
 
-#sim-container.floating {
-  position: fixed;
-  right: 15px;
-  bottom: 15px;
-  height: auto;
-  max-height: 85vh;
-  border-radius: 6px;
-  border: 1px solid var(--tpl-border);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-  width: 460px;
-}
-
-/* Floating pill button when collapsed */
 #sim-toggle-pill {
   position: fixed;
-  right: 16px;
-  bottom: 16px;
+  right: 18px;
+  bottom: 18px;
   background: linear-gradient(135deg, #0072ce 0%, #0055a5 100%);
   color: #ffffff;
-  padding: 8px 16px;
-  border-radius: 20px;
+  padding: 9px 18px;
+  border-radius: 24px;
   font-size: 13px;
   font-weight: bold;
   border: 1px solid rgba(255,255,255,0.3);
-  box-shadow: 0 4px 14px rgba(0, 114, 206, 0.4);
+  box-shadow: 0 4px 16px rgba(0, 114, 206, 0.45);
   cursor: pointer;
   display: none;
   align-items: center;
@@ -289,22 +267,21 @@ html, body {
 
 #sim-toggle-pill:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 114, 206, 0.55);
+  box-shadow: 0 6px 20px rgba(0, 114, 206, 0.6);
 }
 
 #sim-toggle-pill.visible {
   display: flex;
 }
 
-/* Simulator Header */
 .sim-header {
-  height: 42px;
+  height: 44px;
   background: var(--tpl-dark);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 12px;
+  padding: 0 14px;
   border-bottom: 2px solid var(--tpl-primary);
   flex-shrink: 0;
 }
@@ -327,8 +304,8 @@ html, body {
   background: transparent;
   border: 1px solid transparent;
   color: #cbd5e1;
-  font-size: 13px;
-  padding: 2px 6px;
+  font-size: 14px;
+  padding: 3px 8px;
   border-radius: 3px;
   cursor: pointer;
   transition: all 0.15s;
@@ -339,7 +316,7 @@ html, body {
   color: #ffffff;
 }
 
-/* Simulator Nav Tabs */
+/* Tabs */
 .sim-tabs {
   display: flex;
   background: #f1f4f8;
@@ -361,7 +338,7 @@ html, body {
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   transition: all 0.15s;
 }
 
@@ -378,7 +355,7 @@ html, body {
   margin-bottom: -1px;
 }
 
-/* Simulator Body */
+/* Body */
 .sim-body {
   flex: 1;
   overflow-y: auto;
@@ -389,7 +366,6 @@ html, body {
   gap: 12px;
 }
 
-/* Cards */
 .sim-card {
   background: #ffffff;
   border: 1px solid var(--tpl-border);
@@ -412,77 +388,145 @@ html, body {
   padding-bottom: 6px;
 }
 
-/* Device Selector Pills */
-.dev-selector {
-  display: flex;
-  gap: 6px;
-  overflow-x: auto;
-  padding-bottom: 6px;
-  margin-bottom: 8px;
+/* ==========================================================================
+   PACKET TRACER TOPOLOGY CANVAS
+   ========================================================================== */
+.pt-canvas-container {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid var(--tpl-border);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
 }
 
-.dev-pill {
+.pt-canvas-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
   background: #f1f5f9;
-  border: 1px solid var(--tpl-border);
-  border-radius: 16px;
-  padding: 4px 10px;
+  border-bottom: 1px solid var(--tpl-border);
+  font-size: 12px;
+  font-weight: bold;
+  color: #334155;
+}
+
+#pt-svg-canvas {
+  width: 100%;
+  height: 260px;
+  background: radial-gradient(#cbd5e1 1px, transparent 1px);
+  background-size: 18px 18px;
+  background-color: #f8fafc;
+  display: block;
+  cursor: default;
+}
+
+.pt-node {
+  cursor: grab;
+  transition: filter 0.15s;
+}
+
+.pt-node:active {
+  cursor: grabbing;
+}
+
+.pt-node:hover {
+  filter: drop-shadow(0 0 4px rgba(0, 114, 206, 0.6));
+}
+
+.pt-node.selected circle.node-bg {
+  stroke: var(--tpl-primary);
+  stroke-width: 3px;
+}
+
+.pt-link {
+  stroke-dasharray: 4, 4;
+  animation: ptPacketFlow 1.5s linear infinite;
+}
+
+@keyframes ptPacketFlow {
+  to {
+    stroke-dashoffset: -16;
+  }
+}
+
+/* ==========================================================================
+   VIRTUAL DEVICE (PHONE / LAPTOP INTERACTIVE SHELL)
+   ========================================================================== */
+.virtual-device-frame {
+  background: #ffffff;
+  border: 2px solid #94a3b8;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.device-top-bar {
+  background: #1e293b;
+  color: #ffffff;
+  padding: 6px 12px;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.device-top-bar .device-name-badge {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.device-nav-apps {
+  display: flex;
+  background: #f1f5f9;
+  border-bottom: 1px solid var(--tpl-border);
+  padding: 3px 6px;
+  gap: 4px;
+}
+
+.device-app-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 4px 8px;
   font-size: 11px;
   font-weight: 600;
   color: #475569;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 5px;
-  white-space: nowrap;
-  transition: all 0.15s;
+  gap: 4px;
 }
 
-.dev-pill:hover {
+.device-app-btn:hover {
   background: #e2e8f0;
-  color: #1e293b;
 }
 
-.dev-pill.active {
-  background: var(--tpl-primary);
-  border-color: var(--tpl-primary);
-  color: #ffffff;
-}
-
-.dev-pill.connected::after {
-  content: "";
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #39e36b;
-  margin-left: 2px;
-}
-
-/* Virtual Device Screen */
-.virtual-phone {
+.device-app-btn.active {
   background: #ffffff;
-  border: 2px solid #cbd5e1;
-  border-radius: 12px;
-  padding: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  color: var(--tpl-primary);
+  border-color: #cbd5e1;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
-.phone-status-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 11px;
-  color: #64748b;
-  border-bottom: 1px solid #e2e8f0;
-  padding-bottom: 6px;
-  margin-bottom: 10px;
+.device-screen-content {
+  padding: 10px;
+  min-height: 220px;
+  background: #ffffff;
 }
 
+/* Wi-Fi App Screen */
 .wifi-list {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  max-height: 180px;
+  max-height: 190px;
   overflow-y: auto;
   border: 1px solid #e2e8f0;
   border-radius: 6px;
@@ -506,11 +550,6 @@ html, body {
 .wifi-item:hover {
   border-color: var(--tpl-primary);
   background: #eff6ff;
-}
-
-.wifi-item.selected {
-  border-color: var(--tpl-primary);
-  background: #ebf5ff;
 }
 
 .wifi-item.connected {
@@ -543,69 +582,101 @@ html, body {
   color: var(--tpl-primary);
 }
 
-/* Connection Details Card */
-.conn-card {
-  margin-top: 10px;
-  padding: 10px;
+/* Device Terminal / CLI */
+.device-terminal {
+  background: #0f172a;
+  color: #38bdf8;
+  font-family: Consolas, monospace;
+  font-size: 11px;
+  line-height: 1.4;
   border-radius: 6px;
-  border: 1px solid #e2e8f0;
-  font-size: 12px;
+  padding: 10px;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-.conn-card.status-ok {
-  background: #f0fdf4;
-  border-color: #86efac;
-  color: #166534;
+.terminal-history {
+  flex: 1;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
 }
 
-.conn-card.status-warn {
-  background: #fefce8;
-  border-color: #fde047;
-  color: #854d0e;
-}
-
-.conn-card.status-fail {
-  background: #fef2f2;
-  border-color: #fca5a5;
-  color: #991b1b;
-}
-
-.conn-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+.terminal-input-row {
+  display: flex;
+  align-items: center;
   gap: 6px;
-  margin-top: 8px;
+  margin-top: 6px;
+  border-top: 1px solid #1e293b;
+  padding-top: 4px;
+}
+
+.terminal-prompt {
+  color: #4ade80;
+  font-weight: bold;
+}
+
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: Consolas, monospace;
   font-size: 11px;
 }
 
-.conn-stat-item {
-  background: rgba(255,255,255,0.7);
-  padding: 4px 6px;
-  border-radius: 3px;
-  display: flex;
-  justify-content: space-between;
+/* Device Mini Browser */
+.device-browser {
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #ffffff;
 }
 
-/* Diagnostic Tools (Ping, Speedtest) */
-.diag-actions {
+.browser-bar {
+  background: #f1f5f9;
+  padding: 6px 8px;
   display: flex;
+  align-items: center;
   gap: 6px;
-  margin-top: 10px;
+  border-bottom: 1px solid #cbd5e1;
 }
 
+.browser-url-input {
+  flex: 1;
+  padding: 4px 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 11px;
+  outline: none;
+}
+
+.browser-viewport {
+  height: 180px;
+  padding: 12px;
+  overflow-y: auto;
+  font-size: 12px;
+  color: #334155;
+  background: #ffffff;
+}
+
+/* Diagnostic & Controls */
 .sim-btn {
   background: #f1f5f9;
   color: #334155;
   border: 1px solid #cbd5e1;
   border-radius: 4px;
-  padding: 6px 12px;
+  padding: 5px 12px;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 5px;
   transition: all 0.15s;
 }
 
@@ -644,7 +715,6 @@ html, body {
   background: var(--tpl-red-hover);
 }
 
-/* Form Controls */
 .sim-row {
   display: flex;
   align-items: center;
@@ -671,23 +741,12 @@ html, body {
   border-color: var(--tpl-primary);
 }
 
-/* Slider */
 .sim-range {
-  width: 130px;
+  width: 140px;
   accent-color: var(--tpl-primary);
   cursor: pointer;
 }
 
-/* Topology Diagram */
-.topology-wrap {
-  width: 100%;
-  background: #ffffff;
-  border: 1px solid var(--tpl-border);
-  border-radius: 4px;
-  padding: 8px;
-}
-
-/* Console Logs */
 .sim-log-wrap {
   background: #1e293b;
   color: #f1f5f9;
@@ -696,7 +755,7 @@ html, body {
   font-family: Consolas, monospace;
   font-size: 11px;
   line-height: 1.5;
-  max-height: 120px;
+  max-height: 140px;
   overflow-y: auto;
 }
 
@@ -717,9 +776,7 @@ html, body {
   color: #f87171;
 }
 
-/* ==========================================================================
-   Modals & Notifications (TP-Link Look)
-   ========================================================================== */
+/* Modals */
 .tpl-modal-overlay {
   position: fixed;
   inset: 0;
@@ -804,7 +861,6 @@ html, body {
   border-color: #0072ce;
 }
 
-/* Reboot Progress Modal */
 .reboot-progress-wrap {
   text-align: center;
   padding: 20px 10px;
@@ -827,7 +883,6 @@ html, body {
   transition: width 0.3s;
 }
 
-/* Login Modal */
 #auth-overlay {
   position: fixed;
   inset: 0;
