@@ -59,24 +59,6 @@ Al seleccionar cualquier dispositivo del lienzo, se abre su pantalla interactiva
 - **Backup & Restore (Página 21)**:
   - Descarga e importa copias de seguridad de la configuración en JSON.
 
----
-
-## 🚀 Despliegue en GitHub Pages
-
-1. **Sube los archivos a tu repositorio de GitHub**:
-   ```bash
-   git add .
-   git commit -m "Feat: TP-Link EAP Virtual Wireless Lab (Packet Tracer Multi-Device)"
-   git push origin main
-   ```
-2. **Activa GitHub Pages**:
-   - Entra en tu repositorio en GitHub y haz clic en **Settings** > **Pages**.
-   - En **Branch**, selecciona `main` (o `master`) y directorio `/(root)`.
-   - Haz clic en **Save**.
-   - En unos segundos estará en línea en:  
-     `https://<tu-usuario>.github.io/<nombre-del-repo>/`
-
----
 
 ## 💻 Uso Local (Sin Conexión)
 
