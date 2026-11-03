@@ -7,6 +7,8 @@
   --tpl-dark: #36444b;
   --tpl-dark-hover: #2b363c;
   --tpl-header-bg: #232f35;
+  --tpl-teal: #4acbd6;
+  --tpl-teal-hover: #3ab5c0;
   --tpl-primary: #0072ce;
   --tpl-primary-hover: #005ea6;
   --tpl-green: #4aa72c;
@@ -21,7 +23,7 @@
   --tpl-text-main: #333333;
   --tpl-text-muted: #777777;
   --tpl-font: Arial, Helvetica, "Segoe UI", sans-serif;
-  --sim-width: 520px;
+  --sim-width: 550px;
 }
 
 * {
@@ -67,7 +69,7 @@ html, body {
 .brand-section {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .brand-logo {
@@ -81,13 +83,13 @@ html, body {
 }
 
 .brand-logo .logo-badge {
-  background: var(--tpl-green);
-  color: #fff;
+  background: var(--tpl-teal);
+  color: #162228;
   font-size: 10px;
   padding: 2px 6px;
   border-radius: 3px;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .model-badge {
@@ -125,7 +127,7 @@ html, body {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #555;
+  background: #475569;
   transition: all 0.3s;
 }
 
@@ -142,6 +144,15 @@ html, body {
 .led-dot.red {
   background: #f43f5e;
   box-shadow: 0 0 6px #f43f5e;
+}
+
+.led-dot.flashing {
+  animation: ledFlash 0.4s infinite alternate;
+}
+
+@keyframes ledFlash {
+  from { background: #4acbd6; box-shadow: 0 0 10px #4acbd6; }
+  to { background: #1e293b; box-shadow: none; }
 }
 
 .nav-controls {
@@ -185,21 +196,21 @@ html, body {
   background: var(--tpl-primary);
   border-color: #005fa8;
   color: #fff;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .top-btn.primary:hover {
   background: var(--tpl-primary-hover);
 }
 
-.top-btn.green {
-  background: var(--tpl-green);
-  border-color: #388420;
+.top-btn.danger {
+  background: #991b1b;
+  border-color: #b91c1c;
   color: #fff;
 }
 
-.top-btn.green:hover {
-  background: var(--tpl-green-hover);
+.top-btn.danger:hover {
+  background: #b91c1c;
 }
 
 /* ==========================================================================
@@ -251,15 +262,19 @@ html, body {
   right: 0;
   bottom: 0;
   width: var(--sim-width);
-  max-width: 95vw;
+  max-width: 96vw;
   background: #ffffff;
   border-left: 1px solid var(--tpl-border);
-  box-shadow: -4px 0 25px rgba(0, 0, 0, 0.22);
+  box-shadow: -6px 0 30px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
-  z-index: 2000;
+  z-index: 4500;
   transform: translateX(0);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), top 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.25s ease, top 0.3s ease;
+}
+
+#sim-container.wide-mode {
+  width: 820px;
 }
 
 #sim-container.full-top {
@@ -273,7 +288,7 @@ html, body {
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s;
 }
 
-/* Floating Pill Button when collapsed */
+/* Floating Pill Button when collapsed (Accessible even on Login screen!) */
 #sim-toggle-pill {
   position: fixed;
   right: 24px;
@@ -284,19 +299,19 @@ html, body {
   border-radius: 26px;
   font-size: 13px;
   font-weight: bold;
-  border: 1px solid rgba(255,255,255,0.3);
-  box-shadow: 0 4px 18px rgba(0, 114, 206, 0.5);
+  border: 1px solid rgba(255,255,255,0.35);
+  box-shadow: 0 4px 18px rgba(0, 114, 206, 0.55);
   cursor: pointer;
   display: none;
   align-items: center;
   gap: 8px;
-  z-index: 1500;
+  z-index: 4600;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 #sim-toggle-pill:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(0, 114, 206, 0.65);
+  box-shadow: 0 6px 24px rgba(0, 114, 206, 0.7);
 }
 
 #sim-toggle-pill.visible {
@@ -311,7 +326,7 @@ html, body {
   align-items: center;
   justify-content: space-between;
   padding: 0 14px;
-  border-bottom: 2px solid var(--tpl-primary);
+  border-bottom: 2px solid var(--tpl-teal);
   flex-shrink: 0;
 }
 
@@ -330,10 +345,10 @@ html, body {
 }
 
 .sim-icon-btn {
-  background: transparent;
-  border: 1px solid transparent;
-  color: #cbd5e1;
-  font-size: 14px;
+  background: #2b363c;
+  border: 1px solid #4a5a63;
+  color: #e2e8f0;
+  font-size: 11px;
   padding: 3px 8px;
   border-radius: 3px;
   cursor: pointer;
@@ -361,7 +376,7 @@ html, body {
   border: 1px solid var(--tpl-border);
   border-bottom: none;
   border-radius: 4px 4px 0 0;
-  padding: 6px 12px;
+  padding: 6px 11px;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
@@ -404,7 +419,7 @@ html, body {
 }
 
 .sim-card-header {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -434,17 +449,30 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 12px;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 7px 10px;
   background: #f1f5f9;
   border-bottom: 1px solid var(--tpl-border);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: bold;
   color: #334155;
 }
 
+.pt-toolbar-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 11px;
+  flex-wrap: wrap;
+}
+
 #pt-svg-canvas {
   width: 100%;
-  height: 260px;
+  height: 270px;
   background: radial-gradient(#cbd5e1 1px, transparent 1px);
   background-size: 18px 18px;
   background-color: #f8fafc;
@@ -461,8 +489,12 @@ html, body {
   cursor: grabbing;
 }
 
-.pt-node:hover {
-  filter: drop-shadow(0 0 4px rgba(0, 114, 206, 0.6));
+.pt-node:hover, .pt-infra-node:hover {
+  filter: drop-shadow(0 0 5px rgba(0, 114, 206, 0.55));
+}
+
+.pt-infra-node {
+  cursor: pointer;
 }
 
 .pt-node.selected circle.node-bg {
@@ -487,7 +519,7 @@ html, body {
 .virtual-device-frame {
   background: #ffffff;
   border: 2px solid #94a3b8;
-  border-radius: 12px;
+  border-radius: 10px;
   box-shadow: 0 4px 14px rgba(0,0,0,0.08);
   overflow: hidden;
   display: flex;
@@ -513,9 +545,10 @@ html, body {
 
 .device-nav-apps {
   display: flex;
+  flex-wrap: wrap;
   background: #f1f5f9;
   border-bottom: 1px solid var(--tpl-border);
-  padding: 3px 6px;
+  padding: 4px 6px;
   gap: 4px;
 }
 
@@ -546,7 +579,7 @@ html, body {
 
 .device-screen-content {
   padding: 10px;
-  min-height: 220px;
+  min-height: 240px;
   background: #ffffff;
 }
 
@@ -555,7 +588,7 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  max-height: 190px;
+  max-height: 185px;
   overflow-y: auto;
   border: 1px solid #e2e8f0;
   border-radius: 6px;
@@ -567,7 +600,7 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 10px;
+  padding: 7px 10px;
   border-radius: 4px;
   font-size: 12px;
   background: #ffffff;
@@ -611,26 +644,32 @@ html, body {
   color: var(--tpl-primary);
 }
 
-/* Device Terminal / CLI */
+/* Device Terminal / CLI & Router Cisco IOS CLI */
 .device-terminal {
   background: #0f172a;
   color: #38bdf8;
-  font-family: Consolas, monospace;
+  font-family: Consolas, "Courier New", monospace;
   font-size: 11px;
-  line-height: 1.4;
+  line-height: 1.45;
   border-radius: 6px;
   padding: 10px;
-  height: 220px;
+  height: 235px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+}
+
+.device-terminal.ios-terminal {
+  background: #090d16;
+  color: #a7f3d0;
+  height: 265px;
 }
 
 .terminal-history {
   flex: 1;
   overflow-y: auto;
   white-space: pre-wrap;
-  word-break: break-all;
+  word-break: break-word;
 }
 
 .terminal-input-row {
@@ -639,12 +678,13 @@ html, body {
   gap: 6px;
   margin-top: 6px;
   border-top: 1px solid #1e293b;
-  padding-top: 4px;
+  padding-top: 5px;
 }
 
 .terminal-prompt {
   color: #4ade80;
   font-weight: bold;
+  white-space: nowrap;
 }
 
 .terminal-input {
@@ -653,7 +693,7 @@ html, body {
   border: none;
   outline: none;
   color: #ffffff;
-  font-family: Consolas, monospace;
+  font-family: Consolas, "Courier New", monospace;
   font-size: 11px;
 }
 
@@ -684,7 +724,7 @@ html, body {
 }
 
 .browser-viewport {
-  height: 180px;
+  height: 195px;
   padding: 12px;
   overflow-y: auto;
   font-size: 12px;
@@ -698,8 +738,8 @@ html, body {
   color: #334155;
   border: 1px solid #cbd5e1;
   border-radius: 4px;
-  padding: 5px 12px;
-  font-size: 12px;
+  padding: 5px 11px;
+  font-size: 11.5px;
   font-weight: 600;
   cursor: pointer;
   display: inline-flex;
@@ -784,7 +824,7 @@ html, body {
   font-family: Consolas, monospace;
   font-size: 11px;
   line-height: 1.5;
-  max-height: 140px;
+  max-height: 160px;
   overflow-y: auto;
 }
 
@@ -813,7 +853,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 3000;
+  z-index: 5000;
   backdrop-filter: blur(2px);
 }
 
@@ -829,9 +869,9 @@ html, body {
 }
 
 .tpl-modal-header {
-  background: #7695B2;
+  background: #4acbd6;
   color: #ffffff;
-  padding: 8px 14px;
+  padding: 9px 14px;
   font-size: 13px;
   font-weight: bold;
   display: flex;
@@ -879,7 +919,7 @@ html, body {
 
 .tpl-form-control {
   width: 220px;
-  padding: 4px 8px;
+  padding: 5px 8px;
   border: 1px solid #ccc;
   border-radius: 2px;
   font-size: 12px;
@@ -887,7 +927,7 @@ html, body {
 }
 
 .tpl-form-control:focus {
-  border-color: #0072ce;
+  border-color: #4acbd6;
 }
 
 .reboot-progress-wrap {
@@ -908,40 +948,46 @@ html, body {
 .reboot-bar-val {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #4aa72c, #0072ce);
+  background: linear-gradient(90deg, #4acbd6, #0072ce);
   transition: width 0.3s;
 }
 
+/* ==========================================================================
+   Authentic TP-Link Firmware Login Screen (Default Initial View)
+   ========================================================================== */
 #auth-overlay {
   position: fixed;
   inset: 0;
   z-index: 4000;
-  background: radial-gradient(circle at center, #2e3b42 0%, #171f24 100%);
+  background: linear-gradient(145deg, #2b3940 0%, #1d272c 100%);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
 .auth-card {
-  width: 380px;
+  width: 390px;
+  max-width: 92vw;
   background: #ffffff;
-  border-radius: 6px;
-  box-shadow: 0 12px 36px rgba(0,0,0,0.4);
+  border-radius: 4px;
+  box-shadow: 0 16px 42px rgba(0,0,0,0.45);
   overflow: hidden;
-  border-top: 4px solid var(--tpl-green);
+  border-top: 4px solid #4acbd6;
 }
 
 .auth-card-head {
-  background: #36444b;
-  color: #fff;
-  padding: 16px 20px;
+  background: #f8fafc;
+  color: #232f35;
+  padding: 22px 26px 14px;
+  border-bottom: 1px solid #e2e8f0;
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
 }
 
 .auth-card-body {
-  padding: 24px;
+  padding: 24px 28px 26px;
 }
 
 .auth-input-group {
@@ -958,26 +1004,54 @@ html, body {
 
 .auth-input-group input {
   width: 100%;
-  padding: 8px 10px;
+  padding: 9px 12px;
   border: 1px solid #cbd5e1;
-  border-radius: 4px;
+  border-radius: 3px;
   font-size: 13px;
+  color: #1e293b;
   outline: none;
+  transition: border-color 0.15s;
 }
 
 .auth-input-group input:focus {
-  border-color: var(--tpl-primary);
+  border-color: #4acbd6;
+  box-shadow: 0 0 0 2px rgba(74, 203, 214, 0.2);
 }
 
 .auth-actions {
   display: flex;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 18px;
+}
+
+.btn-tpl-login {
+  width: 100%;
+  padding: 10px;
+  background: #4acbd6;
+  color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-tpl-login:hover {
+  background: #39b5c0;
 }
 
 .auth-msg {
   min-height: 18px;
   font-size: 12px;
   color: var(--tpl-red);
-  margin-top: 8px;
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+.auth-footer-meta {
+  margin-top: 18px;
+  color: #94a3b8;
+  font-size: 11px;
+  text-align: center;
 }
