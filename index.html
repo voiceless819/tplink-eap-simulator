@@ -48,23 +48,31 @@
       <button id="btn-top-reboot" class="top-btn" title="Reiniciar Punto de Acceso">
         <span>🔄</span> <span>Reboot</span>
       </button>
-      <button id="btn-logout" class="top-btn danger" style="margin-left:6px;" title="Cerrar sesión de administración">
+      <button id="btn-logout" class="top-btn danger" style="margin-left:4px;" title="Cerrar sesión de administración">
         <span>Salir</span>
+      </button>
+      <button id="btn-toggle-topbar" class="top-btn" style="padding:4px 6px;margin-left:4px;" title="Ocultar barra superior para pantalla completa">
+        <span>▲</span>
       </button>
     </div>
   </header>
 
+  <!-- Floating pill to restore top-bar if hidden -->
+  <button id="btn-show-topbar" style="position:fixed;top:6px;left:50%;transform:translateX(-50%);z-index:1001;display:none;background:#232d32;color:#94a3b8;border:1px solid #475569;border-radius:12px;padding:2px 10px;font-size:11px;cursor:pointer;">
+    ▼ Mostrar barra superior
+  </button>
+
   <!-- =========================================================================
-       Main Application Container
+       Main Application Container (100% Full Width Centered)
        ========================================================================= -->
   <main id="app-container">
-    <!-- EAP Original Web Interface Viewport -->
+    <!-- EAP Original Web Interface Viewport (Takes 100% full width, centered) -->
     <section id="eap-frame-container">
       <iframe id="eap-frame" title="TP-Link EAP Management Console" sandbox="allow-scripts allow-same-origin allow-forms allow-modals"></iframe>
     </section>
 
-    <!-- Virtual Wireless Lab & Multi-Device Simulator Side Panel -->
-    <aside id="sim-container">
+    <!-- Virtual Wireless Lab & Multi-Device Simulator Side Drawer -->
+    <aside id="sim-container" class="collapsed">
       <!-- Simulator Header -->
       <div class="sim-header">
         <div class="sim-title">
@@ -321,16 +329,6 @@ Escriba 'help' para ver la lista de comandos disponibles (ipconfig, ping, tracer
               <button id="btn-save-router" class="sim-btn primary">Guardar en Router</button>
             </div>
           </div>
-
-          <!-- Preset Scenarios -->
-          <div class="sim-card" style="margin-top:10px;">
-            <div class="sim-card-header">
-              <span>Escenarios Rápidos de Laboratorio</span>
-            </div>
-            <div id="scenarios-list" style="display:flex;flex-direction:column;gap:6px;">
-              <!-- Populated dynamically -->
-            </div>
-          </div>
         </div>
 
         <!-- ===================================================================
@@ -353,7 +351,7 @@ Escriba 'help' para ver la lista de comandos disponibles (ipconfig, ping, tracer
   </main>
 
   <!-- Floating Pill button to reopen simulator when collapsed -->
-  <button id="sim-toggle-pill">
+  <button id="sim-toggle-pill" class="visible">
     <span>📡</span>
     <span>Abrir Lab Packet Tracer</span>
     <span id="pill-client-count" style="background:#fff;color:var(--tpl-primary);border-radius:10px;padding:1px 6px;font-size:11px;">0</span>
@@ -467,6 +465,9 @@ Escriba 'help' para ver la lista de comandos disponibles (ipconfig, ping, tracer
       const selPage = document.getElementById('sel-page');
       const simContainer = document.getElementById('sim-container');
       const simTogglePill = document.getElementById('sim-toggle-pill');
+      const topBar = document.getElementById('top-bar');
+      const appContainer = document.getElementById('app-container');
+      const btnShowTopBar = document.getElementById('btn-show-topbar');
 
       // -----------------------------------------------------------------------
       // 1. Navigation Setup
@@ -533,7 +534,7 @@ Escriba 'help' para ver la lista de comandos disponibles (ipconfig, ping, tracer
       document.getElementById('btn-next-page').onclick = () => navigateToPage(currentPageIndex + 1);
 
       // -----------------------------------------------------------------------
-      // 2. Simulator Panel & Tabs Toggle
+      // 2. Simulator Drawer & Top Bar Toggle
       // -----------------------------------------------------------------------
       function toggleSimulator(show) {
         const willShow = show !== undefined ? show : simContainer.classList.contains('collapsed');
@@ -549,6 +550,21 @@ Escriba 'help' para ver la lista de comandos disponibles (ipconfig, ping, tracer
       document.getElementById('btn-toggle-sim').onclick = () => toggleSimulator();
       document.getElementById('sim-btn-collapse').onclick = () => toggleSimulator(false);
       simTogglePill.onclick = () => toggleSimulator(true);
+
+      // Toggle Top Bar for pure fullscreen
+      document.getElementById('btn-toggle-topbar').onclick = () => {
+        topBar.classList.add('hidden-bar');
+        appContainer.classList.add('full-top');
+        simContainer.classList.add('full-top');
+        btnShowTopBar.style.display = 'block';
+      };
+
+      btnShowTopBar.onclick = () => {
+        topBar.classList.remove('hidden-bar');
+        appContainer.classList.remove('full-top');
+        simContainer.classList.remove('full-top');
+        btnShowTopBar.style.display = 'none';
+      };
 
       const tabButtons = document.querySelectorAll('.sim-tab-btn');
       const tabPanes = document.querySelectorAll('.tab-pane');
@@ -569,14 +585,13 @@ Escriba 'help' para ver la lista de comandos disponibles (ipconfig, ping, tracer
       // 3. Packet Tracer Topology Canvas (Draggable Nodes & Visual Links)
       // -----------------------------------------------------------------------
       let draggedDevId = null;
-      let svgCanvas = document.getElementById('pt-svg-canvas');
+      const svgCanvas = document.getElementById('pt-svg-canvas');
 
       function renderCanvasTopology() {
         const state = EAP.getState();
         const clientsGroup = document.getElementById('svg-clients-group');
         const linksGroup = document.getElementById('svg-links-group');
 
-        // Update Router & AP colors
         document.getElementById('svg-rt-led-wan').setAttribute('fill', state.router.wanOnline ? '#39e36b' : '#f43f5e');
         document.getElementById('svg-ap-circle').setAttribute('stroke', state.wireless.radio24 ? '#0072ce' : '#64748b');
         document.getElementById('svg-ap-ip-text').textContent = state.device.ip;
@@ -638,7 +653,6 @@ Escriba 'help' para ver la lista de comandos disponibles (ipconfig, ping, tracer
         document.getElementById('pill-client-count').textContent = connCount;
       }
 
-      // Drag and Drop Logic on SVG Canvas
       svgCanvas.addEventListener('mousedown', function(e) {
         const node = e.target.closest('.pt-node');
         if (node) {
@@ -704,7 +718,7 @@ Escriba 'help' para ver la lista de comandos disponibles (ipconfig, ping, tracer
       };
 
       // -----------------------------------------------------------------------
-      // 5. Active Virtual Device Shell (Apps: Wi-Fi, CLI, Browser, Speedtest)
+      // 5. Active Virtual Device Shell
       // -----------------------------------------------------------------------
       function renderActiveDeviceScreen() {
         const state = EAP.getState();
@@ -712,7 +726,6 @@ Escriba 'help' para ver la lista de comandos disponibles (ipconfig, ping, tracer
         if (!client) return;
         activeClientId = client.id;
 
-        // Update dropdown
         const devDropdown = document.getElementById('sel-active-device-dropdown');
         devDropdown.innerHTML = state.clients.map(c => `
           <option value="${c.id}" ${c.id === client.id ? 'selected' : ''}>${c.name} (${c.mac})</option>
@@ -724,7 +737,6 @@ Escriba 'help' para ver la lista de comandos disponibles (ipconfig, ping, tracer
           renderCanvasTopology();
         };
 
-        // Device Shell Header
         document.getElementById('dev-shell-name').textContent = client.name;
         document.getElementById('dev-shell-mac').textContent = client.mac;
         document.getElementById('dev-shell-icon').textContent = client.type === 'phone' ? '📱' : client.type === 'laptop' ? '💻' : '🖥️';
@@ -733,7 +745,6 @@ Escriba 'help' para ver la lista de comandos disponibles (ipconfig, ping, tracer
         const bars = EAP.getSignalBars(rssi);
         document.getElementById('dev-shell-signal-icon').textContent = [' ', '▂', '▂▄', '▂▄▆', '▂▄▆█'][bars];
 
-        // Wi-Fi Power Switch
         const wifiPowerChk = document.getElementById('dev-wifi-power-chk');
         wifiPowerChk.checked = client.wifiEnabled;
         wifiPowerChk.onchange = () => {
@@ -743,7 +754,6 @@ Escriba 'help' para ver la lista de comandos disponibles (ipconfig, ping, tracer
           EAP.triggerSync();
         };
 
-        // Distance slider
         const distSlider = document.getElementById('dev-slider-dist');
         const distVal = document.getElementById('dev-slider-dist-val');
         distSlider.value = client.distance;
@@ -758,7 +768,6 @@ Escriba 'help' para ver la lista de comandos disponibles (ipconfig, ping, tracer
           }
         };
 
-        // Status banner
         const statusBanner = document.getElementById('dev-wifi-conn-status-banner');
         if (client.status === 'connected') {
           statusBanner.style.background = '#f0fdf4';
@@ -794,7 +803,6 @@ Escriba 'help' para ver la lista de comandos disponibles (ipconfig, ping, tracer
           statusBanner.innerHTML = `Desconectado. Selecciona una red Wi-Fi abajo para conectar.`;
         }
 
-        // Wi-Fi Scan List (Based on REAL EAP Configuration)
         const scanList = document.getElementById('dev-wifi-scan-list');
         scanList.innerHTML = '';
 
@@ -803,10 +811,9 @@ Escriba 'help' para ver la lista de comandos disponibles (ipconfig, ping, tracer
           return;
         }
 
-        // Add SSIDs from REAL EAP config if radio 2.4GHz is ON
         if (state.wireless.radio24) {
           state.wireless.ssids.forEach(s => {
-            if (!s.bcast) return; // Hidden SSID
+            if (!s.bcast) return;
             const isConn = client.connectedSSID === s.name && (client.status === 'connected' || client.status === 'noinet');
             const item = document.createElement('div');
             item.className = `wifi-item ${isConn ? 'connected' : ''}`;
@@ -826,7 +833,6 @@ Escriba 'help' para ver la lista de comandos disponibles (ipconfig, ping, tracer
           scanList.innerHTML = '<div style="padding:16px;text-align:center;color:#e74c3c;">La radio 2.4GHz de la EAP está desactivada en la web.</div>';
         }
 
-        // External neighbor networks
         const neighbor = [
           { name: 'MOVISTAR_Fibra_4F2A', sec: 'WPA2' },
           { name: 'Vodafone_Vecinos_5G', sec: 'WPA2' }
@@ -879,7 +885,6 @@ Escriba 'help' para ver la lista de comandos disponibles (ipconfig, ping, tracer
         else alert(`Error al conectar: ${res.error}`);
       };
 
-      // App Switcher in Device Shell
       document.querySelectorAll('.device-app-btn').forEach(btn => {
         btn.onclick = () => {
           document.querySelectorAll('.device-app-btn').forEach(b => b.classList.remove('active'));

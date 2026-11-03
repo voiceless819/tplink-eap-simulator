@@ -28,7 +28,7 @@
   --tpl-text-main: #333333;
   --tpl-text-muted: #777777;
   --tpl-font: Arial, Helvetica, "Segoe UI", sans-serif;
-  --sim-width: 500px;
+  --sim-width: 520px;
 }
 
 * {
@@ -42,28 +42,33 @@ html, body {
   width: 100%;
   overflow: hidden;
   font-family: var(--tpl-font);
-  background: var(--tpl-bg);
+  background: #ffffff;
   color: var(--tpl-text-main);
 }
 
 /* ==========================================================================
-   Top Management Bar
+   Top Management Bar (TP-Link Omada Style)
    ========================================================================== */
 #top-bar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 42px;
+  height: 40px;
   background: linear-gradient(180deg, #3d4c54 0%, #303c42 100%);
   border-bottom: 2px solid #232d32;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 14px;
-  z-index: 100;
+  padding: 0 16px;
+  z-index: 1000;
   color: #e2e8f0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease;
+}
+
+#top-bar.hidden-bar {
+  transform: translateY(-100%);
 }
 
 .brand-section {
@@ -168,7 +173,7 @@ html, body {
   color: #e2e8f0;
   border: 1px solid #45555e;
   border-radius: 3px;
-  padding: 5px 12px;
+  padding: 4px 10px;
   font-size: 12px;
   cursor: pointer;
   display: inline-flex;
@@ -205,76 +210,100 @@ html, body {
 }
 
 /* ==========================================================================
-   Main Layout
+   Main Application Layout (100% Full Width Centered)
    ========================================================================== */
 #app-container {
   position: fixed;
-  top: 42px;
+  top: 40px;
   left: 0;
   right: 0;
   bottom: 0;
-  display: flex;
+  width: 100%;
+  height: calc(100% - 40px);
   overflow: hidden;
+  background: #ffffff;
+  transition: top 0.3s ease, height 0.3s ease;
+}
+
+#app-container.full-top {
+  top: 0;
+  height: 100%;
 }
 
 #eap-frame-container {
-  flex: 1;
+  width: 100%;
   height: 100%;
-  position: relative;
-  background: #eaedf1;
-  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
 }
 
 #eap-frame {
   width: 100%;
   height: 100%;
   border: none;
-  background: #eaedf1;
+  background: #ffffff;
   display: block;
 }
 
 /* ==========================================================================
-   Simulator Panel
+   Simulator Drawer Panel (Overlay Drawer, Never Squashes the EAP Layout!)
    ========================================================================== */
 #sim-container {
+  position: fixed;
+  top: 40px;
+  right: 0;
+  bottom: 0;
   width: var(--sim-width);
-  height: 100%;
+  max-width: 95vw;
   background: #ffffff;
   border-left: 1px solid var(--tpl-border);
-  box-shadow: -3px 0 12px rgba(0,0,0,0.1);
+  box-shadow: -4px 0 25px rgba(0, 0, 0, 0.22);
   display: flex;
   flex-direction: column;
-  z-index: 50;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s;
+  z-index: 2000;
+  transform: translateX(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), top 0.3s ease;
+}
+
+#sim-container.full-top {
+  top: 0;
 }
 
 #sim-container.collapsed {
-  transform: translateX(100%);
+  transform: translateX(105%);
+  pointer-events: none;
+  visibility: hidden;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s;
 }
 
+/* Floating Pill Button when collapsed */
 #sim-toggle-pill {
   position: fixed;
-  right: 18px;
-  bottom: 18px;
+  right: 24px;
+  bottom: 24px;
   background: linear-gradient(135deg, #0072ce 0%, #0055a5 100%);
   color: #ffffff;
-  padding: 9px 18px;
-  border-radius: 24px;
+  padding: 10px 20px;
+  border-radius: 26px;
   font-size: 13px;
   font-weight: bold;
   border: 1px solid rgba(255,255,255,0.3);
-  box-shadow: 0 4px 16px rgba(0, 114, 206, 0.45);
+  box-shadow: 0 4px 18px rgba(0, 114, 206, 0.5);
   cursor: pointer;
   display: none;
   align-items: center;
   gap: 8px;
-  z-index: 60;
+  z-index: 1500;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 #sim-toggle-pill:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 114, 206, 0.6);
+  box-shadow: 0 6px 24px rgba(0, 114, 206, 0.65);
 }
 
 #sim-toggle-pill.visible {
@@ -791,7 +820,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 3000;
   backdrop-filter: blur(2px);
 }
 
@@ -893,7 +922,7 @@ html, body {
 #auth-overlay {
   position: fixed;
   inset: 0;
-  z-index: 2000;
+  z-index: 4000;
   background: radial-gradient(circle at center, #2e3b42 0%, #171f24 100%);
   display: flex;
   align-items: center;
@@ -1004,23 +1033,31 @@ html, body {
       <button id="btn-top-reboot" class="top-btn" title="Reiniciar Punto de Acceso">
         <span>🔄</span> <span>Reboot</span>
       </button>
-      <button id="btn-logout" class="top-btn danger" style="margin-left:6px;" title="Cerrar sesión de administración">
+      <button id="btn-logout" class="top-btn danger" style="margin-left:4px;" title="Cerrar sesión de administración">
         <span>Salir</span>
+      </button>
+      <button id="btn-toggle-topbar" class="top-btn" style="padding:4px 6px;margin-left:4px;" title="Ocultar barra superior para pantalla completa">
+        <span>▲</span>
       </button>
     </div>
   </header>
 
+  <!-- Floating pill to restore top-bar if hidden -->
+  <button id="btn-show-topbar" style="position:fixed;top:6px;left:50%;transform:translateX(-50%);z-index:1001;display:none;background:#232d32;color:#94a3b8;border:1px solid #475569;border-radius:12px;padding:2px 10px;font-size:11px;cursor:pointer;">
+    ▼ Mostrar barra superior
+  </button>
+
   <!-- =========================================================================
-       Main Application Container
+       Main Application Container (100% Full Width Centered)
        ========================================================================= -->
   <main id="app-container">
-    <!-- EAP Original Web Interface Viewport -->
+    <!-- EAP Original Web Interface Viewport (Takes 100% full width, centered) -->
     <section id="eap-frame-container">
       <iframe id="eap-frame" title="TP-Link EAP Management Console" sandbox="allow-scripts allow-same-origin allow-forms allow-modals"></iframe>
     </section>
 
-    <!-- Virtual Wireless Lab & Multi-Device Simulator Side Panel -->
-    <aside id="sim-container">
+    <!-- Virtual Wireless Lab & Multi-Device Simulator Side Drawer -->
+    <aside id="sim-container" class="collapsed">
       <!-- Simulator Header -->
       <div class="sim-header">
         <div class="sim-title">
@@ -1277,16 +1314,6 @@ Escriba 'help' para ver la lista de comandos disponibles (ipconfig, ping, tracer
               <button id="btn-save-router" class="sim-btn primary">Guardar en Router</button>
             </div>
           </div>
-
-          <!-- Preset Scenarios -->
-          <div class="sim-card" style="margin-top:10px;">
-            <div class="sim-card-header">
-              <span>Escenarios Rápidos de Laboratorio</span>
-            </div>
-            <div id="scenarios-list" style="display:flex;flex-direction:column;gap:6px;">
-              <!-- Populated dynamically -->
-            </div>
-          </div>
         </div>
 
         <!-- ===================================================================
@@ -1309,7 +1336,7 @@ Escriba 'help' para ver la lista de comandos disponibles (ipconfig, ping, tracer
   </main>
 
   <!-- Floating Pill button to reopen simulator when collapsed -->
-  <button id="sim-toggle-pill">
+  <button id="sim-toggle-pill" class="visible">
     <span>📡</span>
     <span>Abrir Lab Packet Tracer</span>
     <span id="pill-client-count" style="background:#fff;color:var(--tpl-primary);border-radius:10px;padding:1px 6px;font-size:11px;">0</span>
@@ -2980,6 +3007,9 @@ Content-Type: text/html
       const selPage = document.getElementById('sel-page');
       const simContainer = document.getElementById('sim-container');
       const simTogglePill = document.getElementById('sim-toggle-pill');
+      const topBar = document.getElementById('top-bar');
+      const appContainer = document.getElementById('app-container');
+      const btnShowTopBar = document.getElementById('btn-show-topbar');
 
       // -----------------------------------------------------------------------
       // 1. Navigation Setup
@@ -3046,7 +3076,7 @@ Content-Type: text/html
       document.getElementById('btn-next-page').onclick = () => navigateToPage(currentPageIndex + 1);
 
       // -----------------------------------------------------------------------
-      // 2. Simulator Panel & Tabs Toggle
+      // 2. Simulator Drawer & Top Bar Toggle
       // -----------------------------------------------------------------------
       function toggleSimulator(show) {
         const willShow = show !== undefined ? show : simContainer.classList.contains('collapsed');
@@ -3062,6 +3092,21 @@ Content-Type: text/html
       document.getElementById('btn-toggle-sim').onclick = () => toggleSimulator();
       document.getElementById('sim-btn-collapse').onclick = () => toggleSimulator(false);
       simTogglePill.onclick = () => toggleSimulator(true);
+
+      // Toggle Top Bar for pure fullscreen
+      document.getElementById('btn-toggle-topbar').onclick = () => {
+        topBar.classList.add('hidden-bar');
+        appContainer.classList.add('full-top');
+        simContainer.classList.add('full-top');
+        btnShowTopBar.style.display = 'block';
+      };
+
+      btnShowTopBar.onclick = () => {
+        topBar.classList.remove('hidden-bar');
+        appContainer.classList.remove('full-top');
+        simContainer.classList.remove('full-top');
+        btnShowTopBar.style.display = 'none';
+      };
 
       const tabButtons = document.querySelectorAll('.sim-tab-btn');
       const tabPanes = document.querySelectorAll('.tab-pane');
@@ -3082,14 +3127,13 @@ Content-Type: text/html
       // 3. Packet Tracer Topology Canvas (Draggable Nodes & Visual Links)
       // -----------------------------------------------------------------------
       let draggedDevId = null;
-      let svgCanvas = document.getElementById('pt-svg-canvas');
+      const svgCanvas = document.getElementById('pt-svg-canvas');
 
       function renderCanvasTopology() {
         const state = EAP.getState();
         const clientsGroup = document.getElementById('svg-clients-group');
         const linksGroup = document.getElementById('svg-links-group');
 
-        // Update Router & AP colors
         document.getElementById('svg-rt-led-wan').setAttribute('fill', state.router.wanOnline ? '#39e36b' : '#f43f5e');
         document.getElementById('svg-ap-circle').setAttribute('stroke', state.wireless.radio24 ? '#0072ce' : '#64748b');
         document.getElementById('svg-ap-ip-text').textContent = state.device.ip;
@@ -3151,7 +3195,6 @@ Content-Type: text/html
         document.getElementById('pill-client-count').textContent = connCount;
       }
 
-      // Drag and Drop Logic on SVG Canvas
       svgCanvas.addEventListener('mousedown', function(e) {
         const node = e.target.closest('.pt-node');
         if (node) {
@@ -3217,7 +3260,7 @@ Content-Type: text/html
       };
 
       // -----------------------------------------------------------------------
-      // 5. Active Virtual Device Shell (Apps: Wi-Fi, CLI, Browser, Speedtest)
+      // 5. Active Virtual Device Shell
       // -----------------------------------------------------------------------
       function renderActiveDeviceScreen() {
         const state = EAP.getState();
@@ -3225,7 +3268,6 @@ Content-Type: text/html
         if (!client) return;
         activeClientId = client.id;
 
-        // Update dropdown
         const devDropdown = document.getElementById('sel-active-device-dropdown');
         devDropdown.innerHTML = state.clients.map(c => `
           <option value="${c.id}" ${c.id === client.id ? 'selected' : ''}>${c.name} (${c.mac})</option>
@@ -3237,7 +3279,6 @@ Content-Type: text/html
           renderCanvasTopology();
         };
 
-        // Device Shell Header
         document.getElementById('dev-shell-name').textContent = client.name;
         document.getElementById('dev-shell-mac').textContent = client.mac;
         document.getElementById('dev-shell-icon').textContent = client.type === 'phone' ? '📱' : client.type === 'laptop' ? '💻' : '🖥️';
@@ -3246,7 +3287,6 @@ Content-Type: text/html
         const bars = EAP.getSignalBars(rssi);
         document.getElementById('dev-shell-signal-icon').textContent = [' ', '▂', '▂▄', '▂▄▆', '▂▄▆█'][bars];
 
-        // Wi-Fi Power Switch
         const wifiPowerChk = document.getElementById('dev-wifi-power-chk');
         wifiPowerChk.checked = client.wifiEnabled;
         wifiPowerChk.onchange = () => {
@@ -3256,7 +3296,6 @@ Content-Type: text/html
           EAP.triggerSync();
         };
 
-        // Distance slider
         const distSlider = document.getElementById('dev-slider-dist');
         const distVal = document.getElementById('dev-slider-dist-val');
         distSlider.value = client.distance;
@@ -3271,7 +3310,6 @@ Content-Type: text/html
           }
         };
 
-        // Status banner
         const statusBanner = document.getElementById('dev-wifi-conn-status-banner');
         if (client.status === 'connected') {
           statusBanner.style.background = '#f0fdf4';
@@ -3307,7 +3345,6 @@ Content-Type: text/html
           statusBanner.innerHTML = `Desconectado. Selecciona una red Wi-Fi abajo para conectar.`;
         }
 
-        // Wi-Fi Scan List (Based on REAL EAP Configuration)
         const scanList = document.getElementById('dev-wifi-scan-list');
         scanList.innerHTML = '';
 
@@ -3316,10 +3353,9 @@ Content-Type: text/html
           return;
         }
 
-        // Add SSIDs from REAL EAP config if radio 2.4GHz is ON
         if (state.wireless.radio24) {
           state.wireless.ssids.forEach(s => {
-            if (!s.bcast) return; // Hidden SSID
+            if (!s.bcast) return;
             const isConn = client.connectedSSID === s.name && (client.status === 'connected' || client.status === 'noinet');
             const item = document.createElement('div');
             item.className = `wifi-item ${isConn ? 'connected' : ''}`;
@@ -3339,7 +3375,6 @@ Content-Type: text/html
           scanList.innerHTML = '<div style="padding:16px;text-align:center;color:#e74c3c;">La radio 2.4GHz de la EAP está desactivada en la web.</div>';
         }
 
-        // External neighbor networks
         const neighbor = [
           { name: 'MOVISTAR_Fibra_4F2A', sec: 'WPA2' },
           { name: 'Vodafone_Vecinos_5G', sec: 'WPA2' }
@@ -3392,7 +3427,6 @@ Content-Type: text/html
         else alert(`Error al conectar: ${res.error}`);
       };
 
-      // App Switcher in Device Shell
       document.querySelectorAll('.device-app-btn').forEach(btn => {
         btn.onclick = () => {
           document.querySelectorAll('.device-app-btn').forEach(b => b.classList.remove('active'));

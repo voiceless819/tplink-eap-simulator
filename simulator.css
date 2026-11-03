@@ -21,7 +21,7 @@
   --tpl-text-main: #333333;
   --tpl-text-muted: #777777;
   --tpl-font: Arial, Helvetica, "Segoe UI", sans-serif;
-  --sim-width: 500px;
+  --sim-width: 520px;
 }
 
 * {
@@ -35,28 +35,33 @@ html, body {
   width: 100%;
   overflow: hidden;
   font-family: var(--tpl-font);
-  background: var(--tpl-bg);
+  background: #ffffff;
   color: var(--tpl-text-main);
 }
 
 /* ==========================================================================
-   Top Management Bar
+   Top Management Bar (TP-Link Omada Style)
    ========================================================================== */
 #top-bar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 42px;
+  height: 40px;
   background: linear-gradient(180deg, #3d4c54 0%, #303c42 100%);
   border-bottom: 2px solid #232d32;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 14px;
-  z-index: 100;
+  padding: 0 16px;
+  z-index: 1000;
   color: #e2e8f0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease;
+}
+
+#top-bar.hidden-bar {
+  transform: translateY(-100%);
 }
 
 .brand-section {
@@ -161,7 +166,7 @@ html, body {
   color: #e2e8f0;
   border: 1px solid #45555e;
   border-radius: 3px;
-  padding: 5px 12px;
+  padding: 4px 10px;
   font-size: 12px;
   cursor: pointer;
   display: inline-flex;
@@ -198,76 +203,100 @@ html, body {
 }
 
 /* ==========================================================================
-   Main Layout
+   Main Application Layout (100% Full Width Centered)
    ========================================================================== */
 #app-container {
   position: fixed;
-  top: 42px;
+  top: 40px;
   left: 0;
   right: 0;
   bottom: 0;
-  display: flex;
+  width: 100%;
+  height: calc(100% - 40px);
   overflow: hidden;
+  background: #ffffff;
+  transition: top 0.3s ease, height 0.3s ease;
+}
+
+#app-container.full-top {
+  top: 0;
+  height: 100%;
 }
 
 #eap-frame-container {
-  flex: 1;
+  width: 100%;
   height: 100%;
-  position: relative;
-  background: #eaedf1;
-  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
 }
 
 #eap-frame {
   width: 100%;
   height: 100%;
   border: none;
-  background: #eaedf1;
+  background: #ffffff;
   display: block;
 }
 
 /* ==========================================================================
-   Simulator Panel
+   Simulator Drawer Panel (Overlay Drawer, Never Squashes the EAP Layout!)
    ========================================================================== */
 #sim-container {
+  position: fixed;
+  top: 40px;
+  right: 0;
+  bottom: 0;
   width: var(--sim-width);
-  height: 100%;
+  max-width: 95vw;
   background: #ffffff;
   border-left: 1px solid var(--tpl-border);
-  box-shadow: -3px 0 12px rgba(0,0,0,0.1);
+  box-shadow: -4px 0 25px rgba(0, 0, 0, 0.22);
   display: flex;
   flex-direction: column;
-  z-index: 50;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s;
+  z-index: 2000;
+  transform: translateX(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), top 0.3s ease;
+}
+
+#sim-container.full-top {
+  top: 0;
 }
 
 #sim-container.collapsed {
-  transform: translateX(100%);
+  transform: translateX(105%);
+  pointer-events: none;
+  visibility: hidden;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s;
 }
 
+/* Floating Pill Button when collapsed */
 #sim-toggle-pill {
   position: fixed;
-  right: 18px;
-  bottom: 18px;
+  right: 24px;
+  bottom: 24px;
   background: linear-gradient(135deg, #0072ce 0%, #0055a5 100%);
   color: #ffffff;
-  padding: 9px 18px;
-  border-radius: 24px;
+  padding: 10px 20px;
+  border-radius: 26px;
   font-size: 13px;
   font-weight: bold;
   border: 1px solid rgba(255,255,255,0.3);
-  box-shadow: 0 4px 16px rgba(0, 114, 206, 0.45);
+  box-shadow: 0 4px 18px rgba(0, 114, 206, 0.5);
   cursor: pointer;
   display: none;
   align-items: center;
   gap: 8px;
-  z-index: 60;
+  z-index: 1500;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 #sim-toggle-pill:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 114, 206, 0.6);
+  box-shadow: 0 6px 24px rgba(0, 114, 206, 0.65);
 }
 
 #sim-toggle-pill.visible {
@@ -784,7 +813,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 3000;
   backdrop-filter: blur(2px);
 }
 
@@ -886,7 +915,7 @@ html, body {
 #auth-overlay {
   position: fixed;
   inset: 0;
-  z-index: 2000;
+  z-index: 4000;
   background: radial-gradient(circle at center, #2e3b42 0%, #171f24 100%);
   display: flex;
   align-items: center;
